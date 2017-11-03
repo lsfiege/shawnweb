@@ -1,23 +1,15 @@
 version: '3'
 
 services:
-  shawn:
-    image: lsfiege/shawn-core
-    container_name: shawn
-    restart: always
-    tty: true
-
   www:
-    image: lsfiege/apache-php70:latest
+    image: lsfiege/shawnweb:latest
     container_name: www
     restart: always
+    tty: true
     ports:
       - 8888:80
     depends_on:
-      - shawn
       - db
-    environment:
-      - DB_HOST: db
     volumes:
       - ./:/var/www/shawnweb
   
