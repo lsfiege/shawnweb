@@ -4,21 +4,31 @@ services:
   shawn:
     image: lsfiege/shawn-core
     container_name: shawn
-    depends_on:
-      - www
-      
+    restart: always
+    tty: true
+
   www:
-    image: lsfiege/apache-php70
+    image: lsfiege/apache-php70:latest
     container_name: www
-    #depends_on:
-    #  - shawn
+    restart: always
     ports:
       - 8888:80
+    depends_on:
+      - shawn
+      - db
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/shawnweb
   
-#  db:
-#    image: postgres
-#    restart: always
-#    environment:
-#        POSTGRES_PASSWORD: secret
+  db:
+    image: postgres:9.5.8
+    container_name: db
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes: 
+      pgdata:
