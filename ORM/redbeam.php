@@ -2,11 +2,7 @@
 
 require ('rb.php');
 
-//datos de conexion a base de datos
-$host="localhost";
-$db_name="postgres";
-$db_user_name="postgres";
-$db_password="hernan";
+require ('env.php');
 
 R::setup('pgsql:host='.$host.';dbname='.$db_name,
             $db_user_name,$db_password);

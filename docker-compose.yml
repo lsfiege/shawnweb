@@ -16,6 +16,8 @@ services:
     depends_on:
       - shawn
       - db
+    environment:
+      - DB_HOST: db
     volumes:
       - ./:/var/www/shawnweb
   
