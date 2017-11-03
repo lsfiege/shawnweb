@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -DNDEBUG   CMakeFiles/shawn.dir/frontend/console/con_main.o CMakeFiles/shawn.dir/apps/apps_init.o  -o shawn  -L/usr/include/cairo -rdynamic libshawnlib.a -ldl -lcairo -lpixman-1 -lpng -lfreetype -lfontconfig -lz -Wl,-rpath,/usr/include/cairo 

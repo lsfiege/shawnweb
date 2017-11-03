@@ -1,0 +1,478 @@
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+gcc: CMakeCCompilerId.c: No such file or directory
+gcc: no input files
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/usr/bin/ld: cannot open output file a.out: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" did not produce an executable in "/var/www/prueba/shawn/buildfiles/CMakeFiles/CompilerIdC".
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+/usr/bin/ld: cannot open output file a.out: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+gcc: CMakeCCompilerId.c: No such file or directory
+gcc: no input files
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+gcc: CMakeCCompilerId.c: No such file or directory
+gcc: no input files
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: -Aa
+
+The output was:
+1
+gcc: CMakeCCompilerId.c: No such file or directory
+gcc: no input files
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: -Aa
+
+The output was:
+1
+cc1: error: CMakeCCompilerId.c: No such file or directory
+
+
+Compiling the C compiler identification source file "CMakeCCompilerId.c" failed.
+Compiler: /usr/bin/gcc 
+Build flags: 
+Id flags: -Aa
+
+The output was:
+1
+<command-line>: error: missing '(' after predicate
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: reopening a.out: No such file or directory
+
+/usr/bin/ld: final link failed: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: reopening a.out: No such file or directory
+
+/usr/bin/ld: final link failed: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: reopening a.out: No such file or directory
+
+/usr/bin/ld: final link failed: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+cc1plus: error: CMakeCXXCompilerId.cpp: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: cannot open output file a.out: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+Assembler messages:
+Fatal error: can't create CMakeCXXCompilerId.o: No such file or directory
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: reopening a.out: No such file or directory
+
+/usr/bin/ld: final link failed: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: cannot open output file a.out: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+Assembler messages:
+Fatal error: can't create CMakeCXXCompilerId.o: No such file or directory
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc        CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+gcc: CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o: No such file or directory
+gcc: no input files
+make[1]: *** [cmTryCompileExec] Error 1
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make: *** No rule to make target `cmTryCompileExec/fast'.  Stop.
+
+
+Determining if the CXX compiler works failed with the following output:
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+Error opening link script "CMakeFiles/cmTryCompileExec.dir/link.txt"
+make[1]: *** [cmTryCompileExec] Error 1
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec/fast] Error 2
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc        CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o  -o cmTryCompileExec -rdynamic 
+gcc: CMakeFiles/cmTryCompileExec.dir/testCCompiler.c.o: No such file or directory
+gcc: no input files
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec] Error 1
+make: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the C compiler works failed with the following output:
+
+
+Detecting C compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o
+/usr/bin/gcc    -o CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-2.8/Modules/CMakeCCompilerABI.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/gcc        CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o  -o cmTryCompileExec -rdynamic  
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o: No such file or directory
+
+/usr/bin/ld:CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o: bfd_stat failed: No such file or directory
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o: No such file or directory
+
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCCompilerABI.c.o: No such file or directory
+
+/usr/bin/ld: can not read symbols: No such file or directory
+/usr/bin/ld: BFD (GNU Binutils for Ubuntu) 2.20.1-system.20100303 internal error, aborting at ../../bfd/merge.c line 872 in _bfd_merged_section_offset
+
+/usr/bin/ld: Please report this bug.
+
+collect2: ld returned 1 exit status
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec] Error 1
+make: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the CXX compiler works failed with the following output:
+
+
+Determining if the CXX compiler works failed with the following output:
+
+
+Determining if the CXX compiler works failed with the following output:
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+CMakeCXXCompilerId.cpp:73: warning: deprecated conversion from string constant to 'char*'
+CMakeCXXCompilerId.cpp:163: warning: deprecated conversion from string constant to 'char*'
+/usr/bin/ld: cannot open output file a.out: No such file or directory
+collect2: ld returned 1 exit status
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: 
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+c++: CMakeCXXCompilerId.cpp: No such file or directory
+c++: no input files
+
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" failed.
+Compiler: /usr/bin/c++ 
+Build flags: 
+Id flags: -c
+
+The output was:
+1
+cc1plus: error: CMakeCXXCompilerId.cpp: No such file or directory
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make[1]: *** No rule to make target `cmTryCompileExec/fast'.  Stop.
+
+
+Detecting CXX compiler ABI info failed to compile with the following output:
+Change Dir: /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp
+
+Run Build Command:/usr/bin/make "cmTryCompileExec/fast"
+make[1]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[2]: Entering directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o
+/usr/bin/c++     -o CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-2.8/Modules/CMakeCXXCompilerABI.cpp
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTryCompileExec.dir/link.txt --verbose=1
+/usr/bin/c++        -v CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o  -o cmTryCompileExec -rdynamic  
+Using built-in specs.
+Target: x86_64-linux-gnu
+Configured with: ../src/configure -v --with-pkgversion='Ubuntu 4.4.3-4ubuntu5.1' --with-bugurl=file:///usr/share/doc/gcc-4.4/README.Bugs --enable-languages=c,c++,fortran,objc,obj-c++ --prefix=/usr --enable-shared --enable-multiarch --enable-linker-build-id --with-system-zlib --libexecdir=/usr/lib --without-included-gettext --enable-threads=posix --with-gxx-include-dir=/usr/include/c++/4.4 --program-suffix=-4.4 --enable-nls --enable-clocale=gnu --enable-libstdcxx-debug --enable-plugin --enable-objc-gc --disable-werror --with-arch-32=i486 --with-tune=generic --enable-checking=release --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu
+Thread model: posix
+gcc version 4.4.3 (Ubuntu 4.4.3-4ubuntu5.1) 
+COMPILER_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/
+LIBRARY_PATH=/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/:/lib/../lib/:/usr/lib/../lib/:/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../:/lib/:/usr/lib/:/usr/lib/x86_64-linux-gnu/
+COLLECT_GCC_OPTIONS='-v' '-o' 'cmTryCompileExec' '-rdynamic' '-shared-libgcc' '-mtune=generic'
+ /usr/lib/gcc/x86_64-linux-gnu/4.4.3/collect2 --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=both -export-dynamic -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o cmTryCompileExec -z relro /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crt1.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crti.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3 -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib -L/lib/../lib -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../.. -L/usr/lib/x86_64-linux-gnu CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc_s -lgcc -lc -lgcc_s -lgcc /usr/lib/gcc/x86_64-linux-gnu/4.4.3/crtend.o /usr/lib/gcc/x86_64-linux-gnu/4.4.3/../../../../lib/crtn.o
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o: No such file or directory
+
+/usr/bin/ld:CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o: bfd_stat failed: No such file or directory
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o: No such file or directory
+
+/usr/bin/ld: reopening CMakeFiles/cmTryCompileExec.dir/CMakeCXXCompilerABI.cpp.o: No such file or directory
+
+/usr/bin/ld: can not read symbols: No such file or directory
+/usr/bin/ld: BFD (GNU Binutils for Ubuntu) 2.20.1-system.20100303 internal error, aborting at ../../bfd/merge.c line 872 in _bfd_merged_section_offset
+
+/usr/bin/ld: Please report this bug.
+
+collect2: ld returned 1 exit status
+make[2]: *** [cmTryCompileExec] Error 1
+make[2]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+make[1]: *** [cmTryCompileExec/fast] Error 2
+make[1]: Leaving directory `/var/www/prueba/shawn/buildfiles/CMakeFiles/CMakeTmp'
+
+

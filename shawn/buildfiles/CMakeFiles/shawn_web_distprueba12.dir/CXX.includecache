@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../buildfiles/_legacyapps_init_cmake.h
+
+/var/www/prueba/shawn/src/./legacyapps/legacyapps_init.h
+
+/var/www/prueba/shawn/src/legacyapps/legacyapps_init.cpp
+legacyapps/legacyapps_init.h
+/var/www/prueba/shawn/src/legacyapps/legacyapps/legacyapps_init.h
+_legacyapps_init_cmake.h
+/var/www/prueba/shawn/src/legacyapps/_legacyapps_init_cmake.h
+iostream
+-
+stdio.h
+-
+

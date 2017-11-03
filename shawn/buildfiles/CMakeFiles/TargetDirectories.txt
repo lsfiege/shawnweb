@@ -1,0 +1,3 @@
+/var/www/shawnweb/shawn/buildfiles/CMakeFiles/edit_cache.dir
+/var/www/shawnweb/shawn/buildfiles/CMakeFiles/rebuild_cache.dir
+/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawn_web_proy_test1.dir

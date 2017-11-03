@@ -1,0 +1,1 @@
+/usr/bin/c++      CMakeFiles/shawn_web_distprueba12.dir/legacyapps/legacyapps_init.o  -o /var/www/prueba/shawn/src/legacyapps/distprueba12/build_files/shawn_web_distprueba12 -rdynamic libshawn_web_lib.a -ldl 
