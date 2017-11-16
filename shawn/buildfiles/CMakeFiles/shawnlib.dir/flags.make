@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_FLAGS = -O3 -DNDEBUG  
 
-C_DEFINES = -DHAVE_CAIRO -DHAVE_EXPAT_CONFIG_H -DHAVE_LEGACYAPPS -DLOGGER_STDOUT -DLOG_DEBUG_DISABLED -DLOG_INFO_DISABLED -DSHAWN -DXML_STATIC
+C_DEFINES = -DHAVE_BOOST -DHAVE_BOOST_REGEX -DHAVE_CAIRO -DHAVE_EXPAT_CONFIG_H -DHAVE_LEGACYAPPS -DLOGGER_STDOUT -DLOG_DEBUG_DISABLED -DLOG_INFO_DISABLED -DSHAWN -DXML_STATIC
 
-C_INCLUDES = -I/var/www/shawnweb/shawn/src/. -I/var/www/shawnweb/shawn/buildfiles/../buildfiles -I/usr/include/cairo -I/var/www/shawnweb/shawn/src/legacyapps/.. 
+C_INCLUDES = -I/var/www/shawnweb/shawn/src/. -I/var/www/shawnweb/shawn/buildfiles/../buildfiles -I/usr/include/boost -I/usr/include/cairo -I/var/www/shawnweb/shawn/src/legacyapps/.. 
 
 CXX_FLAGS = -O3 -DNDEBUG  
 
-CXX_DEFINES = -DHAVE_CAIRO -DHAVE_EXPAT_CONFIG_H -DHAVE_LEGACYAPPS -DLOGGER_STDOUT -DLOG_DEBUG_DISABLED -DLOG_INFO_DISABLED -DSHAWN -DXML_STATIC
+CXX_DEFINES = -DHAVE_BOOST -DHAVE_BOOST_REGEX -DHAVE_CAIRO -DHAVE_EXPAT_CONFIG_H -DHAVE_LEGACYAPPS -DLOGGER_STDOUT -DLOG_DEBUG_DISABLED -DLOG_INFO_DISABLED -DSHAWN -DXML_STATIC
 
-CXX_INCLUDES = -I/var/www/shawnweb/shawn/src/. -I/var/www/shawnweb/shawn/buildfiles/../buildfiles -I/usr/include/cairo -I/var/www/shawnweb/shawn/src/legacyapps/.. 
+CXX_INCLUDES = -I/var/www/shawnweb/shawn/src/. -I/var/www/shawnweb/shawn/buildfiles/../buildfiles -I/usr/include/boost -I/usr/include/cairo -I/var/www/shawnweb/shawn/src/legacyapps/.. 
 

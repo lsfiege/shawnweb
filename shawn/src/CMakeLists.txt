@@ -379,7 +379,7 @@ OPTION(OPT_ENABLE_SHAWN_WEB_USER_APP "Enable ShawnWeb build only one user legacy
 			if ( CYGWIN )
 				set ( LIB_BOOST boost_regex-gcc-mt boost_date_time-gcc-mt boost_thread-gcc-mt )
 			else ( CYGWIN )
-				set ( LIB_BOOST boost_regex-mt boost_date_time-mt boost_thread-mt boost_system-mt )
+				set ( LIB_BOOST boost_regex boost_date_time boost_thread boost_system )
 			endif ( CYGWIN )
 		endif ( OPT_ENABLE_BOOST )
 
@@ -528,7 +528,7 @@ OPTION(OPT_ENABLE_SHAWN_WEB_USER_APP "Enable ShawnWeb build only one user legacy
 			if ( CYGWIN )
 				set ( LIB_BOOST boost_regex-gcc-mt boost_date_time-gcc-mt boost_thread-gcc-mt )
 			else ( CYGWIN )
-				set ( LIB_BOOST boost_regex-mt boost_date_time-mt boost_thread-mt boost_system-mt )
+				set ( LIB_BOOST boost_regex boost_date_time boost_thread boost_system )
 			endif ( CYGWIN )
 		endif ( OPT_ENABLE_BOOST )
 
@@ -1083,7 +1083,7 @@ OPTION(OPT_ENABLE_SHAWN_WEB_USER_APP "Enable ShawnWeb build only one user legacy
 			if ( CYGWIN )
 				set ( LIB_BOOST boost_regex-gcc-mt boost_date_time-gcc-mt boost_thread-gcc-mt )
 			else ( CYGWIN )
-				set ( LIB_BOOST boost_regex-mt boost_date_time-mt boost_thread-mt boost_system-mt )
+				set ( LIB_BOOST boost_regex boost_date_time boost_thread boost_system )
 			endif ( CYGWIN )
 		endif ( OPT_ENABLE_BOOST )
 

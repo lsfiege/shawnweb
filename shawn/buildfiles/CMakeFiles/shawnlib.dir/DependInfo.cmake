@@ -15,6 +15,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
+  "HAVE_BOOST"
+  "HAVE_BOOST_REGEX"
   "HAVE_CAIRO"
   "HAVE_EXPAT_CONFIG_H"
   "HAVE_LEGACYAPPS"
@@ -29,6 +31,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/var/www/shawnweb/shawn/src/."
   "../buildfiles"
+  "/usr/include/boost"
   "/usr/include/cairo"
   "/var/www/shawnweb/shawn/src/legacyapps/.."
   )
@@ -397,39 +400,19 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/var/www/shawnweb/shawn/src/apps/wiseml/writer/wiseml_setup_collector.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/apps/wiseml/writer/wiseml_setup_collector.o"
   "/var/www/shawnweb/shawn/src/apps/wiseml/writer/wiseml_trace_collector.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/apps/wiseml/writer/wiseml_trace_collector.o"
   "/var/www/shawnweb/shawn/src/frontend/console/con_main.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/frontend/console/con_main.o"
+  "/var/www/shawnweb/shawn/src/legacyapps/camino_mcorto1/camino_mcorto1_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/camino_mcorto1/camino_mcorto1_init.o"
+  "/var/www/shawnweb/shawn/src/legacyapps/camino_mcorto1/camino_mcorto1_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/camino_mcorto1/camino_mcorto1_message.o"
+  "/var/www/shawnweb/shawn/src/legacyapps/camino_mcorto1/camino_mcorto1_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/camino_mcorto1/camino_mcorto1_processor.o"
+  "/var/www/shawnweb/shawn/src/legacyapps/camino_mcorto1/camino_mcorto1_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/camino_mcorto1/camino_mcorto1_processor_factory.o"
   "/var/www/shawnweb/shawn/src/legacyapps/legacyapps_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/legacyapps_init.o"
   "/var/www/shawnweb/shawn/src/legacyapps/mi_aplic/mi_aplic_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/mi_aplic/mi_aplic_init.o"
   "/var/www/shawnweb/shawn/src/legacyapps/mi_aplic/mi_aplic_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/mi_aplic/mi_aplic_message.o"
   "/var/www/shawnweb/shawn/src/legacyapps/mi_aplic/mi_aplic_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/mi_aplic/mi_aplic_processor.o"
   "/var/www/shawnweb/shawn/src/legacyapps/mi_aplic/mi_aplic_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/mi_aplic/mi_aplic_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/nuevoproy12/nuevoproy12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/nuevoproy12/nuevoproy12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/nuevoproy12/nuevoproy12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/nuevoproy12/nuevoproy12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/nuevoproy12/nuevoproy12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/nuevoproy12/nuevoproy12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/nuevoproy12/nuevoproy12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/nuevoproy12/nuevoproy12_processor_factory.o"
   "/var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test1/proy_test1_init.o"
   "/var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test1/proy_test1_message.o"
   "/var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test1/proy_test1_processor.o"
   "/var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test1/proy_test1_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proy_test12/proy_test12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test12/proy_test12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proy_test12/proy_test12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test12/proy_test12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proy_test12/proy_test12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test12/proy_test12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proy_test12/proy_test12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proy_test12/proy_test12_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proyecto_testing12/proyecto_testing12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proyecto_testing12/proyecto_testing12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proyecto_testing12/proyecto_testing12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proyecto_testing12/proyecto_testing12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proyecto_testing12/proyecto_testing12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proyecto_testing12/proyecto_testing12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/proyecto_testing12/proyecto_testing12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/proyecto_testing12/proyecto_testing12_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/prueba12/prueba12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/prueba12/prueba12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/prueba12/prueba12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/prueba12/prueba12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/prueba12/prueba12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/prueba12/prueba12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/prueba12/prueba12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/prueba12/prueba12_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/sample_testing12/sample_testing12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/sample_testing12/sample_testing12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/sample_testing12/sample_testing12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/sample_testing12/sample_testing12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/sample_testing12/sample_testing12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/sample_testing12/sample_testing12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/sample_testing12/sample_testing12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/sample_testing12/sample_testing12_processor_factory.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/shaw_prueba12/shaw_prueba12_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/shaw_prueba12/shaw_prueba12_init.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/shaw_prueba12/shaw_prueba12_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/shaw_prueba12/shaw_prueba12_message.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/shaw_prueba12/shaw_prueba12_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/shaw_prueba12/shaw_prueba12_processor.o"
-  "/var/www/shawnweb/shawn/src/legacyapps/shaw_prueba12/shaw_prueba12_processor_factory.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/shaw_prueba12/shaw_prueba12_processor_factory.o"
   "/var/www/shawnweb/shawn/src/legacyapps/simple_app/simple_app_init.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/simple_app/simple_app_init.o"
   "/var/www/shawnweb/shawn/src/legacyapps/simple_app/simple_app_message.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/simple_app/simple_app_message.o"
   "/var/www/shawnweb/shawn/src/legacyapps/simple_app/simple_app_processor.cpp" "/var/www/shawnweb/shawn/buildfiles/CMakeFiles/shawnlib.dir/legacyapps/simple_app/simple_app_processor.o"
@@ -604,6 +587,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
+  "HAVE_BOOST"
+  "HAVE_BOOST_REGEX"
   "HAVE_CAIRO"
   "HAVE_EXPAT_CONFIG_H"
   "HAVE_LEGACYAPPS"
@@ -618,6 +603,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/var/www/shawnweb/shawn/src/."
   "../buildfiles"
+  "/usr/include/boost"
   "/usr/include/cairo"
   "/var/www/shawnweb/shawn/src/legacyapps/.."
   )
