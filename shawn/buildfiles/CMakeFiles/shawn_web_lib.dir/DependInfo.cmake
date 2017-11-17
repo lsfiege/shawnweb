@@ -15,6 +15,8 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
+  "HAVE_BOOST"
+  "HAVE_BOOST_REGEX"
   "HAVE_CAIRO"
   "HAVE_EXPAT_CONFIG_H"
   "HAVE_LEGACYAPPS"
@@ -29,6 +31,7 @@ set(CMAKE_TARGET_DEFINITIONS_C
 set(CMAKE_C_TARGET_INCLUDE_PATH
   "/var/www/shawnweb/shawn/src/."
   "../buildfiles"
+  "/usr/include/boost"
   "/usr/include/cairo"
   "/var/www/shawnweb/shawn/src/legacyapps/.."
   )
@@ -406,6 +409,8 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
+  "HAVE_BOOST"
+  "HAVE_BOOST_REGEX"
   "HAVE_CAIRO"
   "HAVE_EXPAT_CONFIG_H"
   "HAVE_LEGACYAPPS"
@@ -420,6 +425,7 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/var/www/shawnweb/shawn/src/."
   "../buildfiles"
+  "/usr/include/boost"
   "/usr/include/cairo"
   "/var/www/shawnweb/shawn/src/legacyapps/.."
   )
