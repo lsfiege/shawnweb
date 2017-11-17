@@ -553,7 +553,7 @@ OPTION(OPT_ENABLE_SHAWN_WEB_USER_APP "Enable ShawnWeb build only one user legacy
 
 
 		target_link_libraries( shawn_web_${USER_MODULE_NAME} ${CMAKE_BINARY_DIR}/libshawn_web_lib.a  
-				${SYSTEM_LIBS} ${LIB_LOGGING} ${LIB_CAIRO} ${SHAWN_LINK_LIBS})
+				${SYSTEM_LIBS} ${LIB_LOGGING} ${LIB_CAIRO} ${LIB_BOOST} ${SHAWN_LINK_LIBS})
 
 	  ENDIF(OPT_ENABLE_SHAWN_WEB_USER_APP)
 
