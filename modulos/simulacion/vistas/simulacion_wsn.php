@@ -22,7 +22,7 @@ require ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARA
         
         <!-- elFinder CSS (REQUIRED) -->
         <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery-ui.css">
-        <link rel="stylesheet" type="text/css" media="screen" href="/css/elfinder.min.css">
+        <link rel="stylesheet" type="text/css" media="screen" href="/plugins/elFinder-2.1/css/elfinder.min.css">
         <link rel="stylesheet" type="text/css" media="screen" href="/css/theme.css">
         <link rel="stylesheet" type="text/css" media="screen" href="/css/shawnweb.css">
         
@@ -34,9 +34,9 @@ require ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARA
         <!-- jqueryui/1.8.18 -->
         <script type="text/javascript" src="/js/shawn_web.js"></script>
         <!-- elFinder JS (REQUIRED) -->
-        <script type="text/javascript" src="/js/elfinder.min.js"></script>
+        <script type="text/javascript" src="/plugins/elFinder-2.1/js/elfinder.min.js"></script>
         <!-- elFinder translation (OPTIONAL) -->
-        <script type="text/javascript" src="/js/i18n/elfinder.es.js"></script>
+        <script type="text/javascript" src="/plugins/elFinder-2.1/js/i18n/elfinder.es.js"></script>
         
         <?php 
         $usuario=unserialize($_SESSION['Usuario']); 
