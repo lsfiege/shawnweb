@@ -22,7 +22,7 @@ RUN apt-get update && apt-get -y upgrade && apt-get -y install cmake \
     
 # Instalar Apache, PHP, y programas complementarios. openssh-server, curl, y lynx-cur son para ofrecer opciones de debugging.
 RUN apt-get -y install \
-    apache2 php php-mysql php-pgsql libapache2-mod-php curl lynx-cur postgresql-client postgresql-client-common
+    apache2 php php-mysql php-pgsql php-zip libapache2-mod-php curl lynx-cur postgresql-client postgresql-client-common
     
 # Habilitar modulos de apache.
 RUN a2enmod php7.0
