@@ -1,2 +1,5 @@
 .idea/
 shawn2SinProyDeUsr/
+shawn/src/legacyapps/
+!shawn/src/legacyapps/simple_app/
+!shawn/src/legacyapps/camino_mcorto1/
