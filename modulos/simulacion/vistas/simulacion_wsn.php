@@ -299,9 +299,12 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
         <div class="tab-pane fade" id="compilacion" role="tabpanel" aria-labelledby="contact-tab">
             <div id="salida_compilacion" class="col-12 mt-3">
-                <section id="compilacion">
-                    <header>
-                        <h3>Salida de compilaci&oacute;n</h3>
+                <div id="compilacion">
+                    <div class="col-12">
+                        <h3>Salida de compilación</h3>
+                    </div>
+
+                    <div class="col-12 mb-2">
                         <div class="botones_accion">
                             <select id="compil_proy_simul">
                                 <option selected disabled>Seleccione un Proyecto</option>
@@ -311,9 +314,13 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </select>
                             <input type="button" value="Compilar" name="compilar" onClick="compilar(); return false;"/>
                         </div>
-                    </header>
-                    <textarea id="txa_copilar" rows="23" placeholder="Resultado de la compilaci&oacute;n"></textarea>
-                </section>
+                    </div>
+
+                    <div class="col-12">
+                        <textarea id="txa_copilar" class="form-control-lg" rows="23" style="width: 100%!important;"
+                                  placeholder="Resultado de la compilación"></textarea>
+                    </div>
+                </div>
             </div>
         </div>
 
