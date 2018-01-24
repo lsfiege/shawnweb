@@ -47,5 +47,8 @@ EXPOSE 5432
 # Actualizar la configuracion inicial de host de apache
 ADD apache-config.conf /etc/apache2/sites-enabled/000-default.conf
 
+RUN chown -R root:www-data /var/www/
+RUN chmod -R 777 /var/www/
+
 # Iniciar apache por defecto en modo background, sobrescribiendo la directiva bash por defecto del contenedor.
 CMD /usr/sbin/apache2ctl -D FOREGROUND
