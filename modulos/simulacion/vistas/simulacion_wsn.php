@@ -129,6 +129,17 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
         <li class="nav-item">
             <a class="nav-link"
                id="contact-tab" data-toggle="tab"
+               href="#visualizacion"
+               role="tab"
+               aria-controls="contact"
+               aria-selected="false">
+                <i class="fas fa-eye"></i>
+                Parámetros de visualización
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link"
+               id="contact-tab" data-toggle="tab"
                href="#compilacion"
                role="tab"
                aria-controls="contact"
@@ -295,6 +306,26 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </button>
                         </div>
 
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tab-pane fade show active" id="visualizacion" role="tabpanel" aria-labelledby="home-tab">
+            <div id="panel_visualizacion" class="col-12 mt-3">
+                <div id="arbol_archivos">
+                    <div class="col-12">
+                        <h3>Parámetros de Visualización</h3>
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <div class="botones_accion">
+
+                        </div>
+                    </div>
+
+                    <div class="col-12">
+                        
                     </div>
                 </div>
             </div>
