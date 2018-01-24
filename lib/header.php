@@ -28,10 +28,18 @@
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
     <h5 class="my-0 mr-md-auto font-weight-normal">
-        <a class="link_home"
-           href=" <?= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/iniciar_sesion.php' ?> ">
-            ShawnWEB
-        </a>
+        <?php if (is_null($usuario)): ?>
+            <a class="link_home"
+               href=" <?= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/iniciar_sesion.php' ?> ">
+                ShawnWEB
+            </a>
+        <?php else: ?>
+            <a class="link_home"
+               href=" <?= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/simulacion/vistas/simulacion_wsn.php' ?> ">
+                ShawnWEB
+            </a>
+        <?php endif; ?>
+
         <small>
             Simulación de WSN Basada en la Web
         </small>
