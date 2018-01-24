@@ -51,7 +51,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                 url: '/php/connector.php',  // connector URL (REQUIRED)
                 customData: {usuario_id: "<?php echo $usuario->getId(); ?>"},
                 lang: 'es',             // language (OPTIONAL)
-                height: 370
+                height: 450
             }).elfinder('instance');
         });
     </script>
@@ -311,9 +311,9 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
             </div>
         </div>
 
-        <div class="tab-pane fade show active" id="visualizacion" role="tabpanel" aria-labelledby="home-tab">
+        <div class="tab-pane fade" id="visualizacion" role="tabpanel" aria-labelledby="home-tab">
             <div id="panel_visualizacion" class="col-12 mt-3">
-                <div id="arbol_archivos">
+                <div id="parametros_visualizacion">
                     <div class="col-12">
                         <h3>Parámetros de Visualización</h3>
                     </div>

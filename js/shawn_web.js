@@ -1,12 +1,4 @@
 $(document).ready(function () {
-    /*$("#panel_desarrollo").show();
-    $("#elfinder").focus();
-    $("#tab_1").addClass("tab_selec");
-    $("#tab_1 span").addClass("link_selec");
-    $("#panel_control").hide();
-    $("#salida_compilacion").hide();
-    $("#salida_ejecucion").hide();*/
-
     $(document).ajaxStart(function () {
         $("#wait").css("display", "block");
     });
@@ -327,21 +319,3 @@ function eliminar_proyecto() {
 function modificar_proyecto() {
     $(location).attr('href', location.protocol + '//' + window.location.host + '/modulos/proyectos/vistas/modificar_proyecto_simulacion.php');
 }
-
-/*
-function activar_tab(seccion_id, tab_id) {
-    var cantidad_tab = 4;
-
-    $(".mostrar_ocultar").hide();
-    $("#" + seccion_id).show();
-    //$("#"+seccion_id).focus();
-
-    for (i = 1; i <= cantidad_tab; i++) {
-        $("#tab_" + i).removeClass("tab_selec");
-        $("#tab_" + i + " span").removeClass("link_selec");
-    }
-
-    $("#" + tab_id).addClass("tab_selec");
-    $("#" + tab_id + " span").addClass("link_selec");
-
-}*/
