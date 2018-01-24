@@ -1,5 +1,7 @@
 .idea/
 shawn2SinProyDeUsr/
 shawn/src/legacyapps/
+!shawn/src/legacyapps/legacyapps_init.cpp
+!shawn/src/legacyapps/legacyapps_init.h
 !shawn/src/legacyapps/simple_app/
 !shawn/src/legacyapps/camino_mcorto1/
