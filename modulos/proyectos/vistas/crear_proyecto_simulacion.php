@@ -11,38 +11,51 @@ $usuario = unserialize($_SESSION['Usuario']);
 <?php
 require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'header.php'); ?>
 
-<h2 class="titulo_home_login home_login_subtitulo2">Crear Proyecto de Simulaci&oacute;n</h2>
-<h3 class="titulo_home_login home_login_subtitulo3">Complete el formulario con los datos para crear un Proyecto de
-    Simulaci&oacute;n</h3>
-<?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
-<form action="/modulos/proyectos/controlador/proyectos.class.php" method="POST">
+<div class="col">
+    <a class="btn btn-sm btn-outline-secondary float-left"
+       href=" <?= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/simulacion/vistas/simulacion_wsn.php' ?> ">
+        Volver
+    </a>
+</div>
 
-    <div class="lbls_login">
-        <div class="lbl_parametro">
-            <label class="">Nombre del proyecto*</label>
-        </div>
-        <div class="lbl_parametro">
-            <label class="">Descripci&oacute;n</label>
-        </div>
-        <div class="lbl_parametro"></div>
-        <div class="lbl_parametro"></div>
+<div class="container">
+
+    <div class="center-block text-center">
+        <h2 class="form-signin-heading">Crear Proyecto de Simulación</h2>
+
+        <?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
     </div>
-    <div class="inps_login">
-        <div class="txt_parametro">
-            <input type="text" name="nombre-proyecto" value="" size="15" autofocus required>
+
+    <form action="/modulos/proyectos/controlador/proyectos.class.php" method="POST" class="form-signin">
+
+        <div class="form-group">
+            <label for="nombre-proyecto">Nombre del proyecto*</label>
+            <input type="text"
+                   id="nombre-proyecto"
+                   name="nombre-proyecto"
+                   class="form-control"
+                   value=""
+                   autofocus required>
         </div>
-        <div class="txt_parametro">
-                    <textarea name="descripcion" rows="4" cols="20">
-                    </textarea>
+
+        <div class="form-group">
+            <label for="descripcion">Descripción</label>
+            <textarea id="descripcion" name="descripcion" class="form-control" rows="4" cols="20"></textarea>
         </div>
-        <div class="txt_parametro">
-            <label class="">(*) Campos obligatorios</label>
+
+        <small id="form-help" class="form-text text-muted">(*)Campos obligatorios</small>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Crear Proyecto" name="crear-proyecto"/>
         </div>
-        <div class="txt_parametro">
-            <input type="submit" value="Crear Proyecto" name="crear-proyecto"/>
-        </div>
+    </form>
+
+    <div class="center-block text-center">
+        <p>Complete el formulario con los datos para crear un Proyecto de Simulación</p>
     </div>
-</form>
+
+</div>
+
 <?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </body>
 </html>
