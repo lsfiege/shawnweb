@@ -305,14 +305,19 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                     </div>
 
                     <div class="col-12 mb-2">
-                        <div class="botones_accion">
-                            <select id="compil_proy_simul">
+                        <div class="botones_accion form-inline">
+                            <select id="compil_proy_simul" class="form-control">
                                 <option selected disabled>Seleccione un Proyecto</option>
                                 <?php foreach ($proyectos as $proy) { ?>
                                     <option id="compilproy_<?php echo $proy->id ?>"><?php echo $proy->nombre ?></option>
                                 <?php } ?>
                             </select>
-                            <input type="button" value="Compilar" name="compilar" onClick="compilar(); return false;"/>
+
+                            <input type="button"
+                                   class="btn btn-primary pull-right"
+                                   value="Compilar"
+                                   name="compilar"
+                                   onClick="compilar(); return false;"/>
                         </div>
                     </div>
 
