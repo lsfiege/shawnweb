@@ -12,9 +12,8 @@
     </ul>
 
     <div class="justify-content-center">
+
         <!-- visualizacion de imagen mientras se envia una peticion ajax -->
-        <div id="wait" style="display:none;width:70px;height:70px;position:absolute;top:50%;left:48%;"><img
-                    alt="cargando..." src='/img/waiting.gif' width="70" height="70"/><br>Cargando...
-        </div>
+        <div id="wait" class="loading" style="display:none;"></div>
     </div>
 </footer>

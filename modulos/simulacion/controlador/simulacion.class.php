@@ -112,7 +112,7 @@ class simulacion
         require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
         $control_simulacion = new ControlSimulacion();
         $nombres_archivos_conf = $control_simulacion->obtenerArchivosConf($proyecto_id);
-        $select_option = '<select id="'.$dom_select_archivo_conf_id.'" onChange="cargarParamArchConf(); return false;">
+        $select_option = '<select class="form-control" id="'.$dom_select_archivo_conf_id.'" onChange="cargarParamArchConf(); return false;">
                         <option selected disabled>Seleccione un Archivo</option>';
         foreach ($nombres_archivos_conf as $nombre_archivo) {
             $select_option .= '<option>'.$nombre_archivo.'</option>';
