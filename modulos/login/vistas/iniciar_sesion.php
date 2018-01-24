@@ -1,43 +1,56 @@
-<?php 
+<?php
 //muestra mensajes de error en php
 //ini_set('display_startup_errors',1);
 //ini_set('display_errors',1);
 //error_reporting(-1);
 ?>
 
-<?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'header.php'); ?>
-</head>
+<?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'header.php'); ?>
 
-<body>
-    <header id="menu_cabecera"> 
-        <h1 class="titulo_home_login"><a class="link_home" href=" <?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/iniciar_sesion.php'?> ">ShawnWEB</a><span> Simulaci&oacute;n de WSN Basada en la Web</span></h1>
-    </header>
-    <h2 class="titulo_home_login home_login_subtitulo2">Formulario de Inicio de Sesi&oacute;n</h2>
-    <h3 class="titulo_home_login home_login_subtitulo3">Complete el formulario con los datos para iniciar sesi&oacute;n o <a href=" <?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/registrar_usuario.php'?> ">puede crear una cuenta</a></h3>
-    <?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
-    
-    <form action="/modulos/login/controlador/login.class.php" method="POST">
-        <div class="lbls_login">
-            <div class="lbl_parametro">
-               <label>Nombre de Usuario</label>
-            </div>                      
-            <div class="lbl_parametro">
-               <label>Contrase&ntilde;a</label>
-            </div>
-            <div class="lbl_parametro"></div>
+<div class="container">
+
+    <div class="center-block text-center">
+        <h2 class="form-signin-heading">Formulario de Inicio de Sesión</h2>
+
+        <?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
+    </div>
+
+    <form action="/modulos/login/controlador/login.class.php" method="POST" class="form-signin">
+        <div class="form-group">
+            <label for="nombre-usuario">Nombre de Usuario</label>
+            <input type="text"
+                   id="nombre-usuario"
+                   name="nombre-usuario"
+                   class="form-control"
+                   placeholder="Nombre de Usuario"
+                   value=""
+                   autofocus required>
         </div>
-        <div class="inps_login">
-            <div class="txt_parametro" >
-                <input type="text" name="nombre-usuario" value="" size="12" autofocus required>
-            </div>  
-            <div class="txt_parametro" >
-                <input type="password" name="password" value="" required>
-            </div> 
-            <div class="txt_parametro" >
-                <input type="submit" value="Iniciar Sesi&oacute;n" name="iniciar-sesion" />
-            </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   class="form-control"
+                   value=""
+                   required>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Iniciar Sesión" name="iniciar-sesion"/>
         </div>
     </form>
-    <?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'footer.php'); ?>
+
+    <div class="center-block text-center">
+        <p>Complete el formulario con los datos para iniciar sesión o
+            <a href="<?= 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/registrar_usuario.php' ?>">
+                puede crear una cuenta</a>
+        </p>
+    </div>
+
+</div>
+
+<?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </body>
 </html>

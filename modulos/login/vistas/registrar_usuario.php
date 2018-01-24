@@ -1,53 +1,67 @@
-<?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'header.php'); ?>
-</head>
+<?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'header.php'); ?>
 
-<body>
-    <header id="menu_cabecera"> 
-        <h1 class="titulo_home_login"><a class="link_home" href=" <?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT'].'/modulos/login/vistas/iniciar_sesion.php'?> ">ShawnWEB</a><span> Simulaci&oacute;n de WSN Basada en la Web</span></h1>
-    </header>
-    <h2 class="titulo_home_login home_login_subtitulo2">Registro de Usuarios</h2>
-    <h3 class="titulo_home_login home_login_subtitulo3">Complete el formulario para crear una cuenta de usuario e iniciar sesi&oacute;n</h3>    
-    <?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
-     <form action="/modulos/login/controlador/login.class.php" method="POST">
-        <div class="lbls_login">
-            <div class="lbl_parametro">
-               <label>Nombre de Usuario*</label>
-            </div>
-            <div class="lbl_parametro">
-               <label>E-mail*</label>
-            </div>
-            <div class="lbl_parametro">
-               <label>Contrase&ntilde;a*</label>
-            </div>
-            <div class="lbl_parametro">
-               <label>Repetir Contrase&ntilde;a*</label>
-            </div>
-            <div class="lbl_parametro">
-               <label></label>
-            </div>
+<div class="container">
+    <div class="center-block text-center">
+        <h2>Registro de Usuarios</h2>
+
+        <?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'mensajes_notificacion.php'); ?>
+    </div>
+
+    <form action="/modulos/login/controlador/login.class.php" method="POST" class="form-signin">
+        <div class="form-group">
+            <label for="nombre-usuario">Nombre de Usuario*</label>
+            <input type="text"
+                   id="nombre-usuario"
+                   name="nombre-usuario"
+                   class="form-control"
+                   value=""
+                   autofocus required>
         </div>
-        <div class="inps_login">            
-            <div class="txt_parametro" >
-                <input type="text" name="nombre-usuario" value="" size="16" autofocus required>
-            </div>  
-            <div class="txt_parametro" >
-                <input type="email" name="email" value="" size="22" required>
-            </div> 
-            <div class="txt_parametro" >
-                 <input type="password" name="password" value="" required>
-            </div>
-            <div class="txt_parametro" >
-               <input type="password" name="password-confirmar" value="" required>
-            </div>
-            <div class="txt_parametro" >
-               <label>(*)Campos obligatorios</label>
-            </div>
-            <div class="txt_parametro" >
-              <input type="submit" value="Crear Cuenta de Usuario" name="registrar-usuario" />
-            </div>            
-       </div>        
+
+        <div class="form-group">
+            <label for="email">E-mail*</label>
+            <input type="email"
+                   id="email"
+                   name="email"
+                   class="form-control"
+                   value=""
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña*</label>
+            <input type="password"
+                   id="password"
+                   name="password"
+                   class="form-control"
+                   value=""
+                   required>
+        </div>
+
+        <div class="form-group">
+            <label for="password-confirmar">Repetir Contraseña*</label>
+            <input type="password"
+                   id="password-confirmar"
+                   name="password-confirmar"
+                   class="form-control"
+                   value=""
+                   required>
+        </div>
+
+        <small id="form-help" class="form-text text-muted">(*)Campos obligatorios</small>
+
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary btn-block" value="Crear Cuenta de Usuario"
+                   name="registrar-usuario"/>
+        </div>
     </form>
-    <?php require_once ($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'footer.php'); ?>
+
+    <div class="center-block text-center">
+        <p>Complete el formulario para crear una cuenta de usuario e iniciar sesión</p>
+    </div>
+</div>
+
+<?php require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'lib'.DIRECTORY_SEPARATOR.'footer.php'); ?>
 </body>
 </html>
     
