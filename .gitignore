@@ -4,4 +4,8 @@ shawn/src/legacyapps/*
 !shawn/src/legacyapps/legacyapps_init.cpp
 !shawn/src/legacyapps/legacyapps_init.h
 !shawn/src/legacyapps/simple_app/
+shawn/src/legacyapps/simple_app/.quarantine/
+shawn/src/legacyapps/simple_app/.tmb/
 !shawn/src/legacyapps/camino_mcorto1/
+shawn/src/legacyapps/camino_mcorto1/.quarantine/
+shawn/src/legacyapps/camino_mcorto1/.tmb/
