@@ -287,9 +287,12 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                         </div>
 
                         <div class="form-group">
-                            <input type="button" class="btn btn-block btn-primary" value="Guardar"
-                                   name="guardar_control"
-                                   onClick="guardar_param_arch_conf(); return false;"/>
+                            <button type="button" class="btn btn-block btn-primary"
+                                    name="guardar_control"
+                                    onClick="guardar_param_arch_conf(); return false;">
+                                <i class="far fa-save"></i>
+                                Guardar
+                            </button>
                         </div>
 
                     </div>
@@ -313,11 +316,13 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                 <?php } ?>
                             </select>
 
-                            <input type="button"
-                                   class="btn btn-primary pull-right"
-                                   value="Compilar"
-                                   name="compilar"
-                                   onClick="compilar(); return false;"/>
+                            <button type="button"
+                                    class="btn btn-primary pull-right"
+                                    name="compilar"
+                                    onClick="compilar(); return false;">
+                                <i class="far fa-sun"></i>
+                                Compilar
+                            </button>
                         </div>
                     </div>
 
@@ -338,7 +343,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                     <div class="col-12 mb-2">
                         <div class="botones_accion form-inline">
-                            <form class="form-inline" action="/modulos/simulacion/controlador/simulacion.class.php" method="GET">
+                            <form class="form-inline" action="/modulos/simulacion/controlador/simulacion.class.php"
+                                  method="GET">
                                 <select id="ejec_proy_simul" class="form-control"
                                         onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
                                     <option selected disabled>Seleccione un Proyecto</option>
@@ -349,18 +355,27 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                                 <span id="ejec_span_arch_conf"> </span>
 
-                                <input type="button" class="btn btn-primary" value="Ejecutar" name="ejecutar"
-                                       onClick="ejecutar_proyecto(); return false;"/>
+                                <button type="button" class="btn btn-primary" name="ejecutar"
+                                        onClick="ejecutar_proyecto(); return false;">
+                                    <i class="fas fa-play"></i>
+                                    Ejecutar
+                                </button>
 
                                 <input id="proyecto_id_ejecucion" type="hidden" value="" name="proyecto_id"/>
 
-                                <input class="btn btn-outline-info" type="submit" value="Descargar"
-                                       name="descargar-proyecto"/>
+                                <button class="btn btn-outline-info" type="submit" value="Descargar"
+                                        name="descargar-proyecto">
+                                    <i class="fas fa-download"></i>
+                                    Descargar
+                                </button>
 
                                 <a id="link_salida_pdf"
                                    class="btn btn-link"
                                    href="http://<?php echo $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
-                                   target="_blank">Visualizar</a>
+                                   target="_blank">
+                                    <i class="fas fa-eye"></i>
+                                    Visualizar
+                                </a>
                             </form>
                         </div>
                     </div>
