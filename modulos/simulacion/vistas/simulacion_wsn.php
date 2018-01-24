@@ -331,32 +331,43 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
         <div class="tab-pane fade" id="ejecucion" role="tabpanel" aria-labelledby="contact-tab">
             <div id="salida_ejecucion" class="col-12 mt-3">
-                <section id="ejecucion">
-                    <header>
-                        <h3>Salida de ejecuci&oacute;n</h3>
-                        <div class="botones_accion">
-                            <form action="/modulos/simulacion/controlador/simulacion.class.php" method="GET">
-                                <select id="ejec_proy_simul"
+                <div id="ejecucion">
+                    <div class="col-12">
+                        <h3>Salida de ejecución</h3>
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <div class="botones_accion form-inline">
+                            <form class="form-inline" action="/modulos/simulacion/controlador/simulacion.class.php" method="GET">
+                                <select id="ejec_proy_simul" class="form-control"
                                         onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
                                     <option selected disabled>Seleccione un Proyecto</option>
                                     <?php foreach ($proyectos as $proy) { ?>
                                         <option id="ejecproy_<?php echo $proy->id ?>"><?php echo $proy->nombre ?></option>
                                     <?php } ?>
                                 </select>
+
                                 <span id="ejec_span_arch_conf"> </span>
-                                <input type="button" value="Ejecutar" name="ejecutar"
+
+                                <input type="button" class="btn btn-primary" value="Ejecutar" name="ejecutar"
                                        onClick="ejecutar_proyecto(); return false;"/>
 
                                 <input id="proyecto_id_ejecucion" type="hidden" value="" name="proyecto_id"/>
-                                <input type="submit" value="Descargar" name="descargar-proyecto"/>
+
+                                <input class="btn btn-outline-info" type="submit" value="Descargar"
+                                       name="descargar-proyecto"/>
+
                                 <a id="link_salida_pdf"
+                                   class="btn btn-link"
                                    href="http://<?php echo $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
                                    target="_blank">Visualizar</a>
                             </form>
                         </div>
-                    </header>
-                    <textarea id="txa_ejecutar" rows="23" placeholder="Resultado de la simulaci&oacute;n"></textarea>
-                </section>
+                    </div>
+
+                    <textarea class="form-control" style="width: 100%!important;" id="txa_ejecutar" rows="23"
+                              placeholder="Resultado de la simulación"></textarea>
+                </div>
             </div>
         </div>
 
