@@ -3,3 +3,7 @@
     padding: 15px;
     margin: 0 auto;
 }
+
+#nav-user{
+    text-transform: uppercase;
+}
