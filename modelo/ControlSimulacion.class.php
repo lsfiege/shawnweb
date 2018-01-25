@@ -379,6 +379,10 @@ class ControlSimulacion
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
             $this->cerrarProceso($process3);
 
+            $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_create_label'."'".' {} \;';
+            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process4);
+
             // Set VIS configurations
 
 
@@ -391,14 +395,17 @@ class ControlSimulacion
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot'."'".' {} \;';
             $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=ps'."'".' {} \;';
             $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=png'."'".' {} \;';
+            $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a save_world file=world-' . $proyecto_id . '_' . $nombre_arch_conf . '.xml snapshot=id:%r_%n_%u'."'".' {} \;';
 
             $process1 = proc_open($comando1, $descriptorspec, $pipes1);
             $process2 = proc_open($comando2, $descriptorspec, $pipes1);
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
+            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
 
             $this->cerrarProceso($process1);
             $this->cerrarProceso($process2);
             $this->cerrarProceso($process3);
+            $this->cerrarProceso($process4);
 
 
         } catch (Exception $e) {
