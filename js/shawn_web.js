@@ -217,8 +217,6 @@ function cargarParamArchConf() {
 
         }
     });
-
-
 }
 
 function guardar_param_arch_conf() {
@@ -297,25 +295,120 @@ function guardar_param_arch_conf() {
     });
 }
 
+/**
+ * Funciones especificas para modulo de visualizacion
+ */
+function cargarArchConfVis() {
+    var select_option_id = $('#vis_proy_simul option:selected').attr('id');
+
+    var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
+
+    $('#proyecto_id_ejecucion').val(proyecto_id);
+
+    var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-archivo-conf-vis&proyecto_id=' + proyecto_id + '&dom_select_archivo_conf_id=vis_archivo_conf');
+
+    $.ajax({
+        url: url,
+        type: "get",
+        cache: false,
+        error: function () {
+            alert("Error al procesar la solicitud");
+        },
+        success: function (data) {
+
+            $("#vis_archivos_conf_div").empty().append(data);
+
+            crearUrlVisualizacion(proyecto_id);
+        }
+    });
+}
+
+function cargarParamArchConfVis() {
+    var select_option_id = $('#vis_proy_simul option:selected').attr('id');
+
+    var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
+
+    var nombre_arch_conf = $('#vis_archivo_conf').val();
+
+    var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-param-arch-conf&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
+
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: 'json',
+        cache: false,
+        error: function () {
+            alert("Error al procesar la solicitud");
+        },
+        success: function (data) {
+            $('#max_nodes_lbl').append(data.count);
+            $('#max_nodes').val(data.count);
+
+            if (data.vis_config_id) {
+                console.log('load vis_config_id: ' + data.vis_config_id);
+            } else {
+                console.log('load default vis_config');
+            }
+
+
+        }
+    });
+}
+
+function guardar_param_arch_conf_vis() {
+    var select_option_id = $('#vis_proy_simul option:selected').attr('id');
+
+    var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
+
+    var nombre_arch_conf = $('#vis_archivo_conf').val();
+
+    var max_nodes = $('#max_nodes').val();
+
+    var url = ('href', location.protocol + '//' + window.location.host +
+    '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis&proyecto_id=' + proyecto_id +
+    '&nombre_arch_conf=' + nombre_arch_conf + "&max_nodes=" + max_nodes);
+
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: 'json',
+        cache: false,
+        error: function () {
+            alert("Error al procesar la solicitud");
+        },
+        success: function (data) {
+            if (data.resul == true) {
+                alert('Parámetros de visualización guardados correctamente');
+            } else {
+                alert("Error al guardar los parámetros");
+                cargarParamArchConfVis();
+            }
+        }
+    });
+}
+
+/**
+ * Fin Funciones especificas para modulo de visualizacion
+ */
+
 
 function visualizar() {
-
     var url = "../ver_pdf.php";
-
     window.location.href = url;
-
 }
 
 function crear_proyecto() {
     $(location).attr('href', location.protocol + '//' + window.location.host + '/modulos/proyectos/vistas/crear_proyecto_simulacion.php');
-
 }
 
 function eliminar_proyecto() {
     $(location).attr('href', location.protocol + '//' + window.location.host + '/modulos/proyectos/vistas/eliminar_proyecto_simulacion.php');
-
 }
 
 function modificar_proyecto() {
     $(location).attr('href', location.protocol + '//' + window.location.host + '/modulos/proyectos/vistas/modificar_proyecto_simulacion.php');
+}
+
+function clearElement(element_id){
+    $('#' + element_id).empty();
 }

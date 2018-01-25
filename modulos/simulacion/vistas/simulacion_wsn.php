@@ -49,7 +49,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
         $().ready(function () {
             var elf = $('#elfinder').elfinder({
                 url: '/php/connector.php',  // connector URL (REQUIRED)
-                customData: {usuario_id: "<?php echo $usuario->getId(); ?>"},
+                customData: {usuario_id: "<?= $usuario->getId(); ?>"},
                 lang: 'es',             // language (OPTIONAL)
                 height: 450
             }).elfinder('instance');
@@ -88,7 +88,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                     <a class="nav-link dropdown-toggle" href="#" id="nav-user" data-toggle="dropdown"
                        aria-haspopup="true"
                        aria-expanded="false">
-                        <?php echo($usuario->getNombre()); ?>
+                        <?= ($usuario->getNombre()); ?>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="nav-user">
                         <a class="dropdown-item" href="/modulos/usuarios/vistas/modificar_datos_perfil.php">Modificar
@@ -206,7 +206,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                 <option selected disabled>Seleccione un Proyecto</option>
                                 <?php $proyectos = $usuario->listarProyectos($usuario); ?>
                                 <?php foreach ($proyectos as $proy) { ?>
-                                    <option id="controlproy_<?php echo $proy->id ?>"><?php echo $proy->nombre ?></option>
+                                    <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
                                 <?php } ?>
                             </select>
                         </div>
@@ -318,14 +318,75 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                         <h3>Parámetros de Visualización</h3>
                     </div>
 
-                    <div class="col-12 mb-2">
-                        <div class="botones_accion">
+                    <div class="form-center">
+
+                        <div class="form-group">
+                            <label class="">Proyecto de Simulación</label>
+                            <select id="vis_proy_simul" class="form-control"
+                                    onChange="cargarArchConfVis(); return false;">
+                                <option selected disabled>Seleccione un Proyecto</option>
+                                <?php $proyectos = $usuario->listarProyectos($usuario);
+                                foreach ($proyectos as $proy) : ?>
+                                    <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Archivo de configuración</label>
+                            <div id="vis_archivos_conf_div" class="form-group">
+                                <span>-</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="hidden" id="max_nodes">
+                            <h4>Configurar nodos (máximo: <span id="max_nodes_lbl"></span>)</h4>
+                            <smapp>Además puede indicar una única configuración general</smapp>
+
+                            <div class="form-group">
+                                Color <br>
+                                Size <br>
+                                Shape <br>
+                            </div>
+                        </div>
+
+                        <div id="node_config_list" class="mb-5">
+
+                            listado: nº, color, size, shape
 
                         </div>
+
+                        <div class="form-group">
+                            <input type="hidden" id="max_nodes">
+                            <h4>Configurar conexiones</h4>
+                            <smapp>también puede indicar una única configuración general</smapp>
+
+                            <div id="general_edge_config">
+                                Color <br>
+                                Line width
+                            </div>
+                        </div>
+
+                        <div id="edge_config_list" class="mb-5">
+
+                            listado: nº, color, line_width
+
+                        </div>
+
+                        <div class="form-group">
+                            <button type="button" class="btn btn-block btn-primary"
+                                    name="guardar_control"
+                                    onClick="guardar_param_arch_conf_vis(); return false;">
+                                <i class="far fa-save"></i>
+                                Guardar
+                            </button>
+                        </div>
+
                     </div>
 
                     <div class="col-12">
-                        
+
                     </div>
                 </div>
             </div>
@@ -343,7 +404,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             <select id="compil_proy_simul" class="form-control">
                                 <option selected disabled>Seleccione un Proyecto</option>
                                 <?php foreach ($proyectos as $proy) { ?>
-                                    <option id="compilproy_<?php echo $proy->id ?>"><?php echo $proy->nombre ?></option>
+                                    <option id="compilproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
                                 <?php } ?>
                             </select>
 
@@ -372,47 +433,63 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                         <h3>Salida de ejecución</h3>
                     </div>
 
-                    <div class="col-12 mb-2">
+                    <div class="col-12 mb-2 p-0">
                         <div class="botones_accion form-inline">
-                            <form class="form-inline" action="/modulos/simulacion/controlador/simulacion.class.php"
+                            <form class="form-inline col-12"
+                                  action="/modulos/simulacion/controlador/simulacion.class.php"
                                   method="GET">
-                                <select id="ejec_proy_simul" class="form-control"
-                                        onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
-                                    <option selected disabled>Seleccione un Proyecto</option>
-                                    <?php foreach ($proyectos as $proy) { ?>
-                                        <option id="ejecproy_<?php echo $proy->id ?>"><?php echo $proy->nombre ?></option>
-                                    <?php } ?>
-                                </select>
+                                <div class="col-6 p-0">
+                                    <select id="ejec_proy_simul" class="form-control"
+                                            onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
+                                        <option selected disabled>Seleccione un Proyecto</option>
+                                        <?php foreach ($proyectos as $proy) { ?>
+                                            <option id="ejecproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                        <?php } ?>
+                                    </select>
 
-                                <span id="ejec_span_arch_conf"> </span>
+                                    <span id="ejec_span_arch_conf"> </span>
 
-                                <button type="button" class="btn btn-primary" name="ejecutar"
-                                        onClick="ejecutar_proyecto(); return false;">
-                                    <i class="fas fa-play"></i>
-                                    Ejecutar
-                                </button>
+                                </div>
 
-                                <input id="proyecto_id_ejecucion" type="hidden" value="" name="proyecto_id"/>
+                                <div class="col-6 p-0">
+                                    <div style="float: right !important;">
+                                        <button type="button" class="btn btn-primary" name="ejecutar"
+                                                onClick="ejecutar_proyecto(); return false;">
+                                            <i class="fas fa-play"></i>
+                                            Ejecutar
+                                        </button>
 
-                                <button class="btn btn-outline-info" type="submit" value="Descargar"
-                                        name="descargar-proyecto">
-                                    <i class="fas fa-download"></i>
-                                    Descargar
-                                </button>
+                                        <input id="proyecto_id_ejecucion" type="hidden" value="" name="proyecto_id"/>
 
-                                <a id="link_salida_pdf"
-                                   class="btn btn-link"
-                                   href="http://<?php echo $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
-                                   target="_blank">
-                                    <i class="fas fa-eye"></i>
-                                    Visualizar
-                                </a>
+                                        <button class="btn btn-outline-info" type="submit" value="Descargar"
+                                                name="descargar-proyecto">
+                                            <i class="fas fa-download"></i>
+                                            Descargar
+                                        </button>
+
+                                        <a id="link_salida_pdf"
+                                           class="btn btn-link"
+                                           href="http://<?= $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
+                                           target="_blank">
+                                            <i class="fas fa-eye"></i>
+                                            Visualizar
+                                        </a>
+
+                                        <button type="button" class="btn btn-outline-dark"
+                                                onclick="clearElement('txa_ejecutar'); return false;">
+                                            <i class="fas fa-eraser"></i>
+                                            Limpiar
+                                        </button>
+                                    </div>
+                                </div>
                             </form>
                         </div>
                     </div>
 
-                    <textarea class="form-control" style="width: 100%!important;" id="txa_ejecutar" rows="23"
-                              placeholder="Resultado de la simulación"></textarea>
+                    <div class="col-12">
+                        <textarea class="form-control" style="width: 100%!important;" id="txa_ejecutar" rows="23"
+                                  placeholder="Resultado de la simulación"></textarea>
+                    </div>
                 </div>
             </div>
         </div>

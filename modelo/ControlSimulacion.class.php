@@ -164,6 +164,10 @@ class ControlSimulacion
         $arr_parametros["comm_model"] = "0";
         $arr_parametros["transm_model"] = "0";
 
+        // Params for vis configuration
+        $vis_buscar = '#vis_config_id=';
+        $arr_parametros["vis_config_id"] = null;
+
         while (!feof($arch_conf)) {
             $linea = fgets($arch_conf);
 
@@ -217,6 +221,11 @@ class ControlSimulacion
 
             if ($transm_model <> "") {
                 $arr_parametros["transm_model"] = $transm_model;
+            }
+
+            $vis_config_id = $this->obtenerStringParametro($linea, $vis_buscar, " ");
+            if ($vis_config_id <> "") {
+                $arr_parametros["vis_config_id"] = $vis_config_id;
             }
 
         }
@@ -325,7 +334,78 @@ class ControlSimulacion
         }
 
         return true;
+    }
 
+    public function guardarParamArchConfVis(
+        $proyecto_id,
+        $nombre_arch_conf,
+        $max_nodes
+    ) {
+        try {
+            $arr_parametros = [];
+            $proyecto = R::load('proyecto', $proyecto_id);
+            $path = $proyecto->path;
+            $source = $path.DIRECTORY_SEPARATOR.$nombre_arch_conf;
+
+            $descriptorspec = [
+                0 => ["pipe", "r"], // stdin
+                1 => ["pipe", "w"], // stdout
+                2 => ["pipe", "w"] // stderr
+            ];
+
+            // Clear visualization settings
+            $i = 0;
+            while ($i < 4) {
+                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'7,$d'."'".' {} \;';
+                $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+                $i++;
+            }
+
+            $this->cerrarProceso($process1);
+
+            // Set vis config id if have one
+            #vis_config_id=33
+
+            // Set VIS initialization
+            $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis=my_visualization'."'".' {} \;';
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
+
+            $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_create'."'".' {} \;';
+            $process2 = proc_open($comando2, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process2);
+
+            $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_create_edges source_regex=.* target_regex=.*'."'".' {} \;';
+            $process3 = proc_open($comando3, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process3);
+
+            // Set VIS configurations
+
+
+            // Set VIS Camera
+            $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_simple_camera'."'".' {} \;';
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
+
+            // Finalize VIS
+            $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot'."'".' {} \;';
+            $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=ps'."'".' {} \;';
+            $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=png'."'".' {} \;';
+
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $process2 = proc_open($comando2, $descriptorspec, $pipes1);
+            $process3 = proc_open($comando3, $descriptorspec, $pipes1);
+
+            $this->cerrarProceso($process1);
+            $this->cerrarProceso($process2);
+            $this->cerrarProceso($process3);
+
+
+        } catch (Exception $e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
