@@ -264,7 +264,6 @@ function guardar_param_arch_conf() {
     "&comm_model=" + comm_model + "&comm_model_anterior=" + comm_model_anterior +
     "&transm_model=" + transm_model + "&transm_model_anterior=" + transm_model_anterior);
 
-    //alert (url);
 
     $.ajax({
         url: url,
@@ -341,14 +340,9 @@ function cargarParamArchConfVis() {
             alert("Error al procesar la solicitud");
         },
         success: function (data) {
-            $('#max_nodes_lbl').append(data.count);
+            $('#max_nodes_lbl').empty().append(data.count);
             $('#max_nodes').val(data.count);
 
-            if (data.vis_config_id) {
-                console.log('load vis_config_id: ' + data.vis_config_id);
-            } else {
-                console.log('load default vis_config');
-            }
 
 
         }
@@ -364,9 +358,19 @@ function guardar_param_arch_conf_vis() {
 
     var max_nodes = $('#max_nodes').val();
 
-    var url = ('href', location.protocol + '//' + window.location.host +
-    '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis&proyecto_id=' + proyecto_id +
-    '&nombre_arch_conf=' + nombre_arch_conf + "&max_nodes=" + max_nodes);
+    var export_scenario = false;
+
+    var load_scenario = false;
+
+    var id_snapshot = null;
+
+    var url = (
+        'href', location.protocol + '//' + window.location.host +
+        '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis' +
+        '&proyecto_id=' + proyecto_id +
+        '&nombre_arch_conf=' + nombre_arch_conf +
+        "&max_nodes=" + max_nodes
+    );
 
     $.ajax({
         url: url,
@@ -409,6 +413,6 @@ function modificar_proyecto() {
     $(location).attr('href', location.protocol + '//' + window.location.host + '/modulos/proyectos/vistas/modificar_proyecto_simulacion.php');
 }
 
-function clearElement(element_id){
+function clearElement(element_id) {
     $('#' + element_id).empty();
 }

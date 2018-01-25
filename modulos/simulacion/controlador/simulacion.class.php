@@ -75,7 +75,12 @@ if (isset($_GET["guardar-param-arch-conf-vis"])) {
     $nombre_arch_conf = $_GET["nombre_arch_conf"];
     $proyecto_id = $_GET["proyecto_id"];
     $max_nodes = $_GET["max_nodes"];
-    $simulacion->guardarParamArchConfVis($proyecto_id, $nombre_arch_conf, $max_nodes);
+
+    $simulacion->guardarParamArchConfVis(
+        $proyecto_id,
+        $nombre_arch_conf,
+        $max_nodes
+    );
 }
 
 if (isset($_GET["compilar"])) {
@@ -207,7 +212,11 @@ class simulacion
 
         $control_simulacion = new ControlSimulacion();
 
-        $resul = $control_simulacion->guardarParamArchConfVis($proyecto_id, $nombre_arch_conf, $max_nodes);
+        $resul = $control_simulacion->guardarParamArchConfVis(
+            $proyecto_id,
+            $nombre_arch_conf,
+            $max_nodes
+        );
 
         if ($resul == true) {
             echo json_encode(["resul" => true]);
