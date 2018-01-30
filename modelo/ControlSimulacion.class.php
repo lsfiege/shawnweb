@@ -353,7 +353,8 @@ class ControlSimulacion
                 2 => ["pipe", "w"] // stderr
             ];
 
-            // Clear visualization settings, erase from line 7 if the scenario should not be exported
+            // Clear visualization settings, erase from line 7 if the scenario should not be loaded
+            //todo: fix manejo de instrucciones de archivo si se debe cargar un escenario
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'7,$d'."'".' {} \;';
 
             $i = 0;
@@ -364,24 +365,20 @@ class ControlSimulacion
 
             $this->cerrarProceso($process1);
 
-            //todo: settings por si hay que cargar un snapshot de escenario, problema: no podemos borrar el archivo original
+            //todo: settings por si hay que cargar un snapshot de escenario
             // If scenario should be exported load it
             /*if($load_scenario and !is_null($id_snapshot)){
-                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a prepare_world'."'".' {} \;';
+                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a prepare_world edge_model=simple '."'".' {} \;';
                 $process1 = proc_open($comando1, $descriptorspec, $pipes1);
                 $this->cerrarProceso($process1);
 
-                $nombre_archivo_xml = '';
-
-                $id_snapshot = '';
+                $world_filename = '';
+                $snapshot_id = '';
 
                 $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a load_world file=world-2_simpleapp_vis.conf.xml snapshot=id:2_0_WYyooB-A processors=proy_test1'."'".' {} \;';
                 $process2 = proc_open($comando2, $descriptorspec, $pipes1);
                 $this->cerrarProceso($process2);
             }*/
-
-            // Set vis config id if have one
-            #vis_config_id=33
 
             // Set VIS initialization
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis=my_visualization'."'".' {} \;';
@@ -396,10 +393,6 @@ class ControlSimulacion
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
             $this->cerrarProceso($process3);
 
-            /*$comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_create_label'."'".' {} \;';
-            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
-            $this->cerrarProceso($process4);*/
-
             // Set VIS configurations
 
 
@@ -413,17 +406,22 @@ class ControlSimulacion
             $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=ps'."'".' {} \;';
             $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=png'."'".' {} \;';
 
-            //todo:modificar id del snapshot de forma que yo pueda almacenarla y recuperarla sin problema
-            $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a save_world file=world-' . $proyecto_id . '_' . $nombre_arch_conf . '.xml snapshot=id:%r_%n_%u'."'".' {} \;';
-
             $process1 = proc_open($comando1, $descriptorspec, $pipes1);
             $process2 = proc_open($comando2, $descriptorspec, $pipes1);
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
-            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
 
             $this->cerrarProceso($process1);
             $this->cerrarProceso($process2);
             $this->cerrarProceso($process3);
+
+            //todo: controlar si se debe guardar el snapshot
+            $snapshot_id = "id:{$proyecto_id}-".$this->getTimestamp();
+            $world_filename = "world-{$proyecto_id}_{$nombre_arch_conf}.xml";
+
+            //todo: store in db $world_filename + $snapshot_id
+
+            $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a save_world file='.$world_filename.' snapshot='.$snapshot_id."'".' {} \;';
+            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
             $this->cerrarProceso($process4);
 
 
@@ -432,6 +430,16 @@ class ControlSimulacion
         }
 
         return true;
+    }
+
+    /**
+     * @return int
+     */
+    protected function getTimestamp()
+    {
+        $now = new DateTime();
+
+        return $now->getTimestamp();
     }
 
     /**
