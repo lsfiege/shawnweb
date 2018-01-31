@@ -7,7 +7,19 @@ $(document).ready(function () {
         $("#wait").css("display", "none");
     });
 
-})
+    $('#selected_preset_name').on('change paste keyup', function () {
+        if ($(this).val().length >= 4) {
+            $('#btn-save-user-preset')
+                .attr('disabled', false)
+                .removeClass('disabled');
+        } else {
+            $('#btn-save-user-preset')
+                .attr('disabled', true)
+                .addClass('disabled');
+        }
+    });
+
+});
 
 function compilar() {
     var select_option_id = $('#compil_proy_simul option:selected').attr('id');
@@ -429,6 +441,11 @@ function guardar_param_arch_conf_vis() {
             }
         }
     });
+}
+
+function guardar_preset_usuario() {
+    //todo: fix
+    console.log('guardar preset usuario');
 }
 
 /**

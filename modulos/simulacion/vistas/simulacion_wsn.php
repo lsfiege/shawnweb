@@ -558,7 +558,9 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                                                    id="selected_preset_name"
                                                                    class="form-control">
 
-                                                            <button class="btn btn-sm btn-outline-secondary ml-3">
+                                                            <button id="btn-save-user-preset"
+                                                                    disabled class="btn btn-sm btn-info ml-3"
+                                                                    onclick="guardar_preset_usuario(); return false;">
                                                                 Guardar en mis presets
                                                             </button>
                                                         </div>
