@@ -328,81 +328,110 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
         <div class="tab-pane fade" id="visualizacion" role="tabpanel" aria-labelledby="home-tab">
             <div id="panel_visualizacion" class="col-12 mt-3">
-                <div id="parametros_visualizacion">
+                <div id="parametros_visualizacion" class="container-fluid">
                     <div class="col-12">
                         <h3>Parámetros de Visualización</h3>
                     </div>
 
-                    <div class="form-center">
+                    <div class="row">
 
-                        <div class="form-group">
-                            <label class="">Proyecto de Simulación</label>
-                            <select id="vis_proy_simul" class="form-control"
-                                    onChange="cargarArchConfVis(); return false;">
-                                <option selected disabled>Seleccione un Proyecto</option>
-                                <?php $proyectos = $usuario->listarProyectos($usuario);
-                                foreach ($proyectos as $proy) : ?>
-                                    <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Archivo de configuración</label>
-                            <div id="vis_archivos_conf_div" class="form-group">
-                                <span>-</span>
+                        <div class="col-12 form-center">
+                            <div class="form-group">
+                                <label class="">Proyecto de Simulación</label>
+                                <select id="vis_proy_simul" class="form-control"
+                                        onChange="cargarArchConfVis(); return false;">
+                                    <option selected disabled>Seleccione un Proyecto</option>
+                                    <?php $proyectos = $usuario->listarProyectos($usuario);
+                                    foreach ($proyectos as $proy) : ?>
+                                        <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
-                        </div>
-
-                        <div class="form-group">
-                            <input type="hidden" id="max_nodes">
-                            <h4>Configurar nodos (máximo: <span id="max_nodes_lbl"></span>)</h4>
-                            <smapp>Además puede indicar una única configuración general</smapp>
 
                             <div class="form-group">
-                                Color <br>
-                                Size <br>
-                                Shape <br>
+                                <label>Archivo de configuración</label>
+                                <div id="vis_archivos_conf_div" class="form-group">
+                                    <span>-</span>
+                                </div>
                             </div>
                         </div>
 
-                        <div id="node_config_list" class="mb-5">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="vis_preset">Preset de visualización</label>
+                                <select name="vis_preset" id="vis_preset" class="form-control">
+                                    <option value="default" selected>Por defecto</option>
+                                </select>
 
-                            listado: nº, color, size, shape
+                                <p>User Presets</p>
+                                <p class="alert alert-info">
+                                    Usuario --- Vis_Presets (tabla de aca)
+                                </p>
+                                <div class="form-group">
+                                    id <br>
+                                    preset_name <br>
+                                    node_color <br>
+                                    node_size <br>
+                                    node_shape <br>
+                                    node_edge_color <br>
+                                    node_edge_line_width <br>
 
-                        </div>
+                                    <button class="btn">
+                                        Utilizar
+                                    </button>
 
-                        <div class="form-group">
-                            <input type="hidden" id="max_nodes">
-                            <h4>Configurar conexiones</h4>
-                            <smapp>también puede indicar una única configuración general</smapp>
+                                    <button class="btn">
+                                        Eliminar
+                                    </button>
+                                </div>
+                            </div>
 
-                            <div id="general_edge_config">
-                                Color <br>
-                                Line width
+
+                            <div class="form-group">
+                                <input type="hidden" id="max_nodes">
+                                <h3>Configurar visualizaciones (máximo: <span id="max_nodes_lbl"></span>)</h3>
+                                <p class="alert alert-info">
+                                    Usuario --- VIS_PROYECT_CONFIG (proyecto + archivo) --- PROYECT_PRESETS (presets del proyecto-tabla de aca abajo)
+                                </p>
+
+                                <p><small>Además puede indicar una única configuración general</small></p>
+
+                                <h4>Configurar nodos y conexiones</h4>
+                                <p><small>Puede configurar el aspecto de los nodos y las conexiones salientes de cada uno.</small></p>
+                                <p><small>Los parametros que no tengan una configuración indicada tomarán el valor por defecto del sistema</small></p>
+                                <div class="form-group">
+                                    Por defecto? <br>
+                                    Nombre preset (opcional)<br>
+                                    Color <br>
+                                    Size <br>
+                                    Shape <br>
+                                    Edge color<br>
+                                    Edge line width <br>
+                                    Guardar en mis presets <br>
+                                    <button class="btn">Cargar</button>
+                                </div>
+                            </div>
+
+                            <div id="node_config_list" class="mb-5">
+
+                                listado: nº, is_default, node_color, node_size, node_shape, node_edge_color, node_edge_line_width
+
                             </div>
                         </div>
 
-                        <div id="edge_config_list" class="mb-5">
-
-                            listado: nº, color, line_width
-
-                        </div>
-
-                        <div class="form-group">
-                            <button type="button" class="btn btn-block btn-primary"
-                                    name="guardar_control"
-                                    onClick="guardar_param_arch_conf_vis(); return false;">
-                                <i class="far fa-save"></i>
-                                Guardar
-                            </button>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-block btn-primary"
+                                        name="guardar_control"
+                                        onClick="guardar_param_arch_conf_vis(); return false;">
+                                    <i class="far fa-save"></i>
+                                    Guardar
+                                </button>
+                            </div>
                         </div>
 
                     </div>
 
-                    <div class="col-12">
-
-                    </div>
                 </div>
             </div>
         </div>
