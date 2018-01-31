@@ -193,117 +193,132 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
         <div class="tab-pane fade" id="control" role="tabpanel" aria-labelledby="profile-tab">
             <div id="panel_control" class="col-12 mt-3">
-                <div id="control">
+                <div id="control" class="container-fluid">
                     <div class="col-12">
                         <h3>Parámetros de Control de Simulación</h3>
                     </div>
 
-                    <div class="form-center">
-                        <div class="form-group">
-                            <label class="">Proyecto de Simulación</label>
-                            <select id="control_proy_simul" class="form-control"
-                                    onChange="cargarArchConf('control_proy_simul', 'archivos_conf_div', 'control_archivo_conf'); return false;">
-                                <option selected disabled>Seleccione un Proyecto</option>
-                                <?php $proyectos = $usuario->listarProyectos($usuario); ?>
-                                <?php foreach ($proyectos as $proy) { ?>
-                                    <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                <?php } ?>
-                            </select>
-                        </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-center">
+                                <div class="form-group">
+                                    <label class="">Proyecto de Simulación</label>
+                                    <select id="control_proy_simul" class="form-control"
+                                            onChange="cargarArchConf('control_proy_simul', 'archivos_conf_div', 'control_archivo_conf'); return false;">
+                                        <option selected disabled>Seleccione un Proyecto</option>
+                                        <?php $proyectos = $usuario->listarProyectos($usuario); ?>
+                                        <?php foreach ($proyectos as $proy) { ?>
+                                            <option id="controlproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
 
-                        <div class="form-group">
-                            <label>Archivo de configuración</label>
-                            <div id="archivos_conf_div" class="form-group">
-                                <span>-</span>
+                                <div class="form-group">
+                                    <label>Archivo de configuración</label>
+                                    <div id="archivos_conf_div" class="form-group">
+                                        <span>-</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>count:</label>
-                            <input type="text" id="count" value="" class="form-control"/>
-                            <input type="text" id="count_anterior" hidden/>
+                        <div class="col-md-6">
+                            <h4>Parámetros de escenario</h4>
+
+                            <div class="form-group">
+                                <label>count:</label>
+                                <input type="text" id="count" value="" class="form-control"/>
+                                <input type="text" id="count_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>width:</label>
+                                <input type="text" id="rect_world_width" value="" class="form-control"/>
+                                <input type="text" id="rect_world_width_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>height:</label>
+                                <input type="text" id="rect_world_height" value="" class="form-control"/>
+                                <input type="text" id="rect_world_height_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>seed:</label>
+                                <input type="text" id="seed" value="" class="form-control"/>
+                                <input type="text" id="seed_anterior" hidden/>
+                            </div>
+
                         </div>
 
-                        <div class="form-group">
-                            <label>range:</label>
-                            <input type="text" id="range" value="" class="form-control"/>
-                            <input type="text" id="range_anterior" hidden/>
+                        <div class="col-md-6">
+                            <h4>Parámetros de simulación</h4>
+
+                            <div class="form-group">
+                                <label>range:</label>
+                                <input type="text" id="range" value="" class="form-control"/>
+                                <input type="text" id="range_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>max iterations:</label>
+                                <input type="text" id="max_iterations" value="" class="form-control"/>
+                                <input type="text" id="max_iterations_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Modelo de Borde:</label>
+                                <select id="modelo_borde" disabled="disabled" class="form-control">
+                                    <option value="0" selected disabled>Seleccione un Modelo de Borde</option>
+                                    <option value="simple">simple</option>
+                                    <option value="list">list</option>
+                                    <option value="grid">grid</option>
+                                    <option value="fast_list">fast_list</option>
+                                </select>
+                                <input type="text" id="modelo_borde_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Modelo de Comunicación:</label>
+                                <select id="modelo_comunicacion" disabled="disabled" class="form-control">
+                                    <option value="0" selected disabled>Seleccione un Modelo de Comunicación
+                                    </option>
+                                    <option value="disk_graph">Unit Disk Graph (UDG)</option>
+                                    <option value="rim">Radio Irregularity Model (RIM)</option>
+                                    <option value="qudg">Unit Disk Graph (Q-UDG)</option>
+                                    <option value="stochastic">Stochastic</option>
+
+                                </select>
+                                <input type="text" id="modelo_comunicacion_anterior" hidden/>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Modelo de Transmisión:</label>
+                                <select id="modelo_transmision" disabled="disabled" class="form-control">
+                                    <option value="0" selected disabled>Seleccione un Modelo de Transmi&oacute;n
+                                    </option>
+                                    <option value="csma">Csma</option>
+                                    <option value="zigbee_csma">Zigbee Csma</option>
+                                    <option value="maca">Maca</option>
+                                    <option value="random_drop">Random Drop</option>
+                                    <option value="aloha">Aloha</option>
+                                    <option value="slotted_aloha">Slotted Aloha</option>
+                                    <option value="traces">Traces</option>
+
+                                </select>
+                                <input type="text" id="modelo_transmision_anterior" hidden/>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label>width:</label>
-                            <input type="text" id="rect_world_width" value="" class="form-control"/>
-                            <input type="text" id="rect_world_width_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>height:</label>
-                            <input type="text" id="rect_world_height" value="" class="form-control"/>
-                            <input type="text" id="rect_world_height_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>seed:</label>
-                            <input type="text" id="seed" value="" class="form-control"/>
-                            <input type="text" id="seed_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>max iterations:</label>
-                            <input type="text" id="max_iterations" value="" class="form-control"/>
-                            <input type="text" id="max_iterations_anterior" hidden/>
-                        </div>
-
-                        <div class="txt_parametro">
-                            <label>Modelo de Borde:</label>
-                            <select id="modelo_borde" disabled="disabled" class="form-control">
-                                <option value="0" selected disabled>Seleccione un Modelo de Borde</option>
-                                <option value="simple">simple</option>
-                                <option value="list">list</option>
-                                <option value="grid">grid</option>
-                                <option value="fast_list">fast_list</option>
-                            </select>
-                            <input type="text" id="modelo_borde_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Modelo de Comunicación:</label>
-                            <select id="modelo_comunicacion" disabled="disabled" class="form-control">
-                                <option value="0" selected disabled>Seleccione un Modelo de Comunicación
-                                </option>
-                                <option value="disk_graph">Unit Disk Graph (UDG)</option>
-                                <option value="rim">Radio Irregularity Model (RIM)</option>
-                                <option value="qudg">Unit Disk Graph (Q-UDG)</option>
-                                <option value="stochastic">Stochastic</option>
-
-                            </select>
-                            <input type="text" id="modelo_comunicacion_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Modelo de Transmisión:</label>
-                            <select id="modelo_transmision" disabled="disabled" class="form-control">
-                                <option value="0" selected disabled>Seleccione un Modelo de Transmi&oacute;n
-                                </option>
-                                <option value="csma">Csma</option>
-                                <option value="zigbee_csma">Zigbee Csma</option>
-                                <option value="maca">Maca</option>
-                                <option value="random_drop">Random Drop</option>
-                                <option value="aloha">Aloha</option>
-                                <option value="slotted_aloha">Slotted Aloha</option>
-                                <option value="traces">Traces</option>
-
-                            </select>
-                            <input type="text" id="modelo_transmision_anterior" hidden/>
-                        </div>
-
-                        <div class="form-group">
-                            <button type="button" class="btn btn-block btn-primary"
-                                    name="guardar_control"
-                                    onClick="guardar_param_arch_conf(); return false;">
-                                <i class="far fa-save"></i>
-                                Guardar
-                            </button>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <button type="button" class="btn btn-block btn-primary"
+                                        name="guardar_control"
+                                        onClick="guardar_param_arch_conf(); return false;">
+                                    <i class="far fa-save"></i>
+                                    Guardar
+                                </button>
+                            </div>
                         </div>
 
                     </div>
