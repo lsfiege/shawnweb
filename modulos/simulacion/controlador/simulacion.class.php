@@ -83,6 +83,12 @@ if (isset($_GET["guardar-param-arch-conf-vis"])) {
     );
 }
 
+if (isset($_GET['cargar-preset'])) {
+    $preset_id = $_GET["preset_id"];
+
+    $simulacion->cargarPreset($preset_id);
+}
+
 if (isset($_GET["compilar"])) {
     $proyecto_id = $_GET["proyecto_id"];
     $simulacion->compilarProyecto($proyecto_id);
@@ -223,6 +229,22 @@ class simulacion
         } else {
             echo json_encode(["resul" => false]);
         }
+    }
+
+    public function cargarPreset($preset_id)
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+
+        $control_simulacion = new ControlSimulacion();
+
+        $preset = $control_simulacion->cargarPreset($preset_id);
+
+        if (isset($preset)) {
+            echo json_encode(["data" => $preset]);
+        } else {
+            echo json_encode(["data" => null]);
+        }
+
     }
 
     public function descargarProyecto($proyecto_id)

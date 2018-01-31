@@ -340,13 +340,52 @@ function cargarParamArchConfVis() {
             alert("Error al procesar la solicitud");
         },
         success: function (data) {
-            $('#max_nodes_lbl').empty().append(data.count);
-            $('#max_nodes').val(data.count);
 
+            //habilitar seleccion de presets
+            $('#vis_preset').attr('disabled', false);
+
+            //todo: obtener presets de usuario para el proyecto+archivo en cuestion y mostrar en tabla
 
 
         }
     });
+}
+
+function cargarCamposPreset() {
+    var preset_id = $('#vis_preset option:selected').val();
+
+    if (preset_id !== 'default') {
+        var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-preset&preset_id=' + preset_id);
+
+        $.ajax({
+            url: url,
+            type: "get",
+            dataType: 'json',
+            cache: false,
+            error: function () {
+                alert("Error al procesar la solicitud");
+            },
+            success: function (response) {
+                //set preset data
+                $('#selected_preset_id').val(response.data.id);
+                $('#selected_preset_name').val(response.data.preset_name);
+                $('#selected_preset_color').val(response.data.node_color_rgb);
+                $('#selected_preset_color_x').val(response.data.node_color_x);
+                $('#selected_preset_color_y').val(response.data.node_color_y);
+                $('#selected_preset_color_z').val(response.data.node_color_z);
+                $('#selected_preset_size').val(response.data.node_size);
+                $('#selected_preset_shape').val(response.data.node_shape);
+
+                $('#selected_preset_edge_color').val(response.data.node_edge_color_rgb);
+                $('#selected_preset_edge_color_x').val(response.data.node_edge_color_x);
+                $('#selected_preset_edge_color_y').val(response.data.node_edge_color_y);
+                $('#selected_preset_edge_color_z').val(response.data.node_edge_color_z);
+                $('#selected_preset_edge_width').val(response.data.node_edge_line_width);
+            }
+        });
+
+    }
+
 }
 
 function guardar_param_arch_conf_vis() {

@@ -223,94 +223,105 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                         </div>
 
                         <div class="col-md-6">
-                            <h4>Parámetros de escenario</h4>
+                            <div class="card">
+                                <div class="card-body">
 
-                            <div class="form-group">
-                                <label>count:</label>
-                                <input type="text" id="count" value="" class="form-control"/>
-                                <input type="text" id="count_anterior" hidden/>
+                                    <h4>Parámetros de escenario</h4>
+
+                                    <div class="form-group">
+                                        <label>count:</label>
+                                        <input type="text" id="count" value="" class="form-control"/>
+                                        <input type="text" id="count_anterior" hidden/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>width:</label>
+                                        <input type="text" id="rect_world_width" value="" class="form-control"/>
+                                        <input type="text" id="rect_world_width_anterior" hidden/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>height:</label>
+                                        <input type="text" id="rect_world_height" value="" class="form-control"/>
+                                        <input type="text" id="rect_world_height_anterior" hidden/>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>seed:</label>
+                                        <input type="text" id="seed" value="" class="form-control"/>
+                                        <input type="text" id="seed_anterior" hidden/>
+                                    </div>
+
+                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <label>width:</label>
-                                <input type="text" id="rect_world_width" value="" class="form-control"/>
-                                <input type="text" id="rect_world_width_anterior" hidden/>
-                            </div>
-
-                            <div class="form-group">
-                                <label>height:</label>
-                                <input type="text" id="rect_world_height" value="" class="form-control"/>
-                                <input type="text" id="rect_world_height_anterior" hidden/>
-                            </div>
-
-                            <div class="form-group">
-                                <label>seed:</label>
-                                <input type="text" id="seed" value="" class="form-control"/>
-                                <input type="text" id="seed_anterior" hidden/>
-                            </div>
-
                         </div>
 
                         <div class="col-md-6">
-                            <h4>Parámetros de simulación</h4>
+                            <div class="card">
+                                <div class="card-body">
 
-                            <div class="form-group">
-                                <label>range:</label>
-                                <input type="text" id="range" value="" class="form-control"/>
-                                <input type="text" id="range_anterior" hidden/>
-                            </div>
+                                    <h4>Parámetros de simulación</h4>
 
-                            <div class="form-group">
-                                <label>max iterations:</label>
-                                <input type="text" id="max_iterations" value="" class="form-control"/>
-                                <input type="text" id="max_iterations_anterior" hidden/>
-                            </div>
+                                    <div class="form-group">
+                                        <label>range:</label>
+                                        <input type="text" id="range" value="" class="form-control"/>
+                                        <input type="text" id="range_anterior" hidden/>
+                                    </div>
 
-                            <div class="form-group">
-                                <label>Modelo de Borde:</label>
-                                <select id="modelo_borde" disabled="disabled" class="form-control">
-                                    <option value="0" selected disabled>Seleccione un Modelo de Borde</option>
-                                    <option value="simple">simple</option>
-                                    <option value="list">list</option>
-                                    <option value="grid">grid</option>
-                                    <option value="fast_list">fast_list</option>
-                                </select>
-                                <input type="text" id="modelo_borde_anterior" hidden/>
-                            </div>
+                                    <div class="form-group">
+                                        <label>max iterations:</label>
+                                        <input type="text" id="max_iterations" value="" class="form-control"/>
+                                        <input type="text" id="max_iterations_anterior" hidden/>
+                                    </div>
 
-                            <div class="form-group">
-                                <label>Modelo de Comunicación:</label>
-                                <select id="modelo_comunicacion" disabled="disabled" class="form-control">
-                                    <option value="0" selected disabled>Seleccione un Modelo de Comunicación
-                                    </option>
-                                    <option value="disk_graph">Unit Disk Graph (UDG)</option>
-                                    <option value="rim">Radio Irregularity Model (RIM)</option>
-                                    <option value="qudg">Unit Disk Graph (Q-UDG)</option>
-                                    <option value="stochastic">Stochastic</option>
+                                    <div class="form-group">
+                                        <label>Modelo de Borde:</label>
+                                        <select id="modelo_borde" disabled="disabled" class="form-control">
+                                            <option value="0" selected disabled>Seleccione un Modelo de Borde</option>
+                                            <option value="simple">simple</option>
+                                            <option value="list">list</option>
+                                            <option value="grid">grid</option>
+                                            <option value="fast_list">fast_list</option>
+                                        </select>
+                                        <input type="text" id="modelo_borde_anterior" hidden/>
+                                    </div>
 
-                                </select>
-                                <input type="text" id="modelo_comunicacion_anterior" hidden/>
-                            </div>
+                                    <div class="form-group">
+                                        <label>Modelo de Comunicación:</label>
+                                        <select id="modelo_comunicacion" disabled="disabled" class="form-control">
+                                            <option value="0" selected disabled>Seleccione un Modelo de Comunicación
+                                            </option>
+                                            <option value="disk_graph">Unit Disk Graph (UDG)</option>
+                                            <option value="rim">Radio Irregularity Model (RIM)</option>
+                                            <option value="qudg">Unit Disk Graph (Q-UDG)</option>
+                                            <option value="stochastic">Stochastic</option>
 
-                            <div class="form-group">
-                                <label>Modelo de Transmisión:</label>
-                                <select id="modelo_transmision" disabled="disabled" class="form-control">
-                                    <option value="0" selected disabled>Seleccione un Modelo de Transmi&oacute;n
-                                    </option>
-                                    <option value="csma">Csma</option>
-                                    <option value="zigbee_csma">Zigbee Csma</option>
-                                    <option value="maca">Maca</option>
-                                    <option value="random_drop">Random Drop</option>
-                                    <option value="aloha">Aloha</option>
-                                    <option value="slotted_aloha">Slotted Aloha</option>
-                                    <option value="traces">Traces</option>
+                                        </select>
+                                        <input type="text" id="modelo_comunicacion_anterior" hidden/>
+                                    </div>
 
-                                </select>
-                                <input type="text" id="modelo_transmision_anterior" hidden/>
+                                    <div class="form-group">
+                                        <label>Modelo de Transmisión:</label>
+                                        <select id="modelo_transmision" disabled="disabled" class="form-control">
+                                            <option value="0" selected disabled>Seleccione un Modelo de Transmi&oacute;n
+                                            </option>
+                                            <option value="csma">Csma</option>
+                                            <option value="zigbee_csma">Zigbee Csma</option>
+                                            <option value="maca">Maca</option>
+                                            <option value="random_drop">Random Drop</option>
+                                            <option value="aloha">Aloha</option>
+                                            <option value="slotted_aloha">Slotted Aloha</option>
+                                            <option value="traces">Traces</option>
+
+                                        </select>
+                                        <input type="text" id="modelo_transmision_anterior" hidden/>
+                                    </div>
+
+                                </div>
                             </div>
                         </div>
 
-                        <div class="col-md-12">
+                        <div class="col-md-12 mt-3">
                             <div class="form-group">
                                 <button type="button" class="btn btn-block btn-primary"
                                         name="guardar_control"
@@ -356,70 +367,271 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </div>
                         </div>
 
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <div class="form-group">
+                                                <h3>Mis Presets de visualización</h3>
+
+                                                <label for="vis_preset">Presets</label>
+                                                <select name="vis_preset" id="vis_preset" class="form-control"
+                                                        onchange="cargarCamposPreset(); return false;">
+
+                                                    <option value="default" selected>Por defecto</option>
+
+                                                    <?php foreach ($usuario->getPresets() as $preset): ?>
+                                                        <option value="<?= $preset['id'] ?>"><?= $preset['preset_name'] ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+
+                                                <div id="selected_preset_form" class="mt-2 form-row">
+                                                    <div class="col-12">
+                                                        <h4>Preset Seleccionado:</h4>
+                                                    </div>
+
+                                                    <div class="col-2">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_id">ID:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_id"
+                                                                   disabled
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-10">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_name">Preset:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_name"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_color">Color:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_color"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>X</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_color_x"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>Y</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_color_y"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>Z</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_color_z"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_size">Tamaño:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_size"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_shape">Forma:</label>
+                                                            <select id="selected_preset_shape" class="form-control">
+                                                                <option value="1">Circulo</option>
+                                                                <option value="2">Cuadrado</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <h5>Conexiones salientes del nodo
+                                                            <small>(node edge)</small>
+                                                        </h5>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_edge_color">Color:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_edge_color"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-6">
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>X</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_edge_color_x"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>Y</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_edge_color_y"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="col-4">
+                                                            <div class="form-inline">
+                                                                <label>Z</label>
+                                                                <input type="text"
+                                                                       id="selected_preset_edge_color_z"
+                                                                       disabled
+                                                                       class="form-control">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="selected_preset_edge_width">Ancho de
+                                                                línea:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_edge_width"
+                                                                   class="form-control">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-row">
+                                                            <div class="col-6">
+                                                                <button class="btn btn-block">
+                                                                    Cargar
+                                                                </button>
+                                                            </div>
+                                                            <div class="col-6">
+                                                                <button class="btn btn-block">
+                                                                    Eliminar
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="card">
+                                        <div class="card-body">
+
+                                            <h3>Configurar visualizaciones</h3>
+                                            <p class="alert alert-info">
+                                                Usuario --- vis_proyecto_config (proyecto + archivo) ---
+                                                vis_proyecto_preset
+                                                (presets del proyecto-tabla de aca abajo)
+                                            </p>
+
+                                            <p>
+                                                <small>Además puede indicar una única configuración general</small>
+                                            </p>
+
+                                            <h4>Configurar nodos y conexiones</h4>
+                                            <p>
+                                                <small>Puede configurar el aspecto de los nodos y las conexiones
+                                                    salientes
+                                                    de
+                                                    cada
+                                                    uno.
+                                                </small>
+                                            </p>
+                                            <p>
+                                                <small>Los parametros que no tengan una configuración indicada tomarán
+                                                    el
+                                                    valor
+                                                    por
+                                                    defecto del sistema
+                                                </small>
+                                            </p>
+                                            <div class="form-group">
+                                                Por defecto? <br>
+                                                Nombre preset (opcional)<br>
+                                                Color <br>
+                                                Size <br>
+                                                Shape <br>
+                                                Edge color<br>
+                                                Edge line width <br>
+                                                Guardar en mis presets <input type="checkbox"> <br>
+                                                <button class="btn">Utilizar</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="vis_preset">Preset de visualización</label>
-                                <select name="vis_preset" id="vis_preset" class="form-control">
-                                    <option value="default" selected>Por defecto</option>
-                                </select>
-
-                                <p>User Presets</p>
-                                <p class="alert alert-info">
-                                    Usuario --- Vis_Presets (tabla de aca)
-                                </p>
-                                <div class="form-group">
-                                    id <br>
-                                    preset_name <br>
-                                    node_color <br>
-                                    node_size <br>
-                                    node_shape <br>
-                                    node_edge_color <br>
-                                    node_edge_line_width <br>
-
-                                    <button class="btn">
-                                        Utilizar
-                                    </button>
-
-                                    <button class="btn">
-                                        Eliminar
-                                    </button>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <input type="hidden" id="max_nodes">
-                                <h3>Configurar visualizaciones (máximo: <span id="max_nodes_lbl"></span>)</h3>
-                                <p class="alert alert-info">
-                                    Usuario --- VIS_PROYECT_CONFIG (proyecto + archivo) --- PROYECT_PRESETS (presets del proyecto-tabla de aca abajo)
-                                </p>
-
-                                <p><small>Además puede indicar una única configuración general</small></p>
-
-                                <h4>Configurar nodos y conexiones</h4>
-                                <p><small>Puede configurar el aspecto de los nodos y las conexiones salientes de cada uno.</small></p>
-                                <p><small>Los parametros que no tengan una configuración indicada tomarán el valor por defecto del sistema</small></p>
-                                <div class="form-group">
-                                    Por defecto? <br>
-                                    Nombre preset (opcional)<br>
-                                    Color <br>
-                                    Size <br>
-                                    Shape <br>
-                                    Edge color<br>
-                                    Edge line width <br>
-                                    Guardar en mis presets <br>
-                                    <button class="btn">Cargar</button>
-                                </div>
-                            </div>
-
                             <div id="node_config_list" class="mb-5">
 
-                                listado: nº, is_default, node_color, node_size, node_shape, node_edge_color, node_edge_line_width
+                                <table class="table tables-striped table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Por defecto?</th>
+                                        <th>Nodo: color rgb</th>
+                                        <th>Nodo: color xyz</th>
+                                        <th>Nodo: tamaño</th>
+                                        <th>Nodo: forma</th>
+                                        <th>Nodo linea: color rgb</th>
+                                        <th>Nodo linea: color xyz</th>
+                                        <th>Nodo linea: tamaño</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
 
                             </div>
                         </div>
 
                         <div class="col-md-12">
+                            <div class="form-group">
+                                <p>todo: si selecciono cargar mundo en pestaña anterior no mostrar esto</p>
+                                <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
+                                <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
+                                    simulaciones
+                                </small>
+                                <input type="checkbox" id="save_world">
+                            </div>
+
                             <div class="form-group">
                                 <button type="button" class="btn btn-block btn-primary"
                                         name="guardar_control"

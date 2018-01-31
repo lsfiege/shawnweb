@@ -432,6 +432,13 @@ class ControlSimulacion
         return true;
     }
 
+    public function cargarPreset($preset_id)
+    {
+        $preset = R::load('vis_usuario_preset', $preset_id);
+
+        return $preset->getProperties();
+    }
+
     /**
      * @return int
      */
