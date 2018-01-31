@@ -341,9 +341,6 @@ function cargarParamArchConfVis() {
         },
         success: function (data) {
 
-            //habilitar seleccion de presets
-            $('#vis_preset').attr('disabled', false);
-
             //todo: obtener presets de usuario para el proyecto+archivo en cuestion y mostrar en tabla
 
 
@@ -367,9 +364,9 @@ function cargarCamposPreset() {
             },
             success: function (response) {
                 //set preset data
-                $('#selected_preset_id').val(response.data.id);
-                $('#selected_preset_name').val(response.data.preset_name);
                 $('#selected_preset_color').val(response.data.node_color_rgb);
+                $('#selected_preset_color').colorpicker('setValue', response.data.node_color_rgb);
+
                 $('#selected_preset_color_x').val(response.data.node_color_x);
                 $('#selected_preset_color_y').val(response.data.node_color_y);
                 $('#selected_preset_color_z').val(response.data.node_color_z);
@@ -377,10 +374,14 @@ function cargarCamposPreset() {
                 $('#selected_preset_shape').val(response.data.node_shape);
 
                 $('#selected_preset_edge_color').val(response.data.node_edge_color_rgb);
+                $('#selected_preset_edge_color').colorpicker('setValue', response.data.node_edge_color_rgb);
+
                 $('#selected_preset_edge_color_x').val(response.data.node_edge_color_x);
                 $('#selected_preset_edge_color_y').val(response.data.node_edge_color_y);
                 $('#selected_preset_edge_color_z').val(response.data.node_edge_color_z);
                 $('#selected_preset_edge_width').val(response.data.node_edge_line_width);
+
+                $('#btn-delete-preset').attr('disabled', false);
             }
         });
 

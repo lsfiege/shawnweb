@@ -27,6 +27,9 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
     <link rel="stylesheet" type="text/css" media="screen" href="/css/jquery-ui.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/plugins/elFinder-2.1/css/elfinder.min.css">
     <link rel="stylesheet" type="text/css" media="screen" href="/css/theme.css">
+    <!-- Color picker -->
+    <link rel="stylesheet" type="text/css" media="screen"
+          href="/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
     <!-- App css -->
     <link rel="stylesheet" type="text/css" media="screen" href="/css/shawnweb.css">
 
@@ -41,6 +44,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
     <!-- elFinder JS (REQUIRED) -->
     <script type="text/javascript" src="/plugins/elFinder-2.1/js/elfinder.min.js"></script>
     <script type="text/javascript" src="/plugins/elFinder-2.1/js/i18n/elfinder.es.js"></script>
+    <!-- Color picker -->
+    <script type="text/javascript" src="/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 
     <?php $usuario = unserialize($_SESSION['Usuario']); ?>
 
@@ -55,6 +60,28 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
             }).elfinder('instance');
         });
     </script>
+
+    <!-- Color picker initialization -->
+    <script>
+        $(function () {
+            $('#selected_preset_color').colorpicker({
+                useAlpha: false,
+            }).on('colorpickerChange colorpickerCreate', function (e) {
+                $('#selected_preset_color_x').val(e.color._r / 255);
+                $('#selected_preset_color_y').val(e.color._g / 255);
+                $('#selected_preset_color_z').val(e.color._b / 255);
+            });
+
+            $('#selected_preset_edge_color').colorpicker({
+                useAlpha: false
+            }).on('colorpickerChange colorpickerCreate', function (e) {
+                $('#selected_preset_edge_color_x').val(e.color._r / 255);
+                $('#selected_preset_edge_color_y').val(e.color._g / 255);
+                $('#selected_preset_edge_color_z').val(e.color._b / 255);
+            });
+        });
+    </script>
+
 </head>
 <body>
 <header>
@@ -369,46 +396,35 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="form-center">
+
                                     <div class="card">
+
                                         <div class="card-body">
+
                                             <div class="form-group">
-                                                <h3>Mis Presets de visualización</h3>
+                                                <h3>Configurar visualizaciones</h3>
 
-                                                <label for="vis_preset">Presets</label>
-                                                <select name="vis_preset" id="vis_preset" class="form-control"
-                                                        onchange="cargarCamposPreset(); return false;">
+                                                <div class="col-12">
+                                                    <label for="vis_preset">Cargar desde Preset</label>
+                                                    <select name="vis_preset" id="vis_preset" class="form-control"
+                                                            onchange="cargarCamposPreset(); return false;">
 
-                                                    <option value="default" selected>Por defecto</option>
+                                                        <option value="default" selected>Por defecto</option>
 
-                                                    <?php foreach ($usuario->getPresets() as $preset): ?>
-                                                        <option value="<?= $preset['id'] ?>"><?= $preset['preset_name'] ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                                        <?php foreach ($usuario->getPresets() as $preset): ?>
+                                                            <option value="<?= $preset['id'] ?>"><?= $preset['preset_name'] ?></option>
+                                                        <?php endforeach; ?>
+                                                    </select>
+                                                </div>
 
-                                                <div id="selected_preset_form" class="mt-2 form-row">
-                                                    <div class="col-12">
-                                                        <h4>Preset Seleccionado:</h4>
-                                                    </div>
-
-                                                    <div class="col-2">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_id">ID:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_id"
-                                                                   disabled
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-10">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_name">Preset:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_name"
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
+                                                <div id="selected_preset_form" class="mt-5 form-row">
+                                                    <h4>Configurar nodos y conexiones</h4>
+                                                    <p>
+                                                        <small>Puede configurar el aspecto de los nodos y las conexiones
+                                                            salientes de cada uno.
+                                                        </small>
+                                                    </p>
 
                                                     <div class="col-6">
                                                         <div class="form-group">
@@ -528,229 +544,217 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                                     </div>
 
                                                     <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="preset_default">Por defecto?</label>
+                                                            <input type="checkbox" id="preset_default"
+                                                                   class="custom-checkbox">
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12">
+                                                        <div class="form-inline">
+                                                            <label for="selected_preset_name">Nombre Preset:</label>
+                                                            <input type="text"
+                                                                   id="selected_preset_name"
+                                                                   class="form-control">
+
+                                                            <button class="btn btn-sm btn-outline-secondary ml-3">
+                                                                Guardar en mis presets
+                                                            </button>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="col-12 mt-5">
                                                         <div class="form-row">
                                                             <div class="col-6">
-                                                                <button class="btn btn-block">
-                                                                    Cargar
+                                                                <button class="btn btn-block btn-primary">
+                                                                    <i class="fa fa-check-circle"></i>
+                                                                    Utilizar
                                                                 </button>
                                                             </div>
                                                             <div class="col-6">
-                                                                <button class="btn btn-block">
+                                                                <button id="btn-delete-preset"
+                                                                        disabled
+                                                                        class="btn btn-block btn-outline-danger">
+                                                                    <i class="fa fa-trash"></i>
                                                                     Eliminar
                                                                 </button>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
+
                                             </div>
+
                                         </div>
 
                                     </div>
-                                </div>
 
-                                <div class="col-md-6">
-                                    <div class="card">
-                                        <div class="card-body">
 
-                                            <h3>Configurar visualizaciones</h3>
-                                            <p class="alert alert-info">
-                                                Usuario --- vis_proyecto_config (proyecto + archivo) ---
-                                                vis_proyecto_preset
-                                                (presets del proyecto-tabla de aca abajo)
-                                            </p>
-
-                                            <p>
-                                                <small>Además puede indicar una única configuración general</small>
-                                            </p>
-
-                                            <h4>Configurar nodos y conexiones</h4>
-                                            <p>
-                                                <small>Puede configurar el aspecto de los nodos y las conexiones
-                                                    salientes
-                                                    de
-                                                    cada
-                                                    uno.
-                                                </small>
-                                            </p>
-                                            <p>
-                                                <small>Los parametros que no tengan una configuración indicada tomarán
-                                                    el
-                                                    valor
-                                                    por
-                                                    defecto del sistema
-                                                </small>
-                                            </p>
-                                            <div class="form-group">
-                                                Por defecto? <br>
-                                                Nombre preset (opcional)<br>
-                                                Color <br>
-                                                Size <br>
-                                                Shape <br>
-                                                Edge color<br>
-                                                Edge line width <br>
-                                                Guardar en mis presets <input type="checkbox"> <br>
-                                                <button class="btn">Utilizar</button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-md-12">
-                            <div id="node_config_list" class="mb-5">
+                            <div class="col-md-12">
+                                <p class="alert alert-info">
+                                    Usuario --- vis_proyecto_config (proyecto + archivo) ---
+                                    vis_proyecto_preset
+                                    (presets del proyecto-tabla de aca abajo)
+                                </p>
+                                <div id="node_config_list" class="mb-5">
 
-                                <table class="table tables-striped table-hover">
-                                    <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Por defecto?</th>
-                                        <th>Nodo: color rgb</th>
-                                        <th>Nodo: color xyz</th>
-                                        <th>Nodo: tamaño</th>
-                                        <th>Nodo: forma</th>
-                                        <th>Nodo linea: color rgb</th>
-                                        <th>Nodo linea: color xyz</th>
-                                        <th>Nodo linea: tamaño</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
+                                    <table class="table tables-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Por defecto?</th>
+                                            <th>Nodo: color rgb</th>
+                                            <th>Nodo: color xyz</th>
+                                            <th>Nodo: tamaño</th>
+                                            <th>Nodo: forma</th>
+                                            <th>Nodo linea: color rgb</th>
+                                            <th>Nodo linea: color xyz</th>
+                                            <th>Nodo linea: tamaño</th>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
 
-                                    </tbody>
-                                </table>
+                                        </tbody>
+                                    </table>
 
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <p>todo: si selecciono cargar mundo en pestaña anterior no mostrar esto</p>
-                                <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
-                                <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
-                                    simulaciones
-                                </small>
-                                <input type="checkbox" id="save_world">
+                                </div>
                             </div>
 
-                            <div class="form-group">
-                                <button type="button" class="btn btn-block btn-primary"
-                                        name="guardar_control"
-                                        onClick="guardar_param_arch_conf_vis(); return false;">
-                                    <i class="far fa-save"></i>
-                                    Guardar
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <p>todo: si selecciono cargar mundo en pestaña anterior no mostrar esto</p>
+                                    <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
+                                    <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
+                                        simulaciones
+                                    </small>
+                                    <input type="checkbox" id="save_world">
+                                </div>
+
+                                <div class="form-group">
+                                    <button type="button" class="btn btn-block btn-primary"
+                                            name="guardar_control"
+                                            onClick="guardar_param_arch_conf_vis(); return false;">
+                                        <i class="far fa-save"></i>
+                                        Guardar Configuración de visualización
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane fade" id="compilacion" role="tabpanel" aria-labelledby="contact-tab">
+                <div id="salida_compilacion" class="col-12 mt-3">
+                    <div id="compilacion">
+                        <div class="col-12">
+                            <h3>Salida de compilación</h3>
+                        </div>
+
+                        <div class="col-12 mb-2">
+                            <div class="botones_accion form-inline">
+                                <select id="compil_proy_simul" class="form-control">
+                                    <option selected disabled>Seleccione un Proyecto</option>
+                                    <?php foreach ($proyectos as $proy) { ?>
+                                        <option id="compilproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                    <?php } ?>
+                                </select>
+
+                                <button type="button"
+                                        class="btn btn-primary pull-right"
+                                        name="compilar"
+                                        onClick="compilar(); return false;">
+                                    <i class="far fa-sun"></i>
+                                    Compilar
                                 </button>
                             </div>
                         </div>
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="compilacion" role="tabpanel" aria-labelledby="contact-tab">
-            <div id="salida_compilacion" class="col-12 mt-3">
-                <div id="compilacion">
-                    <div class="col-12">
-                        <h3>Salida de compilación</h3>
-                    </div>
-
-                    <div class="col-12 mb-2">
-                        <div class="botones_accion form-inline">
-                            <select id="compil_proy_simul" class="form-control">
-                                <option selected disabled>Seleccione un Proyecto</option>
-                                <?php foreach ($proyectos as $proy) { ?>
-                                    <option id="compilproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                <?php } ?>
-                            </select>
-
-                            <button type="button"
-                                    class="btn btn-primary pull-right"
-                                    name="compilar"
-                                    onClick="compilar(); return false;">
-                                <i class="far fa-sun"></i>
-                                Compilar
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="col-12">
+                        <div class="col-12">
                         <textarea id="txa_copilar" class="form-control-lg" rows="23" style="width: 100%!important;"
                                   placeholder="Resultado de la compilación"></textarea>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="tab-pane fade" id="ejecucion" role="tabpanel" aria-labelledby="contact-tab">
-            <div id="salida_ejecucion" class="col-12 mt-3">
-                <div id="ejecucion">
-                    <div class="col-12">
-                        <h3>Salida de ejecución</h3>
-                    </div>
-
-                    <div class="col-12 mb-2 p-0">
-                        <div class="botones_accion form-inline">
-                            <form class="form-inline col-12"
-                                  action="/modulos/simulacion/controlador/simulacion.class.php"
-                                  method="GET">
-                                <div class="col-6 p-0">
-                                    <select id="ejec_proy_simul" class="form-control"
-                                            onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
-                                        <option selected disabled>Seleccione un Proyecto</option>
-                                        <?php foreach ($proyectos as $proy) { ?>
-                                            <option id="ejecproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                        <?php } ?>
-                                    </select>
-
-                                    <span id="ejec_span_arch_conf"> </span>
-
-                                </div>
-
-                                <div class="col-6 p-0">
-                                    <div style="float: right !important;">
-                                        <button type="button" class="btn btn-primary" name="ejecutar"
-                                                onClick="ejecutar_proyecto(); return false;">
-                                            <i class="fas fa-play"></i>
-                                            Ejecutar
-                                        </button>
-
-                                        <input id="proyecto_id_ejecucion" type="hidden" value="" name="proyecto_id"/>
-
-                                        <button class="btn btn-outline-info" type="submit" value="Descargar"
-                                                name="descargar-proyecto">
-                                            <i class="fas fa-download"></i>
-                                            Descargar
-                                        </button>
-
-                                        <a id="link_salida_pdf"
-                                           class="btn btn-link"
-                                           href="http://<?= $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
-                                           target="_blank">
-                                            <i class="fas fa-eye"></i>
-                                            Visualizar
-                                        </a>
-
-                                        <button type="button" class="btn btn-outline-dark"
-                                                onclick="clearElement('txa_ejecutar'); return false;">
-                                            <i class="fas fa-eraser"></i>
-                                            Limpiar
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
                         </div>
                     </div>
+                </div>
+            </div>
 
-                    <div class="col-12">
+            <div class="tab-pane fade" id="ejecucion" role="tabpanel" aria-labelledby="contact-tab">
+                <div id="salida_ejecucion" class="col-12 mt-3">
+                    <div id="ejecucion">
+                        <div class="col-12">
+                            <h3>Salida de ejecución</h3>
+                        </div>
+
+                        <div class="col-12 mb-2 p-0">
+                            <div class="botones_accion form-inline">
+                                <form class="form-inline col-12"
+                                      action="/modulos/simulacion/controlador/simulacion.class.php"
+                                      method="GET">
+                                    <div class="col-6 p-0">
+                                        <select id="ejec_proy_simul" class="form-control"
+                                                onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
+                                            <option selected disabled>Seleccione un Proyecto</option>
+                                            <?php foreach ($proyectos as $proy) { ?>
+                                                <option id="ejecproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                            <?php } ?>
+                                        </select>
+
+                                        <span id="ejec_span_arch_conf"> </span>
+
+                                    </div>
+
+                                    <div class="col-6 p-0">
+                                        <div style="float: right !important;">
+                                            <button type="button" class="btn btn-primary" name="ejecutar"
+                                                    onClick="ejecutar_proyecto(); return false;">
+                                                <i class="fas fa-play"></i>
+                                                Ejecutar
+                                            </button>
+
+                                            <input id="proyecto_id_ejecucion" type="hidden" value=""
+                                                   name="proyecto_id"/>
+
+                                            <button class="btn btn-outline-info" type="submit" value="Descargar"
+                                                    name="descargar-proyecto">
+                                                <i class="fas fa-download"></i>
+                                                Descargar
+                                            </button>
+
+                                            <a id="link_salida_pdf"
+                                               class="btn btn-link"
+                                               href="http://<?= $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
+                                               target="_blank">
+                                                <i class="fas fa-eye"></i>
+                                                Visualizar
+                                            </a>
+
+                                            <button type="button" class="btn btn-outline-dark"
+                                                    onclick="clearElement('txa_ejecutar'); return false;">
+                                                <i class="fas fa-eraser"></i>
+                                                Limpiar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
                         <textarea class="form-control" style="width: 100%!important;" id="txa_ejecutar" rows="23"
                                   placeholder="Resultado de la simulación"></textarea>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-    </div>
+        </div>
 
 </main>
 
