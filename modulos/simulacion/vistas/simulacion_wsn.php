@@ -400,7 +400,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                 <div class="col-12">
                                     <h3>Configurar visualizaciones</h3>
 
-                                    <div class="col-12">
+                                    <div class="col-12 mb-5">
                                         <label for="vis_preset">Cargar desde Preset</label>
                                         <select name="vis_preset" id="vis_preset" class="form-control"
                                                 onchange="cargarCamposPreset(); return false;">
@@ -432,7 +432,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-6" style="display: none">
                                         <div class="col-4">
                                             <div class="form-inline">
                                                 <label>X</label>
@@ -500,7 +500,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                         </div>
                                     </div>
 
-                                    <div class="col-6">
+                                    <div class="col-6" style="display: none">
                                         <div class="col-4">
                                             <div class="form-inline">
                                                 <label>X</label>
@@ -561,7 +561,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                 <div class="col-12 mt-5">
                                     <div class="form-row">
                                         <div class="col-6">
-                                            <button class="btn btn-block btn-primary">
+                                            <button class="btn btn-block btn-primary"
+                                                onclick="load_config_to_vis_table();return false;">
                                                 <i class="fa fa-check-circle"></i>
                                                 Utilizar
                                             </button>
@@ -585,20 +586,26 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                     Usuario --- vis_proyecto_config (proyecto + archivo) ---
                                     vis_proyecto_preset
                                     (presets del proyecto-tabla de aca abajo)
+                                    <br>
+                                    Incluir items en tabla y permitir eliminado dinamico de la misma, luego volcar tabla en config de db
                                 </p>
                                 <div id="node_config_list" class="mb-5">
 
-                                    <table class="table tables-striped table-hover">
+                                    <table id="vis_configs_table" class="table tables-striped table-hover">
                                         <thead>
                                         <tr>
                                             <th>ID</th>
                                             <th>Por defecto?</th>
                                             <th>Nodo: color rgb</th>
-                                            <th>Nodo: color xyz</th>
+                                            <th style="display:none;">Nodo: color x</th>
+                                            <th style="display:none;">Nodo: color y</th>
+                                            <th style="display:none;">Nodo: color z</th>
                                             <th>Nodo: tamaño</th>
                                             <th>Nodo: forma</th>
                                             <th>Nodo linea: color rgb</th>
-                                            <th>Nodo linea: color xyz</th>
+                                            <th style="display:none;">Nodo linea: color x</th>
+                                            <th style="display:none;">Nodo linea: color y</th>
+                                            <th style="display:none;">Nodo linea: color z</th>
                                             <th>Nodo linea: tamaño</th>
                                             <th></th>
                                         </tr>
