@@ -396,204 +396,188 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                         <div class="container-fluid">
                             <div class="row">
-                                <div class="form-center">
 
-                                    <div class="card">
+                                <div class="col-12">
+                                    <h3>Configurar visualizaciones</h3>
 
-                                        <div class="card-body">
+                                    <div class="col-12">
+                                        <label for="vis_preset">Cargar desde Preset</label>
+                                        <select name="vis_preset" id="vis_preset" class="form-control"
+                                                onchange="cargarCamposPreset(); return false;">
 
-                                            <div class="form-group">
-                                                <h3>Configurar visualizaciones</h3>
+                                            <option value="default" selected>Por defecto</option>
 
-                                                <div class="col-12">
-                                                    <label for="vis_preset">Cargar desde Preset</label>
-                                                    <select name="vis_preset" id="vis_preset" class="form-control"
-                                                            onchange="cargarCamposPreset(); return false;">
-
-                                                        <option value="default" selected>Por defecto</option>
-
-                                                        <?php foreach ($usuario->getPresets() as $preset): ?>
-                                                            <option value="<?= $preset['id'] ?>"><?= $preset['preset_name'] ?></option>
-                                                        <?php endforeach; ?>
-                                                    </select>
-                                                </div>
-
-                                                <div id="selected_preset_form" class="mt-5 form-row">
-                                                    <h4>Configurar nodos y conexiones</h4>
-                                                    <p>
-                                                        <small>Puede configurar el aspecto de los nodos y las conexiones
-                                                            salientes de cada uno.
-                                                        </small>
-                                                    </p>
-
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_color">Color:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_color"
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>X</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_color_x"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>Y</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_color_y"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>Z</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_color_z"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_size">Tamaño:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_size"
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_shape">Forma:</label>
-                                                            <select id="selected_preset_shape" class="form-control">
-                                                                <option value="1">Circulo</option>
-                                                                <option value="2">Cuadrado</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <h5>Conexiones salientes del nodo
-                                                            <small>(node edge)</small>
-                                                        </h5>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_edge_color">Color:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_edge_color"
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-6">
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>X</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_edge_color_x"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>Y</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_edge_color_y"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-4">
-                                                            <div class="form-inline">
-                                                                <label>Z</label>
-                                                                <input type="text"
-                                                                       id="selected_preset_edge_color_z"
-                                                                       disabled
-                                                                       class="form-control">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="selected_preset_edge_width">Ancho de
-                                                                línea:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_edge_width"
-                                                                   class="form-control">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <label for="preset_default">Por defecto?</label>
-                                                            <input type="checkbox" id="preset_default"
-                                                                   class="custom-checkbox">
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12">
-                                                        <div class="form-inline">
-                                                            <label for="selected_preset_name">Nombre Preset:</label>
-                                                            <input type="text"
-                                                                   id="selected_preset_name"
-                                                                   class="form-control">
-
-                                                            <button id="btn-save-user-preset"
-                                                                    disabled class="btn btn-sm btn-info ml-3"
-                                                                    onclick="guardar_preset_usuario(); return false;">
-                                                                Guardar en mis presets
-                                                            </button>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-12 mt-5">
-                                                        <div class="form-row">
-                                                            <div class="col-6">
-                                                                <button class="btn btn-block btn-primary">
-                                                                    <i class="fa fa-check-circle"></i>
-                                                                    Utilizar
-                                                                </button>
-                                                            </div>
-                                                            <div class="col-6">
-                                                                <button id="btn-delete-preset"
-                                                                        disabled
-                                                                        class="btn btn-block btn-outline-danger">
-                                                                    <i class="fa fa-trash"></i>
-                                                                    Eliminar
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
+                                            <?php foreach ($usuario->getPresets() as $preset): ?>
+                                                <option value="<?= $preset['id'] ?>"><?= $preset['preset_name'] ?></option>
+                                            <?php endforeach; ?>
+                                        </select>
                                     </div>
 
-
                                 </div>
+
+                                <div class="col-6">
+                                    <h4>Configurar nodos y conexiones</h4>
+                                    <p>
+                                        <small>Puede configurar el aspecto de los nodos y las conexiones
+                                            salientes de cada uno.
+                                        </small>
+                                    </p>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="selected_preset_color">Color:</label>
+                                            <input type="text"
+                                                   id="selected_preset_color"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>X</label>
+                                                <input type="text"
+                                                       id="selected_preset_color_x"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>Y</label>
+                                                <input type="text"
+                                                       id="selected_preset_color_y"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>Z</label>
+                                                <input type="text"
+                                                       id="selected_preset_color_z"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="selected_preset_size">Tamaño:</label>
+                                            <input type="text"
+                                                   id="selected_preset_size"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="selected_preset_shape">Forma:</label>
+                                            <select id="selected_preset_shape" class="form-control">
+                                                <option value="1">Circulo</option>
+                                                <option value="2">Cuadrado</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-6">
+                                    <div class="col-12">
+                                        <h5>Conexiones salientes del nodo
+                                            <small>(node edge)</small>
+                                        </h5>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <label for="selected_preset_edge_color">Color:</label>
+                                            <input type="text"
+                                                   id="selected_preset_edge_color"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-6">
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>X</label>
+                                                <input type="text"
+                                                       id="selected_preset_edge_color_x"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>Y</label>
+                                                <input type="text"
+                                                       id="selected_preset_edge_color_y"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-4">
+                                            <div class="form-inline">
+                                                <label>Z</label>
+                                                <input type="text"
+                                                       id="selected_preset_edge_color_z"
+                                                       disabled
+                                                       class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="selected_preset_edge_width">Ancho de
+                                                línea:</label>
+                                            <input type="text"
+                                                   id="selected_preset_edge_width"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-12">
+                                    <div class="form-inline">
+                                        <label for="selected_preset_name">Nombre Preset:</label>
+                                        <input type="text"
+                                               id="selected_preset_name"
+                                               class="form-control">
+
+                                        <button id="btn-save-user-preset"
+                                                disabled class="btn btn-sm btn-info ml-3"
+                                                onclick="guardar_preset_usuario(); return false;">
+                                            Guardar en mis presets
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <div class="col-12 mt-5">
+                                    <div class="form-row">
+                                        <div class="col-6">
+                                            <button class="btn btn-block btn-primary">
+                                                <i class="fa fa-check-circle"></i>
+                                                Utilizar
+                                            </button>
+                                        </div>
+                                        <div class="col-6">
+                                            <button id="btn-delete-preset"
+                                                    disabled
+                                                    class="btn btn-block btn-outline-danger"
+                                                    onclick="eliminar_preset_usuario(); return false;">
+                                                <i class="fa fa-trash"></i>
+                                                Eliminar preset
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
 
                             <div class="col-md-12">
@@ -642,7 +626,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                             name="guardar_control"
                                             onClick="guardar_param_arch_conf_vis(); return false;">
                                         <i class="far fa-save"></i>
-                                        Guardar Configuración de visualización
+                                        Generar Configuración de visualización
                                     </button>
                                 </div>
                             </div>

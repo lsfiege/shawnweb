@@ -444,8 +444,77 @@ function guardar_param_arch_conf_vis() {
 }
 
 function guardar_preset_usuario() {
-    //todo: fix
-    console.log('guardar preset usuario');
+
+    var color = $('#selected_preset_color').val();
+    var color_x = $('#selected_preset_color_x').val();
+    var color_y = $('#selected_preset_color_y').val();
+    var color_z = $('#selected_preset_color_z').val();
+    var size = $('#selected_preset_size').val();
+    var shape = $('#selected_preset_shape').val();
+    var edge_color = $('#selected_preset_edge_color').val();
+    var edge_color_x = $('#selected_preset_edge_color_x').val();
+    var edge_color_y = $('#selected_preset_edge_color_y').val();
+    var edge_color_z = $('#selected_preset_edge_color_z').val();
+    var edge_width = $('#selected_preset_edge_width').val();
+    var preset_name = $('#selected_preset_name').val();
+
+    var url = ('href', location.protocol +
+        "//" + window.location.host +
+        "/modulos/simulacion/controlador/simulacion.class.php?guardar-preset&color=" + color +
+        "&color_x=" + color_x +
+        "&color_y=" + color_y +
+        "&color_z=" + color_z +
+        "&size=" + size +
+        "&shape=" + shape +
+        "&edge_color=" + edge_color +
+        "&edge_color_x=" + edge_color_x +
+        "&edge_color_y=" + edge_color_y +
+        "&edge_color_z=" + edge_color_z +
+        "&edge_width=" + edge_width +
+        "&preset_name=" + preset_name
+    );
+
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: 'json',
+        cache: false,
+        error: function () {
+            alert("Error al procesar la solicitud");
+        },
+        success: function (response) {
+            if (response.resul == true) {
+                alert("Preset guardado correctamente!");
+            } else {
+                alert("Error al guardar el preset");
+            }
+        }
+    });
+}
+
+function eliminar_preset_usuario() {
+    var preset_id = $('#vis_preset option:selected').val();
+
+    var url = ('href', location.protocol +
+    "//" + window.location.host +
+    "/modulos/simulacion/controlador/simulacion.class.php?eliminar-preset&preset_id=" + preset_id);
+
+    $.ajax({
+        url: url,
+        type: "get",
+        dataType: 'json',
+        cache: false,
+        error: function () {
+            alert("Error al procesar la solicitud");
+        },
+        success: function (response) {
+            if (response.resul == true) {
+                alert("Preset eliminado correctamente!");
+            } else {
+                alert("Error al eliminar el preset");
+            }
+        }
+    });
 }
 
 /**

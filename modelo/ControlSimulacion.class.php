@@ -439,6 +439,57 @@ class ControlSimulacion
         return $preset->getProperties();
     }
 
+    public function eliminarPreset($preset_id)
+    {
+        $result = R::exec("DELETE FROM vis_usuario_preset WHERE id = $preset_id");
+
+        if ($result) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function guardarPreset(
+        $preset_name,
+        $color,
+        $color_x,
+        $color_y,
+        $color_z,
+        $size,
+        $shape,
+        $edge_color,
+        $edge_color_x,
+        $edge_color_y,
+        $edge_color_z,
+        $edge_width
+    ) {
+        $preset = R::xdispense('vis_usuario_preset');
+        $preset->preset_name = $preset_name;
+        $preset->node_color_rgb = $color;
+        $preset->node_color_x = $color_x;
+        $preset->node_color_y = $color_y;
+        $preset->node_color_z = $color_z;
+        $preset->node_size = $size;
+        $preset->node_shape = $shape;
+        $preset->node_edge_color_rgb = $edge_color;
+        $preset->node_edge_color_x = $edge_color_x;
+        $preset->node_edge_color_y = $edge_color_y;
+        $preset->node_edge_color_z = $edge_color_z;
+        $preset->node_edge_line_width = $edge_width;
+
+        $usuario_id = $_SESSION['usuario_id'];
+        $preset->usuario_id = $usuario_id;
+
+        $id = R::store($preset);
+
+        if ($id) {
+            return true;
+        }
+
+        return false;
+    }
+
     /**
      * @return int
      */
@@ -464,5 +515,3 @@ class ControlSimulacion
 
     }
 }
-
-?>

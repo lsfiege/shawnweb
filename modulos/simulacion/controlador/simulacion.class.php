@@ -89,6 +89,35 @@ if (isset($_GET['cargar-preset'])) {
     $simulacion->cargarPreset($preset_id);
 }
 
+if (isset($_GET['eliminar-preset'])) {
+    $preset_id = $_GET["preset_id"];
+
+    $simulacion->eliminarPreset($preset_id);
+}
+
+if (isset($_GET['guardar-preset'])) {
+    $preset_name = $_GET["preset_name"];
+    $color = $_GET["color"];
+    $color_x = $_GET["color_x"];
+    $color_y = $_GET["color_y"];
+    $color_z = $_GET["color_z"];
+    $size = $_GET["size"];
+    $shape = $_GET["shape"];
+    $edge_color = $_GET["edge_color"];
+    $edge_color_x = $_GET["edge_color_x"];
+    $edge_color_y = $_GET["edge_color_y"];
+    $edge_color_z = $_GET["edge_color_z"];
+    $edge_width = $_GET["edge_width"];
+
+    $simulacion->guardarPreset(
+        $preset_name,
+        $color, $color_x, $color_y, $color_z,
+        $size, $shape,
+        $edge_color, $edge_color_x, $edge_color_y, $edge_color_z,
+        $edge_width
+    );
+}
+
 if (isset($_GET["compilar"])) {
     $proyecto_id = $_GET["proyecto_id"];
     $simulacion->compilarProyecto($proyecto_id);
@@ -128,7 +157,6 @@ class simulacion
         $salida_simulacion->ejecutarProyecto($proyecto_id, $nombre_arch_conf);
 
     }
-
 
     public function obtenerArchivosConf($proyecto_id, $dom_select_archivo_conf_id)
     {
@@ -247,6 +275,60 @@ class simulacion
 
     }
 
+    public function eliminarPreset($preset_id)
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+
+        $control_simulacion = new ControlSimulacion();
+
+        $result = $control_simulacion->eliminarPreset($preset_id);
+
+        if ($result) {
+            echo json_encode(["resul" => true]);
+        } else {
+            echo json_encode(["resul" => false]);
+        }
+    }
+
+    public function guardarPreset(
+        $preset_name,
+        $color,
+        $color_x,
+        $color_y,
+        $color_z,
+        $size,
+        $shape,
+        $edge_color,
+        $edge_color_x,
+        $edge_color_y,
+        $edge_color_z,
+        $edge_width
+    ) {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+
+        $control_simulacion = new ControlSimulacion();
+
+        $response = $control_simulacion->guardarPreset($preset_name,
+            $color,
+            $color_x,
+            $color_y,
+            $color_z,
+            $size,
+            $shape,
+            $edge_color,
+            $edge_color_x,
+            $edge_color_y,
+            $edge_color_z,
+            $edge_width
+        );
+
+        if ($response) {
+            echo json_encode(["resul" => true]);
+        } else {
+            echo json_encode(["resul" => false]);
+        }
+    }
+
     public function descargarProyecto($proyecto_id)
     {
         require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'SalidaSimulacion.class.php');
@@ -263,5 +345,3 @@ class simulacion
     }
 
 }
-
-?>

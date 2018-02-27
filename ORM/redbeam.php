@@ -6,7 +6,11 @@ require ('env.php');
 
 R::setup('pgsql:host='.$host.';dbname='.$db_name,
             $db_user_name,$db_password);
-    
+
+R::ext('xdispense', function( $type ){
+    return R::getRedBean()->dispense( $type );
+});
+
 R::debug( false );
 
 
