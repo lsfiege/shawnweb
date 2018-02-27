@@ -562,7 +562,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                     <div class="form-row">
                                         <div class="col-6">
                                             <button class="btn btn-block btn-primary"
-                                                onclick="load_config_to_vis_table();return false;">
+                                                    onclick="load_config_to_vis_table();return false;">
                                                 <i class="fa fa-check-circle"></i>
                                                 Utilizar
                                             </button>
@@ -587,7 +587,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                     vis_proyecto_preset
                                     (presets del proyecto-tabla de aca abajo)
                                     <br>
-                                    Incluir items en tabla y permitir eliminado dinamico de la misma, luego volcar tabla en config de db
+                                    Incluir items en tabla y permitir eliminado dinamico de la misma, luego volcar tabla
+                                    en config de db
                                 </p>
                                 <div id="node_config_list" class="mb-5">
 
@@ -643,111 +644,112 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="tab-pane fade" id="compilacion" role="tabpanel" aria-labelledby="contact-tab">
-                <div id="salida_compilacion" class="col-12 mt-3">
-                    <div id="compilacion">
-                        <div class="col-12">
-                            <h3>Salida de compilación</h3>
+        <div class="tab-pane fade" id="compilacion" role="tabpanel" aria-labelledby="contact-tab">
+            <div id="salida_compilacion" class="col-12 mt-3">
+                <div id="compilacion">
+                    <div class="col-12">
+                        <h3>Salida de compilación</h3>
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        <div class="botones_accion form-inline">
+                            <select id="compil_proy_simul" class="form-control">
+                                <option selected disabled>Seleccione un Proyecto</option>
+                                <?php foreach ($proyectos as $proy) { ?>
+                                    <option id="compilproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                <?php } ?>
+                            </select>
+
+                            <button type="button"
+                                    class="btn btn-primary pull-right"
+                                    name="compilar"
+                                    onClick="compilar(); return false;">
+                                <i class="far fa-sun"></i>
+                                Compilar
+                            </button>
                         </div>
+                    </div>
 
-                        <div class="col-12 mb-2">
-                            <div class="botones_accion form-inline">
-                                <select id="compil_proy_simul" class="form-control">
-                                    <option selected disabled>Seleccione un Proyecto</option>
-                                    <?php foreach ($proyectos as $proy) { ?>
-                                        <option id="compilproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                    <?php } ?>
-                                </select>
-
-                                <button type="button"
-                                        class="btn btn-primary pull-right"
-                                        name="compilar"
-                                        onClick="compilar(); return false;">
-                                    <i class="far fa-sun"></i>
-                                    Compilar
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="col-12">
+                    <div class="col-12">
                         <textarea id="txa_copilar" class="form-control-lg" rows="23" style="width: 100%!important;"
                                   placeholder="Resultado de la compilación"></textarea>
-                        </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="tab-pane fade" id="ejecucion" role="tabpanel" aria-labelledby="contact-tab">
-                <div id="salida_ejecucion" class="col-12 mt-3">
-                    <div id="ejecucion">
-                        <div class="col-12">
-                            <h3>Salida de ejecución</h3>
-                        </div>
+        <div class="tab-pane fade" id="ejecucion" role="tabpanel" aria-labelledby="contact-tab">
+            <div id="salida_ejecucion" class="col-12 mt-3">
+                <div id="ejecucion">
+                    <div class="col-12">
+                        <h3>Salida de ejecución</h3>
+                    </div>
 
-                        <div class="col-12 mb-2 p-0">
-                            <div class="botones_accion form-inline">
-                                <form class="form-inline col-12"
-                                      action="/modulos/simulacion/controlador/simulacion.class.php"
-                                      method="GET">
-                                    <div class="col-6 p-0">
-                                        <select id="ejec_proy_simul" class="form-control"
-                                                onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
-                                            <option selected disabled>Seleccione un Proyecto</option>
-                                            <?php foreach ($proyectos as $proy) { ?>
-                                                <option id="ejecproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
-                                            <?php } ?>
-                                        </select>
+                    <div class="col-12 mb-2 p-0">
+                        <div class="botones_accion form-inline">
+                            <form class="form-inline col-12"
+                                  action="/modulos/simulacion/controlador/simulacion.class.php"
+                                  method="GET">
+                                <div class="col-6 p-0">
+                                    <select id="ejec_proy_simul" class="form-control"
+                                            onChange="cargarArchConf('ejec_proy_simul', 'ejec_span_arch_conf', 'ejec_arch_conf'); return false;">
+                                        <option selected disabled>Seleccione un Proyecto</option>
+                                        <?php foreach ($proyectos as $proy) { ?>
+                                            <option id="ejecproy_<?= $proy->id ?>"><?= $proy->nombre ?></option>
+                                        <?php } ?>
+                                    </select>
 
-                                        <span id="ejec_span_arch_conf"> </span>
+                                    <span id="ejec_span_arch_conf"> </span>
 
+                                </div>
+
+                                <div class="col-6 p-0">
+                                    <div style="float: right !important;">
+                                        <button type="button" class="btn btn-primary" name="ejecutar"
+                                                onClick="ejecutar_proyecto(); return false;">
+                                            <i class="fas fa-play"></i>
+                                            Ejecutar
+                                        </button>
+
+                                        <input id="proyecto_id_ejecucion" type="hidden" value=""
+                                               name="proyecto_id"/>
+
+                                        <button class="btn btn-outline-info" type="submit" value="Descargar"
+                                                name="descargar-proyecto">
+                                            <i class="fas fa-download"></i>
+                                            Descargar
+                                        </button>
+
+                                        <a id="link_salida_pdf"
+                                           class="btn btn-link"
+                                           href="http://<?= $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
+                                           target="_blank">
+                                            <i class="fas fa-eye"></i>
+                                            Visualizar
+                                        </a>
+
+                                        <button type="button" class="btn btn-outline-dark"
+                                                onclick="clearElement('txa_ejecutar'); return false;">
+                                            <i class="fas fa-eraser"></i>
+                                            Limpiar
+                                        </button>
                                     </div>
-
-                                    <div class="col-6 p-0">
-                                        <div style="float: right !important;">
-                                            <button type="button" class="btn btn-primary" name="ejecutar"
-                                                    onClick="ejecutar_proyecto(); return false;">
-                                                <i class="fas fa-play"></i>
-                                                Ejecutar
-                                            </button>
-
-                                            <input id="proyecto_id_ejecucion" type="hidden" value=""
-                                                   name="proyecto_id"/>
-
-                                            <button class="btn btn-outline-info" type="submit" value="Descargar"
-                                                    name="descargar-proyecto">
-                                                <i class="fas fa-download"></i>
-                                                Descargar
-                                            </button>
-
-                                            <a id="link_salida_pdf"
-                                               class="btn btn-link"
-                                               href="http://<?= $_SERVER['SERVER_NAME'].':'.$_SERVER['SERVER_PORT']; ?>/modulos/simulacion/controlador/simulacion.class.php"
-                                               target="_blank">
-                                                <i class="fas fa-eye"></i>
-                                                Visualizar
-                                            </a>
-
-                                            <button type="button" class="btn btn-outline-dark"
-                                                    onclick="clearElement('txa_ejecutar'); return false;">
-                                                <i class="fas fa-eraser"></i>
-                                                Limpiar
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                    </div>
 
-                        <div class="col-12">
+                    <div class="col-12">
                         <textarea class="form-control" style="width: 100%!important;" id="txa_ejecutar" rows="23"
                                   placeholder="Resultado de la simulación"></textarea>
-                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+    </div>
 
 </main>
 

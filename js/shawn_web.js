@@ -537,7 +537,7 @@ function load_config_to_vis_table() {
 
     $('#vis_configs_table > tbody:last-child').append('<tr>' +
         '<td>' + '' + '</td>' +
-        '<td>' + '' + '</td>' +
+        '<td>' + '<input type="checkbox" name="default" />' + '</td>' +
         '<td>' + color + '</td>' +
         '<td style="display:none;">' + color_x + '</td>' +
         '<td style="display:none;">' + color_y + '</td>' +
