@@ -415,7 +415,7 @@ function guardar_param_arch_conf_vis() {
 
     var max_nodes = $('#max_nodes').val();
 
-    var export_scenario = false;
+    var export_scenario = $('#save_world').prop('checked') === true ? 'on' : 'off';
 
     var load_scenario = false;
 
@@ -426,7 +426,8 @@ function guardar_param_arch_conf_vis() {
         '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis' +
         '&proyecto_id=' + proyecto_id +
         '&nombre_arch_conf=' + nombre_arch_conf +
-        "&max_nodes=" + max_nodes
+        "&max_nodes=" + max_nodes +
+        "&export_scenario=" + export_scenario
     );
 
     $.ajax({

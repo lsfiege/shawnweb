@@ -339,7 +339,8 @@ class ControlSimulacion
     public function guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes
+        $max_nodes,
+        $export_scenario
     ) {
         try {
             $arr_parametros = [];
@@ -414,15 +415,21 @@ class ControlSimulacion
             $this->cerrarProceso($process2);
             $this->cerrarProceso($process3);
 
-            //todo: controlar si se debe guardar el snapshot
-            $snapshot_id = "id:{$proyecto_id}-".$this->getTimestamp();
-            $world_filename = "world-{$proyecto_id}_{$nombre_arch_conf}.xml";
+            if ($export_scenario):
+                $timestamp = $this->getTimestamp();
+                $snapshot_id = "id:{$proyecto_id}-{$timestamp}";
+                $world_filename = "world-{$proyecto_id}_{$timestamp}_{$nombre_arch_conf}.xml";
 
-            //todo: store in db $world_filename + $snapshot_id
+                $res = $this->saveSnapshotToFile($proyecto_id, $snapshot_id, $world_filename);
 
-            $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a save_world file='.$world_filename.' snapshot='.$snapshot_id."'".' {} \;';
-            $process4 = proc_open($comando4, $descriptorspec, $pipes1);
-            $this->cerrarProceso($process4);
+                if ($res == false) {
+                    throw new Exception('Error saving world');
+                }
+
+                $comando4 = 'find '.$source.' -type f -exec sed -i '."'".'$a save_world file='.$world_filename.' snapshot='.$snapshot_id."'".' {} \;';
+                $process4 = proc_open($comando4, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process4);
+            endif;
 
 
         } catch (Exception $e) {
@@ -430,6 +437,22 @@ class ControlSimulacion
         }
 
         return true;
+    }
+
+    public function saveSnapshotToFile($proyecto_id, $snapshot_id, $world_filename)
+    {
+        $data = R::xdispense('vis_proyecto_snapshots');
+        $data->proyecto_id = $proyecto_id;
+        $data->snapshot_id = $snapshot_id;
+        $data->world_filename = $world_filename;
+
+        $id = R::store($data);
+
+        if ($id) {
+            return true;
+        }
+
+        return false;
     }
 
     public function cargarPreset($preset_id)

@@ -75,11 +75,13 @@ if (isset($_GET["guardar-param-arch-conf-vis"])) {
     $nombre_arch_conf = $_GET["nombre_arch_conf"];
     $proyecto_id = $_GET["proyecto_id"];
     $max_nodes = $_GET["max_nodes"];
+    $export_scenario = $_GET["export_scenario"] == 'on' ? true : false;
 
     $simulacion->guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes
+        $max_nodes,
+        $export_scenario
     );
 }
 
@@ -238,7 +240,8 @@ class simulacion
     public function guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes
+        $max_nodes,
+        $export_scenario
     ) {
         $resul = false;
 
@@ -249,7 +252,8 @@ class simulacion
         $resul = $control_simulacion->guardarParamArchConfVis(
             $proyecto_id,
             $nombre_arch_conf,
-            $max_nodes
+            $max_nodes,
+            $export_scenario
         );
 
         if ($resul == true) {
