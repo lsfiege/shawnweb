@@ -403,29 +403,39 @@ class ControlSimulacion
                 $edge = "edge.default.v{$i}.*";
 
                 // Node Size
-                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->node_size.' elem_regex='.$node.' prop=size prio=1'."'".' {} \;';
-                $process = proc_open($comando, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process);
+                if (!is_null($vis->node_size)):
+                    $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->node_size.' elem_regex='.$node.' prop=size prio=1'."'".' {} \;';
+                    $process = proc_open($comando, $descriptorspec, $pipes1);
+                    $this->cerrarProceso($process);
+                endif;
 
                 // Node Color
-                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->node_color_x.' y='.$vis->node_color_y.' z='.$vis->node_color_z.' elem_regex='.$node.' prop=background prio=1'."'".' {} \;';
-                $process = proc_open($comando, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process);
+                if (!is_null($vis->node_color_rgb)):
+                    $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->node_color_x.' y='.$vis->node_color_y.' z='.$vis->node_color_z.' elem_regex='.$node.' prop=background prio=1'."'".' {} \;';
+                    $process = proc_open($comando, $descriptorspec, $pipes1);
+                    $this->cerrarProceso($process);
+                endif;
 
                 // Node shape
-                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_int value='.$vis->node_shape.' elem_regex='.$node.' prop=shape prio=1'."'".' {} \;';
-                $process = proc_open($comando, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process);
+                if (!is_null($vis->node_shape)):
+                    $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_int value='.$vis->node_shape.' elem_regex='.$node.' prop=shape prio=1'."'".' {} \;';
+                    $process = proc_open($comando, $descriptorspec, $pipes1);
+                    $this->cerrarProceso($process);
+                endif;
 
                 // Line width
-                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->edge_size.' elem_regex='.$edge.' prop=line_width prio=1'."'".' {} \;';
-                $process = proc_open($comando, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process);
+                if (!is_null($vis->edge_size)):
+                    $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->edge_size.' elem_regex='.$edge.' prop=line_width prio=1'."'".' {} \;';
+                    $process = proc_open($comando, $descriptorspec, $pipes1);
+                    $this->cerrarProceso($process);
+                endif;
 
                 // Line color
-                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->edge_color_x.' y='.$vis->edge_color_y.' z='.$vis->edge_color_z.' elem_regex='.$edge.' prop=color prio=1'."'".' {} \;';
-                $process = proc_open($comando, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process);
+                if (!is_null($vis->edge_color_rgb)):
+                    $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->edge_color_x.' y='.$vis->edge_color_y.' z='.$vis->edge_color_z.' elem_regex='.$edge.' prop=color prio=1'."'".' {} \;';
+                    $process = proc_open($comando, $descriptorspec, $pipes1);
+                    $this->cerrarProceso($process);
+                endif;
 
                 $i++;
             }

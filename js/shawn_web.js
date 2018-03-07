@@ -424,18 +424,18 @@ function guardar_param_arch_conf_vis() {
         var $td = $('td', this);
 
         return {
-            id: $td.eq(0).text(),
-            node_color_rgb: $td.eq(1).text(),
-            node_color_x: $td.eq(2).text(),
-            node_color_y: $td.eq(3).text(),
-            node_color_z: $td.eq(4).text(),
-            node_size: $td.eq(5).text(),
-            node_shape: $td.eq(6).text(),
-            edge_color_rgb: $td.eq(7).text(),
-            edge_color_x: $td.eq(8).text(),
-            edge_color_y: $td.eq(9).text(),
-            edge_color_z: $td.eq(10).text(),
-            edge_size: $td.eq(11).text(),
+            id: $td.eq(0).text().length ? $td.eq(0).text() : null,
+            node_color_rgb: $td.eq(1).text().length ? $td.eq(1).text() : null,
+            node_color_x: $td.eq(2).text().length ? $td.eq(2).text() : null,
+            node_color_y: $td.eq(3).text().length ? $td.eq(3).text() : null,
+            node_color_z: $td.eq(4).text().length ? $td.eq(4).text() : null,
+            node_size: $td.eq(5).text().length ? $td.eq(5).text() : null,
+            node_shape: $td.eq(6).text().length ? $td.eq(6).text() : null,
+            edge_color_rgb: $td.eq(7).text().length ? $td.eq(7).text() : null,
+            edge_color_x: $td.eq(8).text().length ? $td.eq(8).text() : null,
+            edge_color_y: $td.eq(9).text().length ? $td.eq(9).text() : null,
+            edge_color_z: $td.eq(10).text().length ? $td.eq(10).text() : null,
+            edge_size: $td.eq(11).text().length ? $td.eq(11).text() : null,
         }
     }).get();
 
@@ -448,7 +448,7 @@ function guardar_param_arch_conf_vis() {
         "&export_scenario=" + export_scenario +
         "&vis_configs=" + JSON.stringify(vis_configs)
     );
-
+    
     $.ajax({
         url: url,
         type: "get",
