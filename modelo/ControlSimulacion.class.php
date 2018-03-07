@@ -340,7 +340,8 @@ class ControlSimulacion
         $proyecto_id,
         $nombre_arch_conf,
         $max_nodes,
-        $export_scenario
+        $export_scenario,
+        $vis_configs
     ) {
         try {
             $arr_parametros = [];
@@ -395,7 +396,40 @@ class ControlSimulacion
             $this->cerrarProceso($process3);
 
             // Set VIS configurations
+            $i = 1;
+            foreach ($vis_configs as $vis) {
+                //todo: save to db
+                $node = "node.default.v{$i}.*";
+                $edge = "edge.default.v{$i}.*";
 
+                // Node Size
+                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->node_size.' elem_regex='.$node.' prop=size prio=1'."'".' {} \;';
+                $process = proc_open($comando, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process);
+
+                // Node Color
+                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->node_color_x.' y='.$vis->node_color_y.' z='.$vis->node_color_z.' elem_regex='.$node.' prop=background prio=1'."'".' {} \;';
+                $process = proc_open($comando, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process);
+
+                // Node shape
+                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_int value='.$vis->node_shape.' elem_regex='.$node.' prop=shape prio=1'."'".' {} \;';
+                $process = proc_open($comando, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process);
+
+                // Line width
+                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_double value='.$vis->edge_size.' elem_regex='.$edge.' prop=line_width prio=1'."'".' {} \;';
+                $process = proc_open($comando, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process);
+
+                // Line color
+                $comando = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_constant_vec x='.$vis->edge_color_x.' y='.$vis->edge_color_y.' z='.$vis->edge_color_z.' elem_regex='.$edge.' prop=color prio=1'."'".' {} \;';
+                $process = proc_open($comando, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process);
+
+                $i++;
+            }
+            unset($i);
 
             // Set VIS Camera
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_simple_camera'."'".' {} \;';
@@ -404,15 +438,15 @@ class ControlSimulacion
 
             // Finalize VIS
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot'."'".' {} \;';
-            $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=ps'."'".' {} \;';
-            $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=png'."'".' {} \;';
-
             $process1 = proc_open($comando1, $descriptorspec, $pipes1);
-            $process2 = proc_open($comando2, $descriptorspec, $pipes1);
-            $process3 = proc_open($comando3, $descriptorspec, $pipes1);
-
             $this->cerrarProceso($process1);
+
+            $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=ps'."'".' {} \;';
+            $process2 = proc_open($comando2, $descriptorspec, $pipes1);
             $this->cerrarProceso($process2);
+
+            $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_single_snapshot writer=png'."'".' {} \;';
+            $process3 = proc_open($comando3, $descriptorspec, $pipes1);
             $this->cerrarProceso($process3);
 
             if ($export_scenario):

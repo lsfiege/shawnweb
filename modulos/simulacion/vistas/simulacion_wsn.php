@@ -596,7 +596,6 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                         <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Por defecto?</th>
                                             <th>Nodo: color rgb</th>
                                             <th style="display:none;">Nodo: color x</th>
                                             <th style="display:none;">Nodo: color y</th>

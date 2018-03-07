@@ -405,7 +405,6 @@ function cargarCamposPreset() {
 
 }
 
-//todo:fix
 function guardar_param_arch_conf_vis() {
     var select_option_id = $('#vis_proy_simul option:selected').attr('id');
 
@@ -421,13 +420,33 @@ function guardar_param_arch_conf_vis() {
 
     var id_snapshot = null;
 
+    var vis_configs = $('#vis_configs_table tr:has(td)').map(function (i, v) {
+        var $td = $('td', this);
+
+        return {
+            id: $td.eq(0).text(),
+            node_color_rgb: $td.eq(1).text(),
+            node_color_x: $td.eq(2).text(),
+            node_color_y: $td.eq(3).text(),
+            node_color_z: $td.eq(4).text(),
+            node_size: $td.eq(5).text(),
+            node_shape: $td.eq(6).text(),
+            edge_color_rgb: $td.eq(7).text(),
+            edge_color_x: $td.eq(8).text(),
+            edge_color_y: $td.eq(9).text(),
+            edge_color_z: $td.eq(10).text(),
+            edge_size: $td.eq(11).text(),
+        }
+    }).get();
+
     var url = (
         'href', location.protocol + '//' + window.location.host +
         '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis' +
         '&proyecto_id=' + proyecto_id +
         '&nombre_arch_conf=' + nombre_arch_conf +
         "&max_nodes=" + max_nodes +
-        "&export_scenario=" + export_scenario
+        "&export_scenario=" + export_scenario +
+        "&vis_configs=" + JSON.stringify(vis_configs)
     );
 
     $.ajax({
@@ -538,7 +557,6 @@ function load_config_to_vis_table() {
 
     $('#vis_configs_table > tbody:last-child').append('<tr>' +
         '<td>' + '' + '</td>' +
-        '<td>' + '<input type="checkbox" name="default" />' + '</td>' +
         '<td>' + color + '</td>' +
         '<td style="display:none;">' + color_x + '</td>' +
         '<td style="display:none;">' + color_y + '</td>' +
