@@ -395,10 +395,11 @@ class ControlSimulacion
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
             $this->cerrarProceso($process3);
 
+            $this->saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs);
+
             // Set VIS configurations
             $i = 1;
             foreach ($vis_configs as $vis) {
-                //todo: save to db
                 $node = "node.default.v{$i}.*";
                 $edge = "edge.default.v{$i}.*";
 
@@ -481,6 +482,63 @@ class ControlSimulacion
         }
 
         return true;
+    }
+
+    public function saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs)
+    {
+        //todo: get file path for fast retrieve
+        $config = R::getAll('SELECT * FROM vis_proyecto_config WHERE proyecto_id = ? and file = ? ',
+            [$proyecto_id, $nombre_arch_conf]);
+
+        if (count($config) > 0) {
+            $config = (object)$config[0];
+            $proyect_config_id = $config->id;
+        } else {
+            $data = R::xdispense('vis_proyecto_config');
+            $data->proyecto_id = $proyecto_id;
+            $data->file = $nombre_arch_conf;
+            $data->path = '';
+            $data->usuario_id = $_SESSION['usuario_id'];
+
+            $proyect_config_id = R::store($data);
+        }
+
+
+        foreach ($vis_configs as $vis) {
+
+            if (is_null($vis->id)) {
+                //new preset
+                $data = R::xdispense('vis_proyecto_preset');
+                $data->vis_proyecto_archivo_id = $proyect_config_id;
+
+                $data->node_color_rgb = $vis->node_color_rgb;
+                $data->node_color_x = $vis->node_color_x;
+                $data->node_color_y = $vis->node_color_y;
+                $data->node_color_z = $vis->node_color_z;
+                $data->node_size = $vis->node_size;
+                $data->node_shape = $vis->node_shape;
+                $data->node_edge_color_rgb = $vis->edge_color_rgb;
+                $data->node_edge_color_x = $vis->edge_color_x;
+                $data->node_edge_color_y = $vis->edge_color_y;
+                $data->node_edge_color_z = $vis->edge_color_z;
+                $data->node_edge_line_width = $vis->edge_size;
+
+                $id = R::store($data);
+
+                if ($id) {
+                    return true;
+                }
+
+                return false;
+            } else {
+                //todo
+                //update preset
+                $preset = R::getAll('SELECT * FROM vis_proyecto_preset WHERE id = ? ',
+                    [$vis->id]);
+            }
+        }
+
+        return false;
     }
 
     public function saveSnapshotToFile($proyecto_id, $snapshot_id, $world_filename)

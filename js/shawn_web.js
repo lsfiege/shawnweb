@@ -448,7 +448,7 @@ function guardar_param_arch_conf_vis() {
         "&export_scenario=" + export_scenario +
         "&vis_configs=" + JSON.stringify(vis_configs)
     );
-    
+    console.log(url);
     $.ajax({
         url: url,
         type: "get",
