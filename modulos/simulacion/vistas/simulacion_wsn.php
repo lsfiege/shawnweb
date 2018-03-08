@@ -582,14 +582,6 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </div>
 
                             <div class="col-md-12">
-                                <p class="alert alert-info">
-                                    Usuario --- vis_proyecto_config (proyecto + archivo) ---
-                                    vis_proyecto_preset
-                                    (presets del proyecto-tabla de aca abajo)
-                                    <br>
-                                    Incluir items en tabla y permitir eliminado dinamico de la misma, luego volcar tabla
-                                    en config de db
-                                </p>
                                 <div id="node_config_list" class="mb-5">
 
                                     <table id="vis_configs_table" class="table tables-striped table-hover">

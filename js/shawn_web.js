@@ -20,6 +20,25 @@ $(document).ready(function () {
     });
 
     $('#vis_configs_table').on('click', '.remove-tr', function (e) {
+        var id = $(this).parent().siblings(":first").text();
+
+        if (id) {
+            var url = ('href', location.protocol + '//' + window.location.host +
+            '/modulos/simulacion/controlador/simulacion.class.php?eliminar-preset-proyecto&id=' + id);
+
+            $.ajax({
+                url: url,
+                type: "get",
+                cache: false,
+                error: function () {
+                    alert("Error al procesar la solicitud");
+                },
+                success: function (data) {
+                    alert('Preset de proyecto eliminado!')
+                }
+            });
+        }
+
         $(this).closest('tr').remove()
     })
 
@@ -475,7 +494,7 @@ function guardar_param_arch_conf_vis() {
         "&export_scenario=" + export_scenario +
         "&vis_configs=" + JSON.stringify(vis_configs)
     );
-    console.log(url);
+
     $.ajax({
         url: url,
         type: "get",

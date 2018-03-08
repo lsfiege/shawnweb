@@ -543,11 +543,6 @@ class ControlSimulacion
                 }
 
                 return false;
-            } else {
-                //todo
-                //update preset
-                $preset = R::getAll('SELECT * FROM vis_proyecto_preset WHERE id = ? ',
-                    [$vis->id]);
             }
         }
 
@@ -580,6 +575,17 @@ class ControlSimulacion
     public function eliminarPreset($preset_id)
     {
         $result = R::exec("DELETE FROM vis_usuario_preset WHERE id = $preset_id");
+
+        if ($result) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function eliminarPresetProyecto($preset_id)
+    {
+        $result = R::exec("DELETE FROM vis_proyecto_preset WHERE id = $preset_id");
 
         if ($result) {
             return true;

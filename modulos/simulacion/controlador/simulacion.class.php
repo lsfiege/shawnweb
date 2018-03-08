@@ -129,6 +129,12 @@ if (isset($_GET['guardar-preset'])) {
     );
 }
 
+if (isset($_GET['eliminar-preset-proyecto'])) {
+    $preset_id = $_GET["id"];
+
+    $simulacion->eliminarPresetProyecto($preset_id);
+}
+
 if (isset($_GET["compilar"])) {
     $proyecto_id = $_GET["proyecto_id"];
     $simulacion->compilarProyecto($proyecto_id);
@@ -305,6 +311,21 @@ class simulacion
         $control_simulacion = new ControlSimulacion();
 
         $result = $control_simulacion->eliminarPreset($preset_id);
+
+        if ($result) {
+            echo json_encode(["resul" => true]);
+        } else {
+            echo json_encode(["resul" => false]);
+        }
+    }
+
+    public function eliminarPresetProyecto($preset_id)
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+
+        $control_simulacion = new ControlSimulacion();
+
+        $result = $control_simulacion->eliminarPresetProyecto($preset_id);
 
         if ($result) {
             echo json_encode(["resul" => true]);
