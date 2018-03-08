@@ -356,10 +356,37 @@ function cargarParamArchConfVis() {
             alert("Error al procesar la solicitud");
         },
         success: function (data) {
+            url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-conf-vis-proyecto-archivo&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
 
-            //todo: obtener presets de usuario para el proyecto+archivo en cuestion y mostrar en tabla
+            $.ajax({
+                url: url,
+                type: "get",
+                dataType: 'json',
+                cache: false,
+                error: function () {
+                    alert("Error al procesar la solicitud");
+                },
+                success: function (configs) {
+                    configs.forEach(function (item) {
+                        $('#vis_configs_table > tbody:last-child').append('<tr>' +
+                            '<td>' + item.id + '</td>' +
+                            '<td>' + item.node_color_rgb + '</td>' +
+                            '<td style="display:none;">' + item.node_color_x + '</td>' +
+                            '<td style="display:none;">' + item.node_color_y + '</td>' +
+                            '<td style="display:none;">' + item.node_color_z + '</td>' +
+                            '<td>' + item.node_size + '</td>' +
+                            '<td>' + item.node_shape + '</td>' +
+                            '<td>' + item.node_edge_color_rgb + '</td>' +
+                            '<td style="display:none;">' + item.node_edge_color_x + '</td>' +
+                            '<td style="display:none;">' + item.node_edge_color_y + '</td>' +
+                            '<td style="display:none;">' + item.node_edge_color_z + '</td>' +
+                            '<td>' + item.node_edge_line_width + '</td>' +
+                            '<td>' + '<button class="btn btn-sm btn-outline-danger remove-tr"><i class="fas fa-eraser"></i></button>' + '</td>' +
+                            '</tr>');
 
-
+                    })
+                }
+            });
         }
     });
 }

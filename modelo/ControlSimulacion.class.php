@@ -133,6 +133,28 @@ class ControlSimulacion
         return $nombres_archivos_conf;
     }
 
+    public function obtenerParamVisProyecto($proyecto_id, $nombre_arch_conf)
+    {
+        $config = R::getAll('SELECT * FROM vis_proyecto_config WHERE proyecto_id = ? and file = ? ',
+            [$proyecto_id, $nombre_arch_conf]);
+
+        if (count($config) > 0) {
+            $config = (object)$config[0];
+            $proyect_config_id = $config->id;
+
+            $vis_configs = R::getAll('SELECT * FROM vis_proyecto_preset WHERE vis_proyecto_archivo_id = ? ',
+                [$proyect_config_id]);
+
+            if (count($vis_configs) > 0) {
+                return $vis_configs;
+            }
+
+            return [];
+        }
+
+        return [];
+    }
+
     /**
      * Obtiene los parametros ingresados en un archivo de configuracion .conf de un determinado proyecto
      * @param type $nombre_arch_conf nombre del archivo de donde se desea obtener los parametros
@@ -163,10 +185,6 @@ class ControlSimulacion
         $arr_parametros["edge_model"] = "0";
         $arr_parametros["comm_model"] = "0";
         $arr_parametros["transm_model"] = "0";
-
-        // Params for vis configuration
-        $vis_buscar = '#vis_config_id=';
-        $arr_parametros["vis_config_id"] = null;
 
         while (!feof($arch_conf)) {
             $linea = fgets($arch_conf);
@@ -221,11 +239,6 @@ class ControlSimulacion
 
             if ($transm_model <> "") {
                 $arr_parametros["transm_model"] = $transm_model;
-            }
-
-            $vis_config_id = $this->obtenerStringParametro($linea, $vis_buscar, " ");
-            if ($vis_config_id <> "") {
-                $arr_parametros["vis_config_id"] = $vis_config_id;
             }
 
         }

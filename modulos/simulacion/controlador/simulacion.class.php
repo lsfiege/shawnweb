@@ -24,6 +24,13 @@ if (isset($_GET["cargar-param-arch-conf"])) {
 
 }
 
+if (isset($_GET["cargar-conf-vis-proyecto-archivo"])) {
+    $nombre_arch_conf = $_GET["nombre_arch_conf"];
+    $proyecto_id = $_GET["proyecto_id"];
+    $simulacion->cargarParamVisProyecto($proyecto_id, $nombre_arch_conf);
+
+}
+
 if (isset($_GET["cargar-archivo-conf-vis"])) {
     $proyecto_id = $_GET["proyecto_id"];
     $dom_select_archivo_conf_id = $_GET["dom_select_archivo_conf_id"];
@@ -200,6 +207,14 @@ class simulacion
         $control_simulacion = new ControlSimulacion();
         $parametros_control = $control_simulacion->obtenerParamArchivoConf($proyecto_id, $nombre_arch_conf);
         echo json_encode($parametros_control);
+    }
+
+    public function cargarParamVisProyecto($proyecto_id, $nombre_arch_conf)
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+        $control_simulacion = new ControlSimulacion();
+        $parametros_vis_proyect = $control_simulacion->obtenerParamVisProyecto($proyecto_id, $nombre_arch_conf);
+        echo json_encode($parametros_vis_proyect);
     }
 
     public function guardarParamArchConf(
