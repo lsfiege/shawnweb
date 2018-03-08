@@ -41,6 +41,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
     <script src="/js/bootstrap.bundle.min.js"></script>
     <!-- App js -->
     <script type="text/javascript" src="/js/shawn_web.js"></script>
+    <script type="text/javascript" src="/js/sweetalert2.min.js"></script>
     <!-- elFinder JS (REQUIRED) -->
     <script type="text/javascript" src="/plugins/elFinder-2.1/js/elfinder.min.js"></script>
     <script type="text/javascript" src="/plugins/elFinder-2.1/js/i18n/elfinder.es.js"></script>

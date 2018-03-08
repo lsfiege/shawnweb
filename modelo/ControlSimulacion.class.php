@@ -536,13 +536,7 @@ class ControlSimulacion
                 $data->node_edge_color_z = $vis->edge_color_z;
                 $data->node_edge_line_width = $vis->edge_size;
 
-                $id = R::store($data);
-
-                if ($id) {
-                    return true;
-                }
-
-                return false;
+                R::store($data);
             }
         }
 

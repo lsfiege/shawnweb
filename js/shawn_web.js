@@ -31,10 +31,18 @@ $(document).ready(function () {
                 type: "get",
                 cache: false,
                 error: function () {
-                    alert("Error al procesar la solicitud");
+                    swal(
+                        'Error',
+                        'Error al procesar la solicitud',
+                        'error'
+                    );
                 },
                 success: function (data) {
-                    alert('Preset de proyecto eliminado!')
+                    swal(
+                        'Ok',
+                        'Preset de proyecto eliminado',
+                        'success'
+                    );
                 }
             });
         }
@@ -54,7 +62,11 @@ function compilar() {
         type: "get",
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             $("#txa_copilar").empty().append(data);
@@ -76,7 +88,11 @@ function ejecutar_proyecto() {
         type: "get",
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             $("#txa_ejecutar").empty().append(data);
@@ -94,7 +110,11 @@ function cargar_datos_modif_proy(proyecto_id) {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             $('#txt_nom_proy').val('');
@@ -116,7 +136,11 @@ function confirma_eliminar_proyecto(proyecto_id) {
             type: "get",
             cache: false,
             error: function () {
-                alert("Error al procesar la solicitud");
+                swal(
+                    'Error',
+                    'Error al procesar la solicitud',
+                    'error'
+                );
             },
             success: function (data) {
                 location.reload();
@@ -141,7 +165,11 @@ function cargarArchConf(dom_select_proy_id, dom_div_archivos_id, dom_select_arch
         type: "get",
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
 
@@ -202,7 +230,11 @@ function cargarParamArchConf() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             $('#count').val('');
@@ -306,11 +338,20 @@ function guardar_param_arch_conf() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             if (data.resul == true) {
-                alert('Parámetros guardados correctamente');
+                swal(
+                    'Ok',
+                    'Parametros guardados correctamente',
+                    'success'
+                );
+
                 $('#count_anterior').val(count);
                 $('#range_anterior').val(range);
                 $('#rect_world_width_anterior').val(rect_world_width);
@@ -322,7 +363,11 @@ function guardar_param_arch_conf() {
                 $('#modelo_transmision_anterior').val(transm_model);
 
             } else {
-                alert("Error al guardar los parámetros");
+                swal(
+                    'Error',
+                    'Error al guardar los parametros',
+                    'error'
+                );
                 cargarParamArchConf();
             }
         }
@@ -346,7 +391,11 @@ function cargarArchConfVis() {
         type: "get",
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
 
@@ -372,7 +421,11 @@ function cargarParamArchConfVis() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-conf-vis-proyecto-archivo&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
@@ -383,7 +436,11 @@ function cargarParamArchConfVis() {
                 dataType: 'json',
                 cache: false,
                 error: function () {
-                    alert("Error al procesar la solicitud");
+                    swal(
+                        'Error',
+                        'Error al procesar la solicitud',
+                        'error'
+                    );
                 },
                 success: function (configs) {
                     configs.forEach(function (item) {
@@ -422,7 +479,11 @@ function cargarCamposPreset() {
             dataType: 'json',
             cache: false,
             error: function () {
-                alert("Error al procesar la solicitud");
+                swal(
+                    'Error',
+                    'Error al procesar la solicitud',
+                    'error'
+                );
             },
             success: function (response) {
                 //set preset data
@@ -501,13 +562,25 @@ function guardar_param_arch_conf_vis() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (data) {
             if (data.resul == true) {
-                alert('Parámetros de visualización guardados correctamente');
+                swal(
+                    'Ok',
+                    'Parámetros de visualización guardados correctamente',
+                    'success'
+                );
             } else {
-                alert("Error al guardar los parámetros");
+                swal(
+                    'Error',
+                    'Error al guardar los parámetros',
+                    'error'
+                );
                 cargarParamArchConfVis();
             }
         }
@@ -551,13 +624,25 @@ function guardar_preset_usuario() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (response) {
             if (response.resul == true) {
-                alert("Preset guardado correctamente!");
+                swal(
+                    'Ok',
+                    'Preset guardado correctamente',
+                    'success'
+                );
             } else {
-                alert("Error al guardar el preset");
+                swal(
+                    'Error',
+                    'Error al guardar el preset',
+                    'error'
+                );
             }
         }
     });
@@ -576,13 +661,25 @@ function eliminar_preset_usuario() {
         dataType: 'json',
         cache: false,
         error: function () {
-            alert("Error al procesar la solicitud");
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
         },
         success: function (response) {
             if (response.resul == true) {
-                alert("Preset eliminado correctamente!");
+                swal(
+                    'Ok',
+                    'Preset eliminado',
+                    'success'
+                );
             } else {
-                alert("Error al eliminar el preset");
+                swal(
+                    'Error',
+                    'Error al eliminar el preset',
+                    'error'
+                );
             }
         }
     });
