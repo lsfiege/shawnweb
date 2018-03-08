@@ -478,7 +478,7 @@ class ControlSimulacion
                 $snapshot_id = "id:{$proyecto_id}-{$timestamp}";
                 $world_filename = "world-{$proyecto_id}_{$timestamp}_{$nombre_arch_conf}.xml";
 
-                $res = $this->saveSnapshotToFile($proyecto_id, $snapshot_id, $world_filename);
+                $res = $this->saveSnapshotToFile($proyecto_id, $nombre_arch_conf, $snapshot_id, $world_filename);
 
                 if ($res == false) {
                     throw new Exception('Error saving world');
@@ -543,10 +543,11 @@ class ControlSimulacion
         return false;
     }
 
-    public function saveSnapshotToFile($proyecto_id, $snapshot_id, $world_filename)
+    public function saveSnapshotToFile($proyecto_id, $proyecto_file, $snapshot_id, $world_filename)
     {
         $data = R::xdispense('vis_proyecto_snapshots');
         $data->proyecto_id = $proyecto_id;
+        $data->proyecto_file = $proyecto_file;
         $data->snapshot_id = $snapshot_id;
         $data->world_filename = $world_filename;
 
