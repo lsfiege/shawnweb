@@ -290,95 +290,6 @@ function cargarParamArchConf() {
     });
 }
 
-//todo: remove
-function guardar_param_arch_conf() {
-    var select_option_id = '';
-    var proyecto_id;
-    select_option_id = $('#control_proy_simul option:selected').attr('id');
-    var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
-    var nombre_arch_conf = $('#control_archivo_conf').val();
-
-    var count = $('#count').val();
-    var count_anterior = $('#count_anterior').val();
-
-    var range = $('#range').val();
-    var range_anterior = $('#range_anterior').val();
-
-    var rect_world_width = $('#rect_world_width').val();
-    var rect_world_width_anterior = $('#rect_world_width_anterior').val();
-
-    var rect_world_height = $('#rect_world_height').val();
-    var rect_world_height_anterior = $('#rect_world_height_anterior').val();
-
-    var seed = $('#seed').val();
-    var seed_anterior = $('#seed_anterior').val();
-
-    var max_iterations = $('#max_iterations').val();
-    var max_iterations_anterior = $('#max_iterations_anterior').val();
-
-    var edge_model = $('#modelo_borde').val();
-    var edge_model_anterior = $('#modelo_borde_anterior').val();
-
-    var comm_model = $('#modelo_comunicacion').val();
-    var comm_model_anterior = $('#modelo_comunicacion_anterior').val();
-
-    var transm_model = $('#modelo_transmision').val();
-    var transm_model_anterior = $('#modelo_transmision_anterior').val();
-
-    var url = ('href', location.protocol + '//' + window.location.host +
-    '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf&proyecto_id=' + proyecto_id +
-    '&nombre_arch_conf=' + nombre_arch_conf + "&count=" + count +
-    "&range=" + range + "&rect_world_width=" + rect_world_width + "&rect_world_height=" + rect_world_height +
-    "&seed=" + seed + "&max_iterations=" + max_iterations + "&count_anterior=" + count_anterior + "&range_anterior=" + range_anterior +
-    "&rect_world_width_anterior=" + rect_world_width_anterior + "&rect_world_height_anterior=" + rect_world_height_anterior +
-    "&seed_anterior=" + seed_anterior + "&max_iterations_anterior=" + max_iterations_anterior +
-    "&edge_model=" + edge_model + "&edge_model_anterior=" + edge_model_anterior +
-    "&comm_model=" + comm_model + "&comm_model_anterior=" + comm_model_anterior +
-    "&transm_model=" + transm_model + "&transm_model_anterior=" + transm_model_anterior);
-
-
-    $.ajax({
-        url: url,
-        type: "get",
-        dataType: 'json',
-        cache: false,
-        error: function () {
-            swal(
-                'Error',
-                'Error al procesar la solicitud',
-                'error'
-            );
-        },
-        success: function (data) {
-            if (data.resul == true) {
-                swal(
-                    'Ok',
-                    'Parametros guardados correctamente',
-                    'success'
-                );
-
-                $('#count_anterior').val(count);
-                $('#range_anterior').val(range);
-                $('#rect_world_width_anterior').val(rect_world_width);
-                $('#rect_world_height_anterior').val(rect_world_height);
-                $('#seed_anterior').val(seed);
-                $('#max_iterations_anterior').val(max_iterations);
-                $('#modelo_borde_anterior').val(edge_model);
-                $('#modelo_comunicacion_anterior').val(comm_model);
-                $('#modelo_transmision_anterior').val(transm_model);
-
-            } else {
-                swal(
-                    'Error',
-                    'Error al guardar los parametros',
-                    'error'
-                );
-                cargarParamArchConf();
-            }
-        }
-    });
-}
-
 /**
  * Funciones especificas para modulo de visualizacion
  */
@@ -627,7 +538,7 @@ function guardar_param_arch_conf_vis() {
         "&comm_model=" + comm_model +
         "&transm_model=" + transm_model
     );
-    
+
     $.ajax({
         url: url,
         type: "get",
@@ -800,16 +711,6 @@ function load_config_to_vis_table() {
         '<td>' + edge_line_width + '</td>' +
         '<td>' + '<button class="btn btn-sm btn-outline-danger remove-tr"><i class="fas fa-eraser"></i></button>' + '</td>' +
         '</tr>');
-}
-
-/**
- * Fin Funciones especificas para modulo de visualizacion
- */
-
-
-function visualizar() {
-    var url = "../ver_pdf.php";
-    window.location.href = url;
 }
 
 function crear_proyecto() {

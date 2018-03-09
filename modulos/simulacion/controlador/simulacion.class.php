@@ -42,47 +42,6 @@ if (isset($_GET["cargar-archivo-conf-vis"])) {
     $simulacion->obtenerArchivosConfVis($proyecto_id, $dom_select_archivo_conf_id);
 }
 
-if (isset($_GET["guardar-param-arch-conf"])) {
-
-    $nombre_arch_conf = $_GET["nombre_arch_conf"];
-    $proyecto_id = $_GET["proyecto_id"];
-
-    $count = $_GET["count"];
-    $count_anterior = $_GET["count_anterior"];
-
-    $range = $_GET["range"];
-    $range_anterior = $_GET["range_anterior"];
-
-    $rect_world_width = $_GET["rect_world_width"];
-    $rect_world_width_anterior = $_GET["rect_world_width_anterior"];
-
-    $rect_world_height = $_GET["rect_world_height"];
-    $rect_world_height_anterior = $_GET["rect_world_height_anterior"];
-
-    $seed = $_GET["seed"];
-    $seed_anterior = $_GET["seed_anterior"];
-
-    $max_iterations = $_GET["max_iterations"];
-    $max_iterations_anterior = $_GET["max_iterations_anterior"];
-
-    $edge_model = $_GET["edge_model"];
-    $edge_model_anterior = $_GET["edge_model_anterior"];
-
-    $comm_model = $_GET["comm_model"];
-    $comm_model_anterior = $_GET["comm_model_anterior"];
-
-    $transm_model = $_GET["transm_model"];
-    $transm_model_anterior = $_GET["transm_model_anterior"];
-
-    $simulacion->guardarParamArchConf($proyecto_id, $nombre_arch_conf,
-        $count, $range, $rect_world_width, $rect_world_height,
-        $seed, $max_iterations, $count_anterior, $range_anterior, $rect_world_width_anterior,
-        $rect_world_height_anterior, $seed_anterior, $max_iterations_anterior, $edge_model,
-        $edge_model_anterior,
-        $comm_model, $comm_model_anterior, $transm_model, $transm_model_anterior);
-
-}
-
 if (isset($_GET["guardar-param-arch-conf-vis"])) {
     $nombre_arch_conf = $_GET["nombre_arch_conf"];
     $proyecto_id = $_GET["proyecto_id"];
@@ -268,43 +227,6 @@ class simulacion
         $control_simulacion = new ControlSimulacion();
         $parametros_vis_proyect = $control_simulacion->obtenerParamVisProyecto($proyecto_id, $nombre_arch_conf);
         echo json_encode($parametros_vis_proyect);
-    }
-
-    public function guardarParamArchConf(
-        $proyecto_id,
-        $nombre_arch_conf,
-        $count,
-        $range,
-        $rect_world_width,
-        $rect_world_height,
-        $seed,
-        $max_iterations,
-        $count_anterior,
-        $range_anterior,
-        $rect_world_width_anterior,
-        $rect_world_height_anterior,
-        $seed_anterior,
-        $max_iterations_anterior,
-        $edge_model,
-        $edge_model_anterior,
-        $comm_model,
-        $comm_model_anterior,
-        $transm_model,
-        $transm_model_anterior
-    ) {
-        $resul = false;
-        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
-        $control_simulacion = new ControlSimulacion();
-        $resul = $control_simulacion->guardarParamArchConf($proyecto_id, $nombre_arch_conf,
-            $count, $range, $rect_world_width, $rect_world_height,
-            $seed, $max_iterations, $count_anterior, $range_anterior, $rect_world_width_anterior,
-            $rect_world_height_anterior, $seed_anterior, $max_iterations_anterior, $edge_model, $edge_model_anterior,
-            $comm_model, $comm_model_anterior, $transm_model, $transm_model_anterior);
-        if ($resul == true) {
-            echo json_encode(["resul" => true]);
-        } else {
-            echo json_encode(["resul" => false]);
-        }
     }
 
     public function guardarParamArchConfVis(
