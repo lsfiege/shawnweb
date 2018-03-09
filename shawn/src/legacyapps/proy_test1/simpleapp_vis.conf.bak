@@ -8,6 +8,7 @@ prepare_world edge_model=simple comm_model=disk_graph range=1.5
 load_world file=world-2_simpleapp_vis.conf.xml snapshot=id:micustomid0707 processors=proy_test1
 
 simulation max_iterations=2
+
 connectivity
 dump_transmission_stats
 

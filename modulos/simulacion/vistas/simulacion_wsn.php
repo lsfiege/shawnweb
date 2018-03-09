@@ -156,7 +156,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
         </li>
         <li class="nav-item">
             <a class="nav-link"
-               id="contact-tab" data-toggle="tab"
+               id="contact-tab-vis" data-toggle="tab"
                href="#visualizacion"
                role="tab"
                aria-controls="contact"
@@ -371,9 +371,9 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             <div class="form-group">
                                 <button type="button" class="btn btn-block btn-primary"
                                         name="guardar_control"
-                                        onClick="guardar_param_arch_conf(); return false;">
-                                    <i class="far fa-save"></i>
-                                    Guardar
+                                        onclick="show_vis_panel(); return false;">
+                                    Siguiente
+                                    <i class="fa fa-chevron-right" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -643,7 +643,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                             name="guardar_control"
                                             onClick="guardar_param_arch_conf_vis(); return false;">
                                         <i class="far fa-save"></i>
-                                        Generar Configuración de visualización
+                                        Generar Configuración
                                     </button>
                                 </div>
                             </div>

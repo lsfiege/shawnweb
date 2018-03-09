@@ -91,13 +91,32 @@ if (isset($_GET["guardar-param-arch-conf-vis"])) {
     $id_snapshot = $_GET["id_snapshot"];
     $vis_configs = json_decode($_GET['vis_configs']);
 
+    $count = $_GET["count"];
+    $range = $_GET["range"];
+    $world_width = $_GET["world_width"];
+    $world_height = $_GET["world_height"];
+    $seed = $_GET["seed"];
+    $max_iterations = $_GET["max_iterations"];
+    $edge_model = $_GET["edge_model"];
+    $comm_model = $_GET["comm_model"];
+    $transm_model = $_GET["transm_model"];
+
     $simulacion->guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
         $export_scenario,
         $vis_configs,
         $load_snapshot,
-        $id_snapshot
+        $id_snapshot,
+        $count,
+        $range,
+        $world_width,
+        $world_height,
+        $seed,
+        $max_iterations,
+        $edge_model,
+        $comm_model,
+        $transm_model
     );
 }
 
@@ -294,7 +313,16 @@ class simulacion
         $export_scenario,
         $vis_configs,
         $load_snapshot,
-        $id_snapshot
+        $id_snapshot,
+        $count,
+        $range,
+        $world_width,
+        $world_height,
+        $seed,
+        $max_iterations,
+        $edge_model,
+        $comm_model,
+        $transm_model
     ) {
         $resul = false;
 
@@ -308,7 +336,16 @@ class simulacion
             $export_scenario,
             $vis_configs,
             $load_snapshot,
-            $id_snapshot
+            $id_snapshot,
+            $count,
+            $range,
+            $world_width,
+            $world_height,
+            $seed,
+            $max_iterations,
+            $edge_model,
+            $comm_model,
+            $transm_model
         );
 
         if ($resul == true) {

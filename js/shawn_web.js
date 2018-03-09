@@ -559,9 +559,6 @@ function guardar_param_arch_conf_vis() {
 
     var nombre_arch_conf = $('#vis_archivo_conf').val();
 
-    //todo: remove this
-    var max_nodes = $('#max_nodes').val();
-
     var export_scenario = $('#save_world').prop('checked') === true ? 'on' : 'off';
 
     var load_snapshot = $('#load_snapshot').prop('checked') === true ? 'on' : 'off';
@@ -598,19 +595,40 @@ function guardar_param_arch_conf_vis() {
         return false;
     }
 
+    //Parametros de escenario
+    var count = $('#count').val();
+    var range = $('#range').val();
+    var rect_world_width = $('#rect_world_width').val();
+    var rect_world_height = $('#rect_world_height').val();
+    var seed = $('#seed').val();
+    var max_iterations = $('#max_iterations').val();
+    var edge_model = $('#modelo_borde').val();
+    var comm_model = $('#modelo_comunicacion').val();
+    var transm_model = $('#modelo_transmision').val();
+
     var url = (
         'href', location.protocol + '//' + window.location.host +
         '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis' +
         '&proyecto_id=' + proyecto_id +
         '&nombre_arch_conf=' + nombre_arch_conf +
-        "&max_nodes=" + max_nodes +
         "&export_scenario=" + export_scenario +
         "&load_snapshot=" + load_snapshot +
         "&id_snapshot=" + id_snapshot +
-        "&vis_configs=" + JSON.stringify(vis_configs)
+        "&vis_configs=" + JSON.stringify(vis_configs) +
+        "&count=" + count +
+        "&range=" + range +
+        "&world_width=" + rect_world_width +
+        "&world_height=" + rect_world_height +
+        "&seed=" + seed +
+        "&max_iterations=" + max_iterations +
+        "&edge_model=" + edge_model +
+        "&comm_model=" + comm_model +
+        "&transm_model=" + transm_model
     );
 
-    $.ajax({
+    console.log(url);
+
+    /*$.ajax({
         url: url,
         type: "get",
         dataType: 'json',
@@ -638,7 +656,7 @@ function guardar_param_arch_conf_vis() {
                 cargarParamArchConfVis();
             }
         }
-    });
+    });*/
 }
 
 function guardar_preset_usuario() {
@@ -700,6 +718,22 @@ function guardar_preset_usuario() {
             }
         }
     });
+}
+
+function show_vis_panel() {
+    $('#control').removeClass('active');
+    $('#control').removeClass('show');
+
+    $('#profile-tab').removeClass('active');
+    $('#profile-tab').removeClass('show');
+
+    $('#contact-tab-vis').addClass('active');
+    $('#contact-tab-vis').addClass('show');
+
+    $('#visualizacion').addClass('active');
+    $('#visualizacion').addClass('show');
+
+    $('html, body').animate({scrollTop: 0}, 'fast');
 }
 
 function eliminar_preset_usuario() {

@@ -367,7 +367,16 @@ class ControlSimulacion
         $export_scenario,
         $vis_configs,
         $load_snapshot,
-        $id_snapshot
+        $id_snapshot,
+        $count,
+        $range,
+        $world_width,
+        $world_height,
+        $seed,
+        $max_iterations,
+        $edge_model,
+        $comm_model,
+        $transm_model
     ) {
         try {
             $arr_parametros = [];
@@ -381,39 +390,62 @@ class ControlSimulacion
                 2 => ["pipe", "w"] // stderr
             ];
 
-            // Clear visualization settings, erase from line 7 if the scenario should not be loaded
-            //todo: fix manejo de instrucciones de archivo si se debe cargar un escenario o bien volver a generarlo
-            if ($load_snapshot) {
-                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'2,$d'."'".' {} \;';
-            } else {
-                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'7,$d'."'".' {} \;';
-            }
-
-            $i = 0;
-            while ($i < 4) {
-                $process1 = proc_open($comando1, $descriptorspec, $pipes1);
-                $i++;
-            }
-
+            // Limpiar archivo
+            $comando1 = "cp /dev/null {$source}";
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
             $this->cerrarProceso($process1);
 
-            //todo: settings por si hay que cargar un snapshot de escenario
-            //todo: mantain settings for dump transmission stats and others
+            // Inicializar mundo
+            $comando1 = "echo 'prepare_world edge_model={$edge_model} comm_model={$comm_model} range={$range}' > $source";
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
+
+            $this->saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs);
+
+            //Comprobar si debe cargar escenario
             if ($load_snapshot and !is_null($id_snapshot)) {
-                /*$comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a prepare_world edge_model=simple '."'".' {} \;';
+                // Cargar escenario
+            } else {
+                // Generar escenario
+                $comando1 = "echo 'random_seed action=set seed={$seed}' >> $source";
                 $process1 = proc_open($comando1, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process1);*/
+                $this->cerrarProceso($process1);
 
-                //get snapshot data
-                $snap = R::load('vis_proyecto_snapshots', $id_snapshot);
+                $comando1 = "echo 'rect_world width={$world_width} height={$world_height} count={$count} processors={$proyecto->nombre}' >> $source";
+                $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+                $this->cerrarProceso($process1);
 
-                $world_filename = $snap->world_filename;
-                $snapshot_file_id = $snap->snapshot_id;
-
-                $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a load_world file='.$world_filename.' snapshot='.$snapshot_file_id.' processors=proy_test1'."'".' {} \;';
-                $process2 = proc_open($comando2, $descriptorspec, $pipes2);
-                $this->cerrarProceso($process2);
+                // Guardar escenario en db
+                $this->saveWorldSettings(
+                    $proyecto_id,
+                    $nombre_arch_conf,
+                    $count,
+                    $range,
+                    $world_width,
+                    $world_height,
+                    $seed,
+                    $max_iterations,
+                    $edge_model,
+                    $comm_model,
+                    $transm_model
+                );
             }
+
+
+            // obtener cant iteraciones y agregar simulation max_iterations=X
+            $comando1 = "echo 'simulation max_iterations={$max_iterations}' >> $source";
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
+
+            // agregar linea connectivity
+            $comando1 = "echo 'connectivity' >> $source";
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
+
+            // agregar linea dump_transmission_stats
+            $comando1 = "echo 'dump_transmission_stats' >> $source";
+            $process1 = proc_open($comando1, $descriptorspec, $pipes1);
+            $this->cerrarProceso($process1);
 
             // Set VIS initialization
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis=my_visualization'."'".' {} \;';
@@ -427,8 +459,6 @@ class ControlSimulacion
             $comando3 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis_create_edges source_regex=.* target_regex=.*'."'".' {} \;';
             $process3 = proc_open($comando3, $descriptorspec, $pipes1);
             $this->cerrarProceso($process3);
-
-            $this->saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs);
 
             // Set VIS configurations
             $i = 1;
@@ -515,6 +545,51 @@ class ControlSimulacion
         }
 
         return true;
+    }
+
+    public function saveWorldSettings(
+        $proyecto_id,
+        $nombre_arch_conf,
+        $count,
+        $range,
+        $world_width,
+        $world_height,
+        $seed,
+        $max_iterations,
+        $edge_model,
+        $comm_model,
+        $transm_model
+    ) {
+        $config = R::getAll('SELECT * FROM vis_proyecto_config WHERE proyecto_id = ? and file = ? ',
+            [$proyecto_id, $nombre_arch_conf]);
+
+        if (count($config) > 0) {
+            $config = (object)$config[0];
+            $proyect_config_id = $config->id;
+
+            $config = R::getAll('SELECT * FROM vis_proyecto_file_world WHERE vis_proyecto_archivo_id = ?',
+                [$proyect_config_id]);
+
+            if (count($config) > 0) {
+                $config = (object)$config[0];
+                $world_config = R::load('', $config->id);
+            } else {
+                $world_config = R::xdispense('vis_proyecto_file_world');
+                $world_config->vis_proyecto_archivo_id = $proyect_config_id;
+            }
+
+            $world_config->count = $count;
+            $world_config->range = $range;
+            $world_config->world_width = $world_width;
+            $world_config->world_height = $world_height;
+            $world_config->seed = $seed;
+            $world_config->max_iterations = $max_iterations;
+            $world_config->edge_model = $edge_model;
+            $world_config->comm_model = $comm_model;
+            $world_config->transm_model = $transm_model;
+
+            R::store($world_config);
+        }
     }
 
     public function saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs)
