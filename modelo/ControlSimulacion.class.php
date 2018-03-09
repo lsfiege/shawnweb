@@ -167,6 +167,33 @@ class ControlSimulacion
         return [];
     }
 
+    public function cargarWorld($proyecto_id, $nombre_arch_conf)
+    {
+        $config = R::getAll('SELECT * FROM vis_proyecto_config WHERE proyecto_id = ? and file = ? ',
+            [$proyecto_id, $nombre_arch_conf]);
+
+        if (count($config) > 0) {
+            $config = (object)$config[0];
+            $proyect_config_id = $config->id;
+
+            $world = R::getAll('SELECT * FROM vis_proyecto_file_world WHERE vis_proyecto_archivo_id = ?',
+                [$proyect_config_id]);
+
+            if (count($world) > 0) {
+                $world = (object)$world[0];
+
+                return [
+                    'count'  => $world->count,
+                    'width'  => $world->world_width,
+                    'height' => $world->world_height,
+                    'seed'   => $world->seed,
+                ];
+            }
+        }
+
+        return null;
+    }
+
     /**
      * Obtiene los parametros ingresados en un archivo de configuracion .conf de un determinado proyecto
      * @param type $nombre_arch_conf nombre del archivo de donde se desea obtener los parametros

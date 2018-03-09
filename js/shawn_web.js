@@ -240,7 +240,6 @@ function cargarParamArchConf() {
             );
         },
         success: function (data) {
-            //todo: if  dont have count, width height and seed get it from db
             $('#count').val('');
             $('#count').val(data.count);
             $('#count_anterior').val('');
@@ -286,6 +285,43 @@ function cargarParamArchConf() {
             $('#modelo_transmision_anterior').val('');
             $('#modelo_transmision_anterior').val(data.transm_model);
 
+            if (data.count.length === 0 &&
+                data.rect_world_width.length === 0 &&
+                data.rect_world_height.length === 0 &&
+                data.seed.length === 0) {
+                getWorldFromDB();
+            }
+
+        }
+    });
+}
+
+function getWorldFromDB() {
+    var select_option_id = $('#control_proy_simul option:selected').attr('id');
+    var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
+    var nombre_arch_conf = $('#control_archivo_conf').val();
+    var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-world&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
+
+    $.ajax({
+        url: url,
+        type: "get",
+        cache: false,
+        error: function () {
+            swal(
+                'Error',
+                'Error al procesar la solicitud',
+                'error'
+            );
+        },
+        success: function (data) {
+            if(data !== null){
+                data = JSON.parse(data);
+
+                $('#count').val(data.count);
+                $('#rect_world_width').val(data.width);
+                $('#rect_world_height').val(data.height);
+                $('#seed').val(data.seed);
+            }
         }
     });
 }
