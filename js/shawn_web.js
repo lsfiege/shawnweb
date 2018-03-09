@@ -240,6 +240,7 @@ function cargarParamArchConf() {
             );
         },
         success: function (data) {
+            //todo: if  dont have count, width height and seed get it from db
             $('#count').val('');
             $('#count').val(data.count);
             $('#count_anterior').val('');
@@ -289,6 +290,7 @@ function cargarParamArchConf() {
     });
 }
 
+//todo: remove
 function guardar_param_arch_conf() {
     var select_option_id = '';
     var proyecto_id;
@@ -463,7 +465,7 @@ function cargarParamArchConfVis() {
         error: function () {
             swal(
                 'Error',
-                'Error al procesar la solicitud',
+                'Error al cargar parametros de vis',
                 'error'
             );
         },
@@ -625,10 +627,8 @@ function guardar_param_arch_conf_vis() {
         "&comm_model=" + comm_model +
         "&transm_model=" + transm_model
     );
-
-    console.log(url);
-
-    /*$.ajax({
+    
+    $.ajax({
         url: url,
         type: "get",
         dataType: 'json',
@@ -644,7 +644,7 @@ function guardar_param_arch_conf_vis() {
             if (data.resul == true) {
                 swal(
                     'Ok',
-                    'Parámetros de visualización guardados correctamente',
+                    'Parámetros de mundo y visualización guardados correctamente',
                     'success'
                 );
             } else {
@@ -656,11 +656,10 @@ function guardar_param_arch_conf_vis() {
                 cargarParamArchConfVis();
             }
         }
-    });*/
+    });
 }
 
 function guardar_preset_usuario() {
-
     var color = $('#selected_preset_color').val();
     var color_x = $('#selected_preset_color_x').val();
     var color_y = $('#selected_preset_color_y').val();

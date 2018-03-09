@@ -405,6 +405,11 @@ class ControlSimulacion
             //Comprobar si debe cargar escenario
             if ($load_snapshot and !is_null($id_snapshot)) {
                 // Cargar escenario
+                $snapshot = R::load('vis_proyecto_snapshots', $id_snapshot);
+                $comando2 = "echo 'load_world file={$snapshot->world_filename} snapshot={$snapshot->snapshot_id} processors={$proyecto->nombre}' >> $source";
+                $process2 = proc_open($comando2, $descriptorspec, $pipes2);
+                $this->cerrarProceso($process2);
+
             } else {
                 // Generar escenario
                 $comando1 = "echo 'random_seed action=set seed={$seed}' >> $source";
