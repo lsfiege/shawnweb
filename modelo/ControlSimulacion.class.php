@@ -155,6 +155,18 @@ class ControlSimulacion
         return [];
     }
 
+    public function obtenerSnapshotsUser($usuario_id)
+    {
+        $snapshots = R::getAll('SELECT * FROM vis_proyecto_snapshots WHERE usuario_id = ? ',
+            [$usuario_id]);
+
+        if (count($snapshots) > 0) {
+            return $snapshots;
+        }
+
+        return [];
+    }
+
     /**
      * Obtiene los parametros ingresados en un archivo de configuracion .conf de un determinado proyecto
      * @param type $nombre_arch_conf nombre del archivo de donde se desea obtener los parametros
@@ -352,9 +364,10 @@ class ControlSimulacion
     public function guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes,
         $export_scenario,
-        $vis_configs
+        $vis_configs,
+        $load_snapshot,
+        $id_snapshot
     ) {
         try {
             $arr_parametros = [];
@@ -369,8 +382,12 @@ class ControlSimulacion
             ];
 
             // Clear visualization settings, erase from line 7 if the scenario should not be loaded
-            //todo: fix manejo de instrucciones de archivo si se debe cargar un escenario
-            $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'7,$d'."'".' {} \;';
+            //todo: fix manejo de instrucciones de archivo si se debe cargar un escenario o bien volver a generarlo
+            if ($load_snapshot) {
+                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'2,$d'."'".' {} \;';
+            } else {
+                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'7,$d'."'".' {} \;';
+            }
 
             $i = 0;
             while ($i < 4) {
@@ -381,19 +398,22 @@ class ControlSimulacion
             $this->cerrarProceso($process1);
 
             //todo: settings por si hay que cargar un snapshot de escenario
-            // If scenario should be exported load it
-            /*if($load_scenario and !is_null($id_snapshot)){
-                $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a prepare_world edge_model=simple '."'".' {} \;';
+            //todo: mantain settings for dump transmission stats and others
+            if ($load_snapshot and !is_null($id_snapshot)) {
+                /*$comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a prepare_world edge_model=simple '."'".' {} \;';
                 $process1 = proc_open($comando1, $descriptorspec, $pipes1);
-                $this->cerrarProceso($process1);
+                $this->cerrarProceso($process1);*/
 
-                $world_filename = '';
-                $snapshot_id = '';
+                //get snapshot data
+                $snap = R::load('vis_proyecto_snapshots', $id_snapshot);
 
-                $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a load_world file=world-2_simpleapp_vis.conf.xml snapshot=id:2_0_WYyooB-A processors=proy_test1'."'".' {} \;';
-                $process2 = proc_open($comando2, $descriptorspec, $pipes1);
+                $world_filename = $snap->world_filename;
+                $snapshot_file_id = $snap->snapshot_id;
+
+                $comando2 = 'find '.$source.' -type f -exec sed -i '."'".'$a load_world file='.$world_filename.' snapshot='.$snapshot_file_id.' processors=proy_test1'."'".' {} \;';
+                $process2 = proc_open($comando2, $descriptorspec, $pipes2);
                 $this->cerrarProceso($process2);
-            }*/
+            }
 
             // Set VIS initialization
             $comando1 = 'find '.$source.' -type f -exec sed -i '."'".'$a vis=my_visualization'."'".' {} \;';
@@ -499,7 +519,6 @@ class ControlSimulacion
 
     public function saveProjectVisConfigs($proyecto_id, $nombre_arch_conf, $vis_configs)
     {
-        //todo: get file path for fast retrieve
         $config = R::getAll('SELECT * FROM vis_proyecto_config WHERE proyecto_id = ? and file = ? ',
             [$proyecto_id, $nombre_arch_conf]);
 
@@ -507,15 +526,16 @@ class ControlSimulacion
             $config = (object)$config[0];
             $proyect_config_id = $config->id;
         } else {
+            $proyecto = R::load('proyecto', $proyecto_id);
+
             $data = R::xdispense('vis_proyecto_config');
             $data->proyecto_id = $proyecto_id;
             $data->file = $nombre_arch_conf;
-            $data->path = '';
+            $data->path = $proyecto->path;
             $data->usuario_id = $_SESSION['usuario_id'];
 
             $proyect_config_id = R::store($data);
         }
-
 
         foreach ($vis_configs as $vis) {
 
@@ -550,6 +570,7 @@ class ControlSimulacion
         $data->proyecto_file = $proyecto_file;
         $data->snapshot_id = $snapshot_id;
         $data->world_filename = $world_filename;
+        $data->usuario_id = $_SESSION['usuario_id'];
 
         $id = R::store($data);
 

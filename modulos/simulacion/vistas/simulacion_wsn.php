@@ -247,37 +247,51 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                         <span>-</span>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
+
 
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-
                                     <h4>Parámetros de escenario</h4>
 
                                     <div class="form-group">
-                                        <label>count:</label>
-                                        <input type="text" id="count" value="" class="form-control"/>
-                                        <input type="text" id="count_anterior" hidden/>
+                                        <label for="load_snapshot">
+                                            Cargar escenario generado
+                                        </label>
+                                        <input type="checkbox" id="load_snapshot"
+                                               onchange="loadSelectSnapshots();return false;">
+                                        <div id="div_snapshots" class="form-group"></div>
                                     </div>
 
-                                    <div class="form-group">
-                                        <label>width:</label>
-                                        <input type="text" id="rect_world_width" value="" class="form-control"/>
-                                        <input type="text" id="rect_world_width_anterior" hidden/>
-                                    </div>
+                                    <div id="world_settings">
 
-                                    <div class="form-group">
-                                        <label>height:</label>
-                                        <input type="text" id="rect_world_height" value="" class="form-control"/>
-                                        <input type="text" id="rect_world_height_anterior" hidden/>
-                                    </div>
+                                        <div class="form-group">
+                                            <label>count:</label>
+                                            <input type="text" id="count" value="" class="form-control"/>
+                                            <input type="text" id="count_anterior" hidden/>
+                                        </div>
 
-                                    <div class="form-group">
-                                        <label>seed:</label>
-                                        <input type="text" id="seed" value="" class="form-control"/>
-                                        <input type="text" id="seed_anterior" hidden/>
+                                        <div class="form-group">
+                                            <label>width:</label>
+                                            <input type="text" id="rect_world_width" value="" class="form-control"/>
+                                            <input type="text" id="rect_world_width_anterior" hidden/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>height:</label>
+                                            <input type="text" id="rect_world_height" value=""
+                                                   class="form-control"/>
+                                            <input type="text" id="rect_world_height_anterior" hidden/>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>seed:</label>
+                                            <input type="text" id="seed" value="" class="form-control"/>
+                                            <input type="text" id="seed_anterior" hidden/>
+                                        </div>
                                     </div>
 
                                 </div>
@@ -305,7 +319,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                     <div class="form-group">
                                         <label>Modelo de Borde:</label>
                                         <select id="modelo_borde" disabled="disabled" class="form-control">
-                                            <option value="0" selected disabled>Seleccione un Modelo de Borde</option>
+                                            <option value="0" selected disabled>Seleccione un Modelo de Borde
+                                            </option>
                                             <option value="simple">simple</option>
                                             <option value="list">list</option>
                                             <option value="grid">grid</option>
@@ -316,8 +331,10 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                                     <div class="form-group">
                                         <label>Modelo de Comunicación:</label>
-                                        <select id="modelo_comunicacion" disabled="disabled" class="form-control">
-                                            <option value="0" selected disabled>Seleccione un Modelo de Comunicación
+                                        <select id="modelo_comunicacion" disabled="disabled"
+                                                class="form-control">
+                                            <option value="0" selected disabled>Seleccione un Modelo de
+                                                Comunicación
                                             </option>
                                             <option value="disk_graph">Unit Disk Graph (UDG)</option>
                                             <option value="rim">Radio Irregularity Model (RIM)</option>
@@ -330,7 +347,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                                     <div class="form-group">
                                         <label>Modelo de Transmisión:</label>
-                                        <select id="modelo_transmision" disabled="disabled" class="form-control">
+                                        <select id="modelo_transmision" disabled="disabled"
+                                                class="form-control">
                                             <option value="0" selected disabled>Seleccione un Modelo de Transmi&oacute;n
                                             </option>
                                             <option value="csma">Csma</option>
@@ -612,8 +630,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </div>
 
                             <div class="col-md-12">
-                                <div class="form-group">
-                                    <p>todo: si selecciono cargar mundo en pestaña anterior no mostrar esto</p>
+                                <div id="save_world_div" class="form-group">
                                     <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
                                     <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
                                         simulaciones

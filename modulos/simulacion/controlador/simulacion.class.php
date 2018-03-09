@@ -17,6 +17,11 @@ if (isset($_GET["cargar-archivo-conf"])) {
 
 }
 
+if (isset($_GET["cargar-select-snapshots"])) {
+    $usuario_id = $_SESSION["usuario_id"];
+    $simulacion->obtenerSnapshotsUser($usuario_id);
+}
+
 if (isset($_GET["cargar-param-arch-conf"])) {
     $nombre_arch_conf = $_GET["nombre_arch_conf"];
     $proyecto_id = $_GET["proyecto_id"];
@@ -81,16 +86,18 @@ if (isset($_GET["guardar-param-arch-conf"])) {
 if (isset($_GET["guardar-param-arch-conf-vis"])) {
     $nombre_arch_conf = $_GET["nombre_arch_conf"];
     $proyecto_id = $_GET["proyecto_id"];
-    $max_nodes = $_GET["max_nodes"];
     $export_scenario = $_GET["export_scenario"] == 'on' ? true : false;
+    $load_snapshot = $_GET["load_snapshot"] == 'on' ? true : false;
+    $id_snapshot = $_GET["id_snapshot"];
     $vis_configs = json_decode($_GET['vis_configs']);
 
     $simulacion->guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes,
         $export_scenario,
-        $vis_configs
+        $vis_configs,
+        $load_snapshot,
+        $id_snapshot
     );
 }
 
@@ -191,6 +198,27 @@ class simulacion
         echo $select_option;
     }
 
+    public function obtenerSnapshotsUser($usuario_id)
+    {
+        require_once($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARATOR.'ControlSimulacion.class.php');
+        $control_simulacion = new ControlSimulacion();
+        $proyect_snapshots = $control_simulacion->obtenerSnapshotsUser($usuario_id);
+
+        if (count($proyect_snapshots) > 0) {
+            $select = '<select id="select_proyect_snapshot" class="form-control">
+                    <option selected disabled value="-1">Seleccione</option>';
+            foreach ($proyect_snapshots as $snap) {
+                $select .= "<option value='".$snap['id']."'>".$snap['snapshot_id']."</option>";
+            }
+            $select .= "</select>";
+
+            echo $select;
+        } else {
+            echo "<span class='badge badge-danger'>Sin snapshots</span>";
+        }
+
+    }
+
     public function obtenerArchivosConfVis($proyecto_id, $dom_select_archivo_conf_id)
     {
         $nombres_archivos_conf = [];
@@ -263,9 +291,10 @@ class simulacion
     public function guardarParamArchConfVis(
         $proyecto_id,
         $nombre_arch_conf,
-        $max_nodes,
         $export_scenario,
-        $vis_configs
+        $vis_configs,
+        $load_snapshot,
+        $id_snapshot
     ) {
         $resul = false;
 
@@ -276,9 +305,10 @@ class simulacion
         $resul = $control_simulacion->guardarParamArchConfVis(
             $proyecto_id,
             $nombre_arch_conf,
-            $max_nodes,
             $export_scenario,
-            $vis_configs
+            $vis_configs,
+            $load_snapshot,
+            $id_snapshot
         );
 
         if ($resul == true) {

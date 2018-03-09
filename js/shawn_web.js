@@ -218,12 +218,15 @@ function crearUrlVisualizacion(proyecto_id) {
 }
 
 function cargarParamArchConf() {
-    var select_option_id = '';
-    var proyecto_id;
-    select_option_id = $('#control_proy_simul option:selected').attr('id');
+    $("#div_snapshots").empty();
+    $("#world_settings").show();
+    $("#load_snapshot").prop('checked', false);
+
+    var select_option_id = $('#control_proy_simul option:selected').attr('id');
     var proyecto_id = select_option_id.substr(select_option_id.indexOf("_") + 1);
     var nombre_arch_conf = $('#control_archivo_conf').val();
     var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-param-arch-conf&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
+
     $.ajax({
         url: url,
         type: "get",
@@ -406,6 +409,44 @@ function cargarArchConfVis() {
     });
 }
 
+function loadSelectSnapshots() {
+    var load_snapshot = $('#load_snapshot').prop('checked');
+
+    if (load_snapshot) {
+
+        var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-select-snapshots');
+
+        $.ajax({
+            url: url,
+            type: "get",
+            cache: false,
+            error: function () {
+                swal(
+                    'Error',
+                    'Error al procesar la solicitud',
+                    'error'
+                );
+            },
+            success: function (data) {
+                $('#world_settings').hide();
+
+                $('#save_world_div').hide();
+
+                $('#save_world').prop('checked', false);
+
+                $("#div_snapshots").empty().append(data);
+            }
+        });
+
+    } else {
+        $("#div_snapshots").empty();
+
+        $('#world_settings').show();
+
+        $('#save_world_div').show();
+    }
+}
+
 function cargarParamArchConfVis() {
     var select_option_id = $('#vis_proy_simul option:selected').attr('id');
 
@@ -414,7 +455,6 @@ function cargarParamArchConfVis() {
     var nombre_arch_conf = $('#vis_archivo_conf').val();
 
     var url = ('href', location.protocol + '//' + window.location.host + '/modulos/simulacion/controlador/simulacion.class.php?cargar-param-arch-conf&proyecto_id=' + proyecto_id + '&nombre_arch_conf=' + nombre_arch_conf);
-
     $.ajax({
         url: url,
         type: "get",
@@ -519,13 +559,14 @@ function guardar_param_arch_conf_vis() {
 
     var nombre_arch_conf = $('#vis_archivo_conf').val();
 
+    //todo: remove this
     var max_nodes = $('#max_nodes').val();
 
     var export_scenario = $('#save_world').prop('checked') === true ? 'on' : 'off';
 
-    var load_scenario = false;
+    var load_snapshot = $('#load_snapshot').prop('checked') === true ? 'on' : 'off';
 
-    var id_snapshot = null;
+    var id_snapshot = $('#select_proyect_snapshot option:selected').val() !== -1 ? $('#select_proyect_snapshot option:selected').val() : null;
 
     var vis_configs = $('#vis_configs_table tr:has(td)').map(function (i, v) {
         var $td = $('td', this);
@@ -546,6 +587,17 @@ function guardar_param_arch_conf_vis() {
         }
     }).get();
 
+    if (select_option_id.length === 0 &&
+        proyecto_id.length === 0 &&
+        nombre_arch_conf.length === 0
+    ) {
+        return false;
+    }
+
+    if (load_snapshot === 'on' && id_snapshot === -1) {
+        return false;
+    }
+
     var url = (
         'href', location.protocol + '//' + window.location.host +
         '/modulos/simulacion/controlador/simulacion.class.php?guardar-param-arch-conf-vis' +
@@ -553,6 +605,8 @@ function guardar_param_arch_conf_vis() {
         '&nombre_arch_conf=' + nombre_arch_conf +
         "&max_nodes=" + max_nodes +
         "&export_scenario=" + export_scenario +
+        "&load_snapshot=" + load_snapshot +
+        "&id_snapshot=" + id_snapshot +
         "&vis_configs=" + JSON.stringify(vis_configs)
     );
 
