@@ -292,6 +292,14 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                                             <input type="text" id="seed" value="" class="form-control"/>
                                             <input type="text" id="seed_anterior" hidden/>
                                         </div>
+
+                                        <div id="save_world_div" class="form-group">
+                                            <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
+                                            <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
+                                                simulaciones
+                                            </small>
+                                            <input type="checkbox" id="save_world">
+                                        </div>
                                     </div>
 
                                 </div>
@@ -630,14 +638,6 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
                             </div>
 
                             <div class="col-md-12">
-                                <div id="save_world_div" class="form-group">
-                                    <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
-                                    <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
-                                        simulaciones
-                                    </small>
-                                    <input type="checkbox" id="save_world">
-                                </div>
-
                                 <div class="form-group">
                                     <button type="button" class="btn btn-block btn-primary"
                                             name="guardar_control"
