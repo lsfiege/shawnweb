@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<scenario>
+<snapshot id="id:micustomid0707">
+	<node id="v0-JRILpB-C">
+		<location x="5.68242" y="12.1225" z="0" />
+	</node>
+	<node id="v1-JRILpB-D">
+		<location x="1.07718" y="14.0714" z="0" />
+	</node>
+	<node id="v2-JRILpB-E">
+		<location x="2.74364" y="2.52322" z="0" />
+	</node>
+	<node id="v3-JRILpB-F">
+		<location x="10.1045" y="2.90107" z="0" />
+	</node>
+	<node id="v4-JRILpB-G">
+		<location x="8.70869" y="2.57814" z="0" />
+	</node>
+	<node id="v5-JRILpB-H">
+		<location x="3.71235" y="9.41981" z="0" />
+	</node>
+	<node id="v6-JRILpB-I">
+		<location x="3.96455" y="7.01578" z="0" />
+	</node>
+	<node id="v7-JRILpB-J">
+		<location x="2.97279" y="6.88443" z="0" />
+	</node>
+	<node id="v8-JRILpB-K">
+		<location x="11.4943" y="11.8469" z="0" />
+	</node>
+	<node id="v9-JRILpB-L">
+		<location x="5.26171" y="1.21181" z="0" />
+	</node>
+</snapshot>
+</scenario>
