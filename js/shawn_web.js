@@ -314,7 +314,7 @@ function getWorldFromDB() {
             );
         },
         success: function (data) {
-            if(data !== null){
+            if (data !== null) {
                 data = JSON.parse(data);
 
                 $('#count').val(data.count);
@@ -435,13 +435,13 @@ function cargarParamArchConfVis() {
                     configs.forEach(function (item) {
                         $('#vis_configs_table > tbody:last-child').append('<tr>' +
                             '<td>' + item.id + '</td>' +
-                            '<td>' + item.node_color_rgb + '</td>' +
+                            '<td style="background: ' + item.node_color_rgb + '">' + item.node_color_rgb + '</td>' +
                             '<td style="display:none;">' + item.node_color_x + '</td>' +
                             '<td style="display:none;">' + item.node_color_y + '</td>' +
                             '<td style="display:none;">' + item.node_color_z + '</td>' +
                             '<td>' + item.node_size + '</td>' +
                             '<td>' + item.node_shape + '</td>' +
-                            '<td>' + item.node_edge_color_rgb + '</td>' +
+                            '<td style="background: ' + item.node_edge_color_rgb + '">' + item.node_edge_color_rgb + '</td>' +
                             '<td style="display:none;">' + item.node_edge_color_x + '</td>' +
                             '<td style="display:none;">' + item.node_edge_color_y + '</td>' +
                             '<td style="display:none;">' + item.node_edge_color_z + '</td>' +
@@ -734,13 +734,13 @@ function load_config_to_vis_table() {
 
     $('#vis_configs_table > tbody:last-child').append('<tr>' +
         '<td>' + '' + '</td>' +
-        '<td>' + color + '</td>' +
+        '<td style="background: ' + color + '">' + color + '</td>' +
         '<td style="display:none;">' + color_x + '</td>' +
         '<td style="display:none;">' + color_y + '</td>' +
         '<td style="display:none;">' + color_z + '</td>' +
         '<td>' + size + '</td>' +
         '<td>' + shape + '</td>' +
-        '<td>' + edge_color + '</td>' +
+        '<td style="background: ' + edge_color + '">' + edge_color + '</td>' +
         '<td style="display:none;">' + edge_color_x + '</td>' +
         '<td style="display:none;">' + edge_color_y + '</td>' +
         '<td style="display:none;">' + edge_color_z + '</td>' +

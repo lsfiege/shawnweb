@@ -129,7 +129,7 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
     </div>
 </header>
 
-<main role="main" class="container-fluid">
+<main role="main" class="container" style="max-width: 1400px  !important;">
 
     <ul class="nav nav-pills nav-justified" id="myTab" role="tablist">
         <li class="nav-item">
@@ -295,7 +295,8 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                                         <div id="save_world_div" class="form-group">
                                             <label for="save_world">¿Desea guardar un snapshot de escenario?</label>
-                                            <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en otras
+                                            <small>Guardarndo snapshots podrá reutilizar la disposición de los nodos en
+                                                otras
                                                 simulaciones
                                             </small>
                                             <input type="checkbox" id="save_world">
@@ -608,43 +609,46 @@ require($_SERVER['DOCUMENT_ROOT'].DIRECTORY_SEPARATOR.'modelo'.DIRECTORY_SEPARAT
 
                             </div>
 
-                            <div class="col-md-12">
-                                <div id="node_config_list" class="mb-5">
+                            <div class="row mt-5">
+                                <div class="col-md-12">
+                                    <h4>Configuraciónes de visualización del proyecto</h4>
+                                    <div id="node_config_list" class="mb-5">
 
-                                    <table id="vis_configs_table" class="table tables-striped table-hover">
-                                        <thead>
-                                        <tr>
-                                            <th>ID</th>
-                                            <th>Nodo: color rgb</th>
-                                            <th style="display:none;">Nodo: color x</th>
-                                            <th style="display:none;">Nodo: color y</th>
-                                            <th style="display:none;">Nodo: color z</th>
-                                            <th>Nodo: tamaño</th>
-                                            <th>Nodo: forma</th>
-                                            <th>Nodo linea: color rgb</th>
-                                            <th style="display:none;">Nodo linea: color x</th>
-                                            <th style="display:none;">Nodo linea: color y</th>
-                                            <th style="display:none;">Nodo linea: color z</th>
-                                            <th>Nodo linea: tamaño</th>
-                                            <th></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                                        <table id="vis_configs_table" class="table tables-striped table-hover">
+                                            <thead>
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Nodo: color rgb</th>
+                                                <th style="display:none;">Nodo: color x</th>
+                                                <th style="display:none;">Nodo: color y</th>
+                                                <th style="display:none;">Nodo: color z</th>
+                                                <th>Nodo: tamaño</th>
+                                                <th>Nodo: forma</th>
+                                                <th>Nodo linea: color rgb</th>
+                                                <th style="display:none;">Nodo linea: color x</th>
+                                                <th style="display:none;">Nodo linea: color y</th>
+                                                <th style="display:none;">Nodo linea: color z</th>
+                                                <th>Nodo linea: tamaño</th>
+                                                <th></th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
 
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
 
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <button type="button" class="btn btn-block btn-primary"
-                                            name="guardar_control"
-                                            onClick="guardar_param_arch_conf_vis(); return false;">
-                                        <i class="far fa-save"></i>
-                                        Generar Configuración
-                                    </button>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-block btn-primary"
+                                                name="guardar_control"
+                                                onClick="guardar_param_arch_conf_vis(); return false;">
+                                            <i class="far fa-save"></i>
+                                            Generar Configuración
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 

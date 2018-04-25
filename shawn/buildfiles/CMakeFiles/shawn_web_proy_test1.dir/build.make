@@ -57,33 +57,9 @@ include CMakeFiles/shawn_web_proy_test1.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/shawn_web_proy_test1.dir/flags.make
 
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o: CMakeFiles/shawn_web_proy_test1.dir/flags.make
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o: /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/var/www/shawnweb/shawn/buildfiles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o"
-	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o -c /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp
-
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp > CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i
-
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp -o CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s
-
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires:
-
-.PHONY : CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
-
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
-	$(MAKE) -f CMakeFiles/shawn_web_proy_test1.dir/build.make CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides.build
-.PHONY : CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides
-
-CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides.build: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o
-
-
 CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o: CMakeFiles/shawn_web_proy_test1.dir/flags.make
 CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o: /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_processor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/var/www/shawnweb/shawn/buildfiles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/var/www/shawnweb/shawn/buildfiles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o -c /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_processor.cpp
 
 CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.i: cmake_force
@@ -103,6 +79,30 @@ CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o
 .PHONY : CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o.provides
 
 CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o.provides.build: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o
+
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o: CMakeFiles/shawn_web_proy_test1.dir/flags.make
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o: /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/var/www/shawnweb/shawn/buildfiles/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o -c /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp > CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.i
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /var/www/shawnweb/shawn/src/legacyapps/proy_test1/proy_test1_init.cpp -o CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.s
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires:
+
+.PHONY : CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
+	$(MAKE) -f CMakeFiles/shawn_web_proy_test1.dir/build.make CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides.build
+.PHONY : CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides
+
+CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.provides.build: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o
 
 
 CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_message.o: CMakeFiles/shawn_web_proy_test1.dir/flags.make
@@ -179,8 +179,8 @@ CMakeFiles/shawn_web_proy_test1.dir/legacyapps/legacyapps_init.o.provides.build:
 
 # Object files for target shawn_web_proy_test1
 shawn_web_proy_test1_OBJECTS = \
-"CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o" \
 "CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o" \
+"CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o" \
 "CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_message.o" \
 "CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor_factory.o" \
 "CMakeFiles/shawn_web_proy_test1.dir/legacyapps/legacyapps_init.o"
@@ -188,8 +188,8 @@ shawn_web_proy_test1_OBJECTS = \
 # External object files for target shawn_web_proy_test1
 shawn_web_proy_test1_EXTERNAL_OBJECTS =
 
-/var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o
 /var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o
+/var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o
 /var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_message.o
 /var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor_factory.o
 /var/www/shawnweb/shawn/src/legacyapps/proy_test1/build_files/shawn_web_proy_test1: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/legacyapps_init.o
@@ -204,8 +204,8 @@ CMakeFiles/shawn_web_proy_test1.dir/build: /var/www/shawnweb/shawn/src/legacyapp
 
 .PHONY : CMakeFiles/shawn_web_proy_test1.dir/build
 
-CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
 CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor.o.requires
+CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_init.o.requires
 CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_message.o.requires
 CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/proy_test1/proy_test1_processor_factory.o.requires
 CMakeFiles/shawn_web_proy_test1.dir/requires: CMakeFiles/shawn_web_proy_test1.dir/legacyapps/legacyapps_init.o.requires
