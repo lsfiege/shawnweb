@@ -374,8 +374,6 @@ class ControlSimulacion
                     $transm_model
                 );
             }
-
-
             // obtener cant iteraciones y agregar simulation max_iterations=X
             $comando1 = "echo 'simulation max_iterations={$max_iterations}' >> $source";
             $process1 = proc_open($comando1, $descriptorspec, $pipes1);
@@ -516,7 +514,7 @@ class ControlSimulacion
 
             if (count($config) > 0) {
                 $config = (object)$config[0];
-                $world_config = R::load('', $config->id);
+                $world_config = R::load('vis_proyecto_file_world', $config->id);
             } else {
                 $world_config = R::xdispense('vis_proyecto_file_world');
                 $world_config->vis_proyecto_archivo_id = $proyect_config_id;
