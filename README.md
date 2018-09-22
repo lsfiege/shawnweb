@@ -2,7 +2,8 @@
 ## Abstract
 Shawn [1] is a discrete event simulator for sensor networks. Due to its high customizability, it is extremely fast but can be tuned to any accuracy that is required by the simulation or application.
 
-## Original Documentation
+## Original Project and Documentation
+https://github.com/itm/shawn
 https://github.com/itm/shawn/wiki
 
 ## How to run it
